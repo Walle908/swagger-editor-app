@@ -1,0 +1,49 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+
+  --max-width: 1280px;
+
+  --bg: #2f9331;
+  --text: #000000;
+  --accent: #8bcf21;
+  --primary: #477385;
+  --hover: #83d2e4;
+  --error: #e31d2b;
+  --input-search-bg: #e7e0db;
+  --loader-rgb: 0 0 0;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--bg);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 2rem;
+}
+
+a:hover {
+  color: var(--hover);
+}
+
+h1,
+h2 {
+  text-align: center;
+}
