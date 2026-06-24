@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🛠️ Технологический стек (Tech Stack)
 
-## Getting Started
+Проект представляет собой **Swagger Editor App** - ...
 
-First, run the development server:
+### 🧱 Основные технологии
+
+- **Next.js** — React-фреймворк для продакшена с использованием App Router.
+- **React & React DOM** — новейшая версия библиотеки для построения интерфейсов.
+- **TypeScript** — строгая типизация для предотвращения ошибок на этапе написания кода.
+- **Zustand** — легковесный и быстрый менеджер состояния (state manager).
+- **Sass (SCSS)** — модульная стилизация интерфейса с поддержкой переменных и вложенности.
+
+### 📝 Работа с формами и валидация
+
+- **React Hook Form** — высокопроизводительные формы без лишних ререндеров.
+- **Zod** — декларативная валидация схем данных и сквозная типизация.
+- **@hookform/resolvers** — интеграция Zod для бесшовной валидации форм.
+
+### 🌐 Интернационализация (i18n)
+
+- **Next-intl** — полноценная локализация и поддержка многоязычности приложения.
+
+### 🧪 Тестирование (Testing)
+
+- **Vitest** — сверхбыстрый фреймворк для юнит и компонентного тестирования.
+- **@vitejs/plugin-react-swc** — компиляция тестов через быстрый SWC.
+- **React Testing Library & JSDOM** — рендеринг и симуляция поведения пользователя в изолированной среде браузера.
+- **V8 Coverage** — автоматическая генерация отчетов о покрытию кода тестами.
+
+### ⚙️ Автоматизация, Линтинг и Git Hooks (Code Quality)
+
+Качество кодовой базы контролируется автоматически перед каждым коммитом и пушем:
+
+- **Husky** — управление Git-хуками для автоматизации локальных проверок.
+- **Lint-staged** — запуск проверок (компиляция TypeScript, ESLint, форматирование Prettier) исключительно для измененных файлов в коммите.
+- **Commitlint** — строгая проверка сообщений коммитов по общепринятому стандарту _Conventional Commits_.
+- **Validate Branch Name** — автоматический контроль нейминга Git-веток. Ветки должны строго соответствовать паттерну: `<issue-number>-<type>-<description>` (например, `4-chore-add-project-configs`).
+
+---
+
+## 🚀 Скрипты для запуска (Scripts)
+
+В корне проекта доступны следующие команды:
 
 ```bash
+# Запуск сервера разработки (Local Dev Environment)
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Сборка приложения для продакшена
+npm run build
+
+# Запуск собранного продакшен-приложения
+npm run start
+
+# Проверка кода линтером (ESLint)
+npm run lint
+
+# Однократный запуск всех тестов без режима watch
+npm run test
+
+# Запуск тестов со сбором метрик покрытия кода (Code Coverage)
+npm run test:coverage
+
+# Ручной запуск проверки валидности имени текущей ветки
+npm run validate-branch
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
