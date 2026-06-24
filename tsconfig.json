@@ -28,5 +28,5 @@
     "noUncheckedIndexedAccess": true
   },
   "include": ["src/**/*", "next-env.d.ts", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", ".next"]
+  "exclude": ["node_modules", ".next", "vitest.config.ts"]
 }
