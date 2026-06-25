@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Text from '@/components/ui/text/Text';
-import styles from '@/styles/page.module.scss';
+import styles from './page.module.scss';
 
 export default function HomePage() {
   return (

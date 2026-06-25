@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 import Text from '@/components/ui/text/Text';
-import styles from '@/styles/aboutPage.module.scss';
+import styles from './about.module.scss';
 
 export default function AboutPage(): ReactNode {
   return (

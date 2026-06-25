@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 import Text from '@/components/ui/text/Text';
-import styles from '@/styles/notFoundPage.module.scss';
+import styles from './notFound.module.scss';
 
 export default function NotFoundPage(): ReactNode {
   return (

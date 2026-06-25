@@ -1,11 +1,11 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 import Text from '@/components/ui/text/Text';
-import styles from '@/styles/signInPage.module.scss';
+import styles from './signin.module.scss';
 
 export default function SignInPage(): ReactNode {
   return (
-    <div className={styles.signInPageWrapper}>
+    <div className={styles.signInWrapper}>
       <Text as="h1" color="accent" size="xl">
         Sign up
       </Text>

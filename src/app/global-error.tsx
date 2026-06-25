@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import Button from '@/components/ui/button/Button';
 import Text from '@/components/ui/text/Text';
 import { ErrorMessage } from '@/constants/constants';
-import styles from '@/styles/error.module.scss';
+import styles from './error.module.scss';
 
 interface GlobalErrorProps {
   error: Error & { digest?: string };
@@ -19,7 +19,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
   return (
     <html lang="en">
       <body>
-        <div className={styles.errorBlock}>
+        <div className={styles.errorWrapper}>
           <Text as="h1" color="error" size="xl">
             {ErrorMessage.BOUNDARY_ERROR}
           </Text>
