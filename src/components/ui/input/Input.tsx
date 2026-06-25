@@ -8,8 +8,7 @@ interface InputProps extends ComponentPropsWithoutRef<'input'> {
 }
 
 export default function Input({ className = '', variant, ...props }: InputProps): ReactNode {
-  const variantClass = styles[variant] ? styles[variant] : '';
-  const combinedClasses = clsx(variantClass, className);
+  const combinedClasses = clsx(styles[variant], className);
 
   return <input className={combinedClasses} {...props} />;
 }

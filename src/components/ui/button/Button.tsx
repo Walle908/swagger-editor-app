@@ -18,9 +18,7 @@ export default function Button({
   variant = 'default',
   ...props
 }: ButtonProps): ReactNode {
-  const variantClass = styles[variant] ? styles[variant] : '';
-  const colorClass = styles[color] ? styles[color] : '';
-  const combinedClasses = clsx(variantClass, colorClass, className);
+  const combinedClasses = clsx(styles[variant], styles[color], className);
 
   return (
     <button className={combinedClasses} onClick={onClick} type={type} {...props}>

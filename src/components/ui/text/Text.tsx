@@ -22,11 +22,8 @@ export default function Text({
   ...props
 }: TextProps): ReactNode {
   const Tag = as;
-  const sizeClass = styles[size] ? styles[size] : '';
-  const colorClass = styles[color] ? styles[color] : '';
-  const weightClass = styles[weight] ? styles[weight] : '';
 
-  const combinedClasses = clsx(sizeClass, colorClass, weightClass, className);
+  const combinedClasses = clsx(styles[size], styles[color], styles[weight], className);
 
   return (
     <Tag className={combinedClasses} {...props}>
