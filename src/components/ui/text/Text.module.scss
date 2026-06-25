@@ -1,25 +1,35 @@
+@use '@/styles/variables' as *;
+
+.xxxl {
+  font-size: $space-3xl;
+}
+
 .xxl {
-  font-size: 5rem;
+  font-size: $space-2xl;
 }
 
 .xl {
-  font-size: 4rem;
+  font-size: $space-xl;
 }
 
 .lg {
-  font-size: 3rem;
+  font-size: $space-lg;
 }
 
 .md {
-  font-size: 2rem;
+  font-size: $space-md;
 }
 
 .sm {
-  font-size: 1.6rem;
+  font-size: $space-sm;
 }
 
 .xs {
-  font-size: 1rem;
+  font-size: $space-xl;
+}
+
+.xxs {
+  font-size: $space-xxs;
 }
 
 .base {

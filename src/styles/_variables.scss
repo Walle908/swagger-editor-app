@@ -1,0 +1,25 @@
+// Цвета
+$color-dark: #1c1917;
+$color-white: #ffffff;
+$color-gray-light: #f7f7f6;
+$color-gray-dark: #e7e5e4;
+$color-accent-light: #16a34a;
+$color-accent-dark: #22c55e;
+$color-error: #dc2626;
+
+// Сетка и брейкпоинты
+$breakpoint-mobile: 576px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1280px;
+
+// Шрифты и размеры
+$font-main: var(--font-space-grotesk), sans-serif;
+$font-code: var(--font-jetbrains-mono), monospace;
+$space-xxs: 1.2rem;
+$space-xs: 1.4rem;
+$space-sm: 1.6rem;
+$space-md: 1.8rem;
+$space-lg: 2rem;
+$space-xl: 2.4rem;
+$space-2xl: 3.2rem;
+$space-3xl: 4.8rem;

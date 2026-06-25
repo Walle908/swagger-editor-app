@@ -1,7 +1,4 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
-
   --max-width: 1280px;
 
   --bg: #2f9331;
@@ -41,9 +38,4 @@ a {
 
 a:hover {
   color: var(--hover);
-}
-
-h1,
-h2 {
-  text-align: center;
 }
