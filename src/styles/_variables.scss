@@ -1,11 +1,16 @@
 // Цвета
-$color-dark: #1c1917;
-$color-white: #ffffff;
-$color-gray-light: #f7f7f6;
-$color-gray-dark: #e7e5e4;
-$color-accent-light: #16a34a;
-$color-accent-dark: #22c55e;
-$color-error: #dc2626;
+$color-bg-main: var(--color-bg-main);
+$color-bg-additional: var(--color-bg-additional);
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+$color-text-main: var(--color-text-main);
+$color-text-additional: var(--color-text-additional);
+$color-color-border: var(--color-border);
+$color-accent: var(--color-accent);
+$color-accent1: var(--color-accent1);
+$color-error: var(--color-error);
+$color-hover: var(--color-hover);
+$color-loader: var(--loader-rgb);
 
 // Сетка и брейкпоинты
 $breakpoint-mobile: 576px;

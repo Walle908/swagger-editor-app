@@ -5,17 +5,17 @@ import styles from './Button.module.scss';
 interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   children: ReactNode;
   className?: string;
-  color?: 'accent' | 'base' | 'error' | 'none';
-  variant?: 'default' | 'plain';
+  color?: 'primary' | 'dark' | 'light' | 'none';
+  variant?: 'default' | 'icon';
 }
 
 export function Button({
   children,
   className = '',
-  color = 'base',
-  onClick,
   type = 'button',
+  color = 'primary',
   variant = 'default',
+  onClick,
   ...props
 }: ButtonProps): ReactNode {
   const combinedClasses = clsx(styles[variant], styles[color], className);

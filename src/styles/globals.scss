@@ -1,14 +1,30 @@
-:root {
-  --max-width: 1280px;
+:root,
+[data-theme='light'] {
+  --color-bg-main: #ffffff;
+  --color-bg-additional: #1c1917;
+  --color-primary: #16a34a;
+  --color-secondary: #78716c;
+  --color-text-main: #1c1917;
+  --color-text-additional: #ffffff;
+  --color-accent: #7c3aed;
+  --color-accent-1: #d97706;
+  --color-error: #dc2626;
+  // изменить на подходящиe
+  --color-hover: #917c5dff;
+}
 
-  --bg: #2f9331;
-  --text: #000000;
-  --accent: #8bcf21;
-  --primary: #477385;
-  --hover: #83d2e4;
-  --error: #e31d2b;
-  --input-search-bg: #e7e0db;
-  --loader-rgb: 0 0 0;
+[data-theme='dark'] {
+  --color-bg-main: #1c1917;
+  --color-bg-additional: #ffffff;
+  --color-primary: #22c55e;
+  --color-secondary: #a8b0a8;
+  --color-text-main: #ffffff;
+  --color-text-additional: #1c1917;
+  --color-accent: #7c3aed;
+  --color-accent-1: #d97706;
+  --color-error: #dc2626;
+  // изменить на подходящие
+  --color-hover: #83d2e4;
 }
 
 * {
@@ -22,22 +38,22 @@ html {
 }
 
 body {
-  color: var(--text);
-  background-color: var(--bg);
+  color: var(--color-text-main);
+  background-color: var(--color-bg-main);
   transition:
     background-color 0.3s,
     color 0.3s;
 }
 
 a {
-  color: inherit;
+  color: var(--color-text-main);
   text-decoration: none;
   transition: color 0.3s;
   font-size: 2rem;
 }
 
 a:hover {
-  color: var(--hover);
+  color: var(--color-hover);
 }
 
 .layoutContainer {

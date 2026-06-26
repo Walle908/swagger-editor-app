@@ -32,16 +32,32 @@
   font-size: $space-xxs;
 }
 
-.base {
-  color: var(--text);
+.main {
+  color: $color-text-main;
+}
+
+.additional {
+  color: $color-text-additional;
+}
+
+.secondary {
+  color: $color-text-additional;
+}
+
+.primary {
+  color: $color-primary;
 }
 
 .accent {
-  color: var(--accent);
+  color: $color-accent;
+}
+
+.accent1 {
+  color: $color-accent1;
 }
 
 .error {
-  color: var(--error);
+  color: $color-error;
 }
 
 .medium {

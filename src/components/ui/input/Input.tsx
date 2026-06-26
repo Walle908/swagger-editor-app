@@ -4,7 +4,7 @@ import styles from './Input.module.scss';
 
 interface InputProps extends ComponentPropsWithoutRef<'input'> {
   className?: string;
-  variant: 'checkbox' | 'search';
+  variant: 'default';
 }
 
 export function Input({ className = '', variant, ...props }: InputProps): ReactNode {
