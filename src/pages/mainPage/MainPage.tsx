@@ -13,6 +13,7 @@ export default function MainPage(): ReactNode {
       <Link href="/about">About us</Link>
       <Link href="/signup">Sign up</Link>
       <Link href="/signin">Sign in</Link>
+      <Link href="/history">History & Analytics</Link>
     </div>
   );
 }
