@@ -1,5 +1,5 @@
-import Loader from '@/components/ui/loader/Loader';
+import { LoadingView } from './_views/LoadingView';
 
 export default function LoadingPage() {
-  return <Loader />;
+  return <LoadingView />;
 }

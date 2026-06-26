@@ -7,7 +7,7 @@ interface InputProps extends ComponentPropsWithoutRef<'input'> {
   variant: 'checkbox' | 'search';
 }
 
-export default function Input({ className = '', variant, ...props }: InputProps): ReactNode {
+export function Input({ className = '', variant, ...props }: InputProps): ReactNode {
   const combinedClasses = clsx(styles[variant], className);
 
   return <input className={combinedClasses} {...props} />;

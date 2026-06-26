@@ -1,13 +1,13 @@
 'use client';
 
 import { type ReactNode } from 'react';
-import Text from '@/components/ui/text/Text';
+import { Text } from '@/components/ui';
 import styles from './Footer.module.scss';
 
-export default function Footer(): ReactNode {
+export function Footer(): ReactNode {
   return (
-    <header className={styles.footer}>
+    <footer className={styles.footer}>
       <Text>Footer</Text>
-    </header>
+    </footer>
   );
 }

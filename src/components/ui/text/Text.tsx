@@ -11,7 +11,7 @@ interface TextProps extends HTMLAttributes<HTMLElement> {
   weight?: 'bold' | 'medium' | 'normal';
 }
 
-export default function Text({
+export function Text({
   as = 'p',
   children,
   className = '',

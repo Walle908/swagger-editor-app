@@ -1,7 +1,10 @@
-.signInWrapper {
+.errorContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4rem;
   margin: auto;
+}
+
+.resetButton {
+  margin-top: 4rem;
 }

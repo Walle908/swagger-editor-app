@@ -1,8 +1,7 @@
-import type { Metadata } from 'next';
 import { type ReactNode } from 'react';
+import type { Metadata } from 'next';
 import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
-import Header from '@/components/layout/header/Header';
-import Footer from '@/components/layout/footer/Footer';
+import { Header, Footer } from '@/components/layout';
 import '@/styles/globals.scss';
 
 export const metadata: Metadata = {
