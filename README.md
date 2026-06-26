@@ -1,3 +1,7 @@
+## 🚀 Деплой
+
+https://swagger-editor-app-livid.vercel.app/
+
 ## 🛠️ Технологический стек (Tech Stack)
 
 Проект представляет собой **Swagger Editor App** - ...
