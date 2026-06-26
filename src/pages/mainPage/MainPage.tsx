@@ -1,9 +1,9 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { Text } from '@/components/ui';
-import styles from './MainPageView.module.scss';
+import styles from './MainPage.module.scss';
 
-export function MainPageView(): ReactNode {
+export default function MainPage(): ReactNode {
   return (
     <div className={styles.pageContainer}>
       {' '}

@@ -1,5 +1,5 @@
-import { MainPageView } from './_views/MainPageView';
+import MainPage from '@/pages/mainPage/MainPage';
 
 export default function HomePage() {
-  return <MainPageView />;
+  return <MainPage />;
 }
