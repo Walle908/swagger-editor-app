@@ -1,13 +1,13 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { Text } from '@/components/ui';
-import styles from './SignUpView.module.scss';
+import styles from './SignInPage.module.scss';
 
-export function SignUpView(): ReactNode {
+export default function SignInPage(): ReactNode {
   return (
-    <div className={styles.signUpContainer}>
+    <div className={styles.signInContainer}>
       <Text as="h1" color="accent" size="xl">
-        Sign up
+        Sign in
       </Text>
       <Link href="/">Go to main page</Link>
     </div>
