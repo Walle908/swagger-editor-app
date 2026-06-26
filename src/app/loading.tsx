@@ -1,5 +1,5 @@
-import { LoadingView } from './_views/LoadingView';
+import LoadingPage from '@/pages/loadingPage/LoadingPage';
 
-export default function LoadingPage() {
-  return <LoadingView />;
+export default function Loading() {
+  return <LoadingPage />;
 }
