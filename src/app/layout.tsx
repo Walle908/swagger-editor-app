@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { type ReactNode } from 'react';
 import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import Header from '@/components/layout/header/Header';
+import Footer from '@/components/layout/footer/Footer';
 import '@/styles/globals.scss';
 
 export const metadata: Metadata = {
@@ -28,7 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
-      <body>{children}</body>
+      <body className="layoutContainer">
+        <Header />
+        <main className="mainContent">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

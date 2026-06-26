@@ -39,3 +39,14 @@ a {
 a:hover {
   color: var(--hover);
 }
+
+.layoutContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.mainContent {
+  flex-grow: 1;
+}
