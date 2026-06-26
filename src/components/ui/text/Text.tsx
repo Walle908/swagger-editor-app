@@ -1,0 +1,33 @@
+import type { HTMLAttributes, ReactNode } from 'react';
+import clsx from 'clsx';
+import styles from './Text.module.scss';
+
+interface TextProps extends HTMLAttributes<HTMLElement> {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+  children: ReactNode;
+  className?: string;
+  color?: 'main' | 'additional ' | 'primary' | 'secondary' | 'accent' | 'accent1' | 'error';
+  size?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
+  weight?: 'bold' | 'medium' | 'normal';
+}
+
+export function Text({
+  as = 'p',
+  children,
+  className = '',
+  color = 'main',
+  size = 'sm',
+  weight = 'normal',
+
+  ...props
+}: TextProps): ReactNode {
+  const Tag = as;
+
+  const combinedClasses = clsx(styles[size], styles[color], styles[weight], className);
+
+  return (
+    <Tag className={combinedClasses} {...props}>
+      {children}
+    </Tag>
+  );
+}

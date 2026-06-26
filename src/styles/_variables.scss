@@ -1,0 +1,30 @@
+// Цвета
+$color-bg-main: var(--color-bg-main);
+$color-bg-additional: var(--color-bg-additional);
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+$color-text-main: var(--color-text-main);
+$color-text-additional: var(--color-text-additional);
+$color-color-border: var(--color-border);
+$color-accent: var(--color-accent);
+$color-accent1: var(--color-accent1);
+$color-error: var(--color-error);
+$color-hover: var(--color-hover);
+$color-loader: var(--loader-rgb);
+
+// Сетка и брейкпоинты
+$breakpoint-mobile: 576px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1280px;
+
+// Шрифты и размеры
+$font-main: var(--font-space-grotesk), sans-serif;
+$font-code: var(--font-jetbrains-mono), monospace;
+$space-xxs: 1.2rem;
+$space-xs: 1.4rem;
+$space-sm: 1.6rem;
+$space-md: 1.8rem;
+$space-lg: 2rem;
+$space-xl: 2.4rem;
+$space-2xl: 3.2rem;
+$space-3xl: 4.8rem;

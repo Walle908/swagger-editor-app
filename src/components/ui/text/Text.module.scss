@@ -1,0 +1,66 @@
+.xxxl {
+  font-size: $space-3xl;
+}
+
+.xxl {
+  font-size: $space-2xl;
+}
+
+.xl {
+  font-size: $space-xl;
+}
+
+.lg {
+  font-size: $space-lg;
+}
+
+.md {
+  font-size: $space-md;
+}
+
+.sm {
+  font-size: $space-sm;
+}
+
+.xs {
+  font-size: $space-xl;
+}
+
+.xxs {
+  font-size: $space-xxs;
+}
+
+.main {
+  color: $color-text-main;
+}
+
+.additional {
+  color: $color-text-additional;
+}
+
+.secondary {
+  color: $color-text-additional;
+}
+
+.primary {
+  color: $color-primary;
+}
+
+.accent {
+  color: $color-accent;
+}
+
+.accent1 {
+  color: $color-accent1;
+}
+
+.error {
+  color: $color-error;
+}
+
+.medium {
+  font-weight: 600;
+}
+.bold {
+  font-weight: bold;
+}

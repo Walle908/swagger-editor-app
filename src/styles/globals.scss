@@ -1,0 +1,68 @@
+:root,
+[data-theme='light'] {
+  --color-bg-main: #ffffff;
+  --color-bg-additional: #1c1917;
+  --color-primary: #16a34a;
+  --color-secondary: #78716c;
+  --color-text-main: #1c1917;
+  --color-text-additional: #ffffff;
+  --color-accent: #7c3aed;
+  --color-accent-1: #d97706;
+  --color-error: #dc2626;
+  // изменить на подходящиe
+  --color-hover: #917c5dff;
+}
+
+[data-theme='dark'] {
+  --color-bg-main: #1c1917;
+  --color-bg-additional: #ffffff;
+  --color-primary: #22c55e;
+  --color-secondary: #a8b0a8;
+  --color-text-main: #ffffff;
+  --color-text-additional: #1c1917;
+  --color-accent: #7c3aed;
+  --color-accent-1: #d97706;
+  --color-error: #dc2626;
+  // изменить на подходящие
+  --color-hover: #83d2e4;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  color: var(--color-text-main);
+  background-color: var(--color-bg-main);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+a {
+  color: var(--color-text-main);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 2rem;
+}
+
+a:hover {
+  color: var(--color-hover);
+}
+
+.layoutContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.mainContent {
+  flex-grow: 1;
+}
