@@ -156,3 +156,5 @@ vite.config.ts.timestamp-*
 .DS_Store
 Thumbs.db
 *.pem
+
+next-env.d.ts
