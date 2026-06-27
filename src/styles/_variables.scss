@@ -5,12 +5,49 @@ $color-primary: var(--color-primary);
 $color-secondary: var(--color-secondary);
 $color-text-main: var(--color-text-main);
 $color-text-additional: var(--color-text-additional);
-$color-color-border: var(--color-border);
+$color-border: var(--color-border);
 $color-accent: var(--color-accent);
 $color-accent1: var(--color-accent1);
 $color-error: var(--color-error);
 $color-hover: var(--color-hover);
 $color-loader: var(--loader-rgb);
+
+//поверхности
+$color-bg-subtle: var(--color-bg-subtle);
+$color-bg-muted: var(--color-bg-muted);
+$color-bg-canvas: var(--color-bg-canvas);
+$color-bg-code: var(--color-bg-code);
+
+//border
+$color-border-strong: var(--color-border-strong);
+$color-line-soft: var(--color-line-soft);
+
+//текст
+$color-text-secondary: var(--color-text-secondary);
+$color-text-muted: var(--color-text-muted);
+$color-text-faint: var(--color-text-faint);
+
+//валидация
+$color-error-strong: var(--color-error-strong);
+$color-error-bg: var(--color-error-bg);
+$color-error-border: var(--color-error-border);
+$color-success: var(--color-success);
+$color-success-bg: var(--color-success-bg);
+$color-warning: var(--color-warning);
+$color-warning-bg: var(--color-warning-bg);
+
+//shadow
+$shadow-sm: var(--shadow-sm);
+$shadow-md: var(--shadow-md);
+$shadow-lg: var(--shadow-lg);
+
+//HTTP-методы
+$color-method-get: var(--color-method-get);
+$color-method-post: var(--color-method-post);
+$color-method-put: var(--color-method-put);
+$color-method-patch: var(--color-method-patch);
+$color-method-delete: var(--color-method-delete);
+
 
 // Сетка и брейкпоинты
 $breakpoint-mobile: 576px;
