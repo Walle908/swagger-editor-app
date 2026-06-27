@@ -3,8 +3,8 @@
 }
 
 .default {
-  min-height: 4rem;
-  padding: $space-xxs $space-sm;
+  min-height: 2rem;
+  padding: 1.3rem 1.1rem;
   background-color: transparent;
   color: $color-text-main;
   border: 1px solid $color-border-strong;
@@ -12,5 +12,13 @@
   font-size: $space-xs;
   line-height: 1;
   outline: none;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.default:hover {
+  border-color: $color-hover;
+}
+
+.default:focus {
+  border-color: $color-focus;
 }
