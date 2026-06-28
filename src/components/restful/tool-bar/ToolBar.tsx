@@ -1,6 +1,7 @@
 import { TEXT } from '@/constants/constants';
 import { FormatSwitcher } from './format-switcher/FormatSwitcher';
 import styles from './ToolBar.module.scss';
+import { Button } from '@/components/ui';
 
 interface ToolBarProps {
   format: 'JSON' | 'YAML';
@@ -24,19 +25,19 @@ export function ToolBar({ format, setFormat, error, texts }: ToolBarProps) {
       </div>
 
       <div className={styles.toolbarRight}>
-        <button
-          type="button"
+        <Button
+          color="light"
           className={styles.importUrlBtn}
           onClick={() => console.log('Import URL clicked')}>
           {texts.btnImport}
-        </button>
+        </Button>
 
-        <button
-          type="button"
+        <Button
+          color="dark"
           className={styles.saveSpecBtn}
           onClick={() => console.log('Save Spec clicked')}>
           {texts.btnSave}
-        </button>
+        </Button>
       </div>
     </section>
   );

@@ -4,7 +4,9 @@
   align-items: flex-start;
   width: 100%;
   height: 100%; 
+  min-height: 100%;
   background: var(--color-bg-side);
+  flex: 1;
 }
 
 .viewerHeader {
@@ -73,7 +75,7 @@
   padding: 1.8rem 2.2rem;
   gap: 2rem;
   align-self: stretch;
-  flex-grow: 1;
+  flex: 1;
   background-color: var(--color-bg-subtle);
 }
 

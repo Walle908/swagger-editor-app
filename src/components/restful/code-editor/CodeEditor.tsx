@@ -3,8 +3,7 @@ import { githubLight } from '@uiw/codemirror-theme-github';
 import CodeMirror from '@uiw/react-codemirror';
 import styles from './CodeEditor.module.scss';
 import { TEXT } from '@/constants/constants';
-
-export type Lang = 'json' | 'yaml' | 'text';
+import { LangType } from '@/types/types';
 
 export function CodeEditor({
   readOnly,
@@ -22,7 +21,7 @@ export function CodeEditor({
   height?: string;
   onChangeAction?: (value: string) => void;
   onBlurAction?: () => void;
-  lang?: Lang;
+  lang?: LangType;
   fileName?: string;
   error: string | null;
   texts: typeof TEXT.editor;

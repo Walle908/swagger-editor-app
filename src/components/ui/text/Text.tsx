@@ -8,7 +8,7 @@ interface TextProps extends HTMLAttributes<HTMLElement> {
   className?: string;
   color?:
     | 'main'
-    | 'additional '
+    | 'additional'
     | 'secondary'
     | 'primary'
     | 'muted'

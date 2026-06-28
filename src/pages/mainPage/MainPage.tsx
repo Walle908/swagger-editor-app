@@ -4,15 +4,13 @@ import styles from './MainPage.module.scss';
 import { CodeEditor, SwaggerViewer, ToolBar } from '@/components/restful';
 import { TEXT } from '@/constants/constants';
 
-export type LangType = 'json' | 'yaml' | 'text';
-
 const MainPage: React.FC = () => {
   const [schemaText, setSchemaText] = useState('');
   const [format, setFormat] = useState<'JSON' | 'YAML'>('JSON');
   const [error] = useState<string | null>(null);
 
   return (
-    <div className={styles.appGridLayout}>
+    <div className={styles.mainPageLayout}>
       <ToolBar format={format} setFormat={setFormat} error={error} texts={TEXT.toolbar} />
 
       <div className={styles.splitScreenContainer}>

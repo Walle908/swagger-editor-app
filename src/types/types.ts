@@ -16,3 +16,5 @@ export interface TextLocal {
     filterPlaceholder: string;
   };
 }
+
+export type LangType = 'json' | 'yaml' | 'text';
