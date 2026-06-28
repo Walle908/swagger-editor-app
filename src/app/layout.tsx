@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Libre_Franklin, JetBrains_Mono } from 'next/font/google';
 import { Header, Footer } from '@/components/layout';
 import '@/styles/globals.scss';
 
@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     'App allows users to edit and test APIs using OpenAPI specifications in an accessible, user-friendly interface.',
 };
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-space-grotesk',
+const libreFranklin = Libre_Franklin({
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-libre-franklin',
   display: 'swap',
 });
 
@@ -28,7 +28,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
+    <html lang="en" className={`${libreFranklin.variable} ${jetBrainsMono.variable}`}>
       <body className="layoutContainer">
         <Header />
         <main className="mainContent">{children}</main>

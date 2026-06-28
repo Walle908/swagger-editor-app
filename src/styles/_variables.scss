@@ -1,16 +1,58 @@
 // Цвета
 $color-bg-main: var(--color-bg-main);
 $color-bg-additional: var(--color-bg-additional);
-$color-primary: var(--color-primary);
-$color-secondary: var(--color-secondary);
+$color-bg-subtle: var(--color-bg-subtle);
+$color-bg-muted: var(--color-bg-muted);
+$color-bg-canvas: var(--color-bg-canvas);
+$color-bg-code: var(--color-bg-code);
+
+$color-border: var(--color-border);
+$color-border-strong: var(--color-border-strong);
+$color-line-soft: var(--color-line-soft);
+
+//текст
 $color-text-main: var(--color-text-main);
 $color-text-additional: var(--color-text-additional);
-$color-color-border: var(--color-border);
-$color-accent: var(--color-accent);
-$color-accent1: var(--color-accent1);
-$color-error: var(--color-error);
+$color-text-secondary: var(--color-text-secondary);
+$color-text-muted: var(--color-text-muted);
+$color-text-faint: var(--color-text-faint);
+$color-text-accent: var(--color-text-accent);
+$color-text-accent-1: var(--color-text-accent-1);
+
+$color-primary: var(--color-primary);
+
+//валидация
+$color-error-strong: var(--color-error-strong);
+$color-error-bg: var(--color-error-bg);
+$color-error-border: var(--color-error-border);
+$color-success: var(--color-success);
+$color-success-bg: var(--color-success-bg);
+$color-warning: var(--color-warning);
+$color-warning-bg: var(--color-warning-bg);
+
 $color-hover: var(--color-hover);
-$color-loader: var(--loader-rgb);
+$color-focus: var(--color-focus);
+$color-disabled: var(--color-disabled);
+
+//shadow
+$shadow-sm: var(--shadow-sm);
+$shadow-md: var(--shadow-md);
+$shadow-lg: var(--shadow-lg);
+
+// HTTP-методы
+$color-method-get: var(--color-method-get);
+$color-method-post: var(--color-method-post);
+$color-method-put: var(--color-method-put);
+$color-method-patch: var(--color-method-patch);
+$color-method-delete: var(--color-method-delete);
+
+//фоны плашек методов
+$color-method-get-bg: var(--color-method-get-bg);
+$color-method-post-bg: var(--color-method-post-bg);
+$color-method-put-bg: var(--color-method-put-bg);
+$color-method-patch-bg: var(--color-method-patch-bg);
+$color-method-delete-bg: var(--color-method-delete-bg);
+
 
 // Сетка и брейкпоинты
 $breakpoint-mobile: 576px;
@@ -18,7 +60,7 @@ $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1280px;
 
 // Шрифты и размеры
-$font-main: var(--font-space-grotesk), sans-serif;
+$font-main: var(--font-libre-franklin), sans-serif;
 $font-code: var(--font-jetbrains-mono), monospace;
 $space-xxs: 1.2rem;
 $space-xs: 1.4rem;

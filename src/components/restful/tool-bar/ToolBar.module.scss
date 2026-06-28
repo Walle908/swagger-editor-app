@@ -1,0 +1,108 @@
+.editorToolbar {
+  grid-row: 1;
+  flex-wrap: wrap;
+  padding: .8rem 2rem; 
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-muted); 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.toolbarLeft {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.divider {
+  width: .1rem;
+  height: 1.8rem;
+  background-color: var(--color-border);
+  flex-shrink: 0; 
+  display: block;
+}
+
+.statusText {
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-family: var(--font-jetbrains-mono), monospace; 
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+
+    &::before {
+    content: "";
+    width: .7rem;
+    height: .7rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  &.valid {
+   color: var(--color-success);
+    &::before { background-color: var(--color-success); }
+  }
+
+  &.invalid {
+   color: var(--color-error-strong);
+    &::before { background-color: var(--color-error-strong);}
+}
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.importUrlBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center; 
+  padding: .7rem 1.2rem;
+  width: 9rem;
+  height: 3rem;
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  border: .1rem solid var(--color-border-strong);
+  border-radius: .7rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  outline: none;
+
+  &:hover {
+    background-color: var(--color-bg-muted);
+  }
+}
+
+.saveSpecBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: .7rem 1.4rem;
+  width: 9rem;
+  height: 3rem;
+  background: var(--color-bg-additional);
+  border: none;
+  border-radius: .7rem;
+  color: var(--color-text-additional);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+  outline: none;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,222 @@
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%; 
+  background: var(--color-bg-side);
+}
+
+.viewerHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem 2rem;
+  gap: .5rem;
+  align-self: stretch;
+  background-color: var(--color-bg-main);
+  border-bottom: .1rem solid var(--color-border);
+}
+
+.apiTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  align-self: stretch;
+
+  h2 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    letter-spacing: -0.036rem;
+    color: var(--color-text-main);
+  }
+}
+
+.badgeVersion {
+  display: flex;
+  padding: .5rem .7rem;
+  background-color: var(--color-success-bg); 
+  border-radius: .5rem;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: var(--color-success);
+}
+
+.badgeOas {
+  display: flex;
+  padding: .5rem  .7rem;
+  background-color: var(--color-bg-muted);
+  border-radius: .5rem;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: var(--color-text-secondary);
+}
+
+.apiUrl {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  color: var(--color-text-secondary);
+}
+
+.viewerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.8rem 2.2rem;
+  gap: 2rem;
+  align-self: stretch;
+  flex-grow: 1;
+  background-color: var(--color-bg-subtle);
+}
+
+.apiCategoryGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .7rem;
+  align-self: stretch;
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: baseline;
+  padding: 0 0 .9rem;
+  gap: 1rem;
+  align-self: stretch;
+  border-bottom: .1rem solid var(--color-border);
+
+  h3 {
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    letter-spacing: -0.016rem;
+    color: var(--color-text-main);
+  }
+
+  .categoryDesc, .userDescCustom {
+    font-size: 1.25rem;
+    line-height: 1.6rem;
+    color: var(--color-text-faint);
+  }
+}
+
+.methodsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-self: stretch;
+}
+
+.methodCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.4rem;
+  min-height: 5rem;
+  align-self: stretch;
+  background-color: var(--color-bg-main);
+  border: .1rem solid var(--color-border);
+  border-radius: .9rem;
+  transition: all 0.2s ease-in-out;
+
+  .methodInfoLeft {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .badgeMethod {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5.4rem;
+    min-width: 5.4rem;
+    height: 2.5rem;
+    padding: .6rem 1.25rem; 
+    border-radius: .6rem;
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.042rem;
+    text-align: center;
+    align-items: baseline;
+  }
+
+  .pathText {
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    color: var(--color-text-main);
+  }
+
+.descriptionText {
+    font-size: 1.25rem;
+    line-height: 1.6rem;
+    color: var(--color-text-muted);
+  }
+
+  .arrowIcon {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    color: var(--color-text-faint);
+    user-select: none;
+  }
+}
+
+.methodPost {
+  &:hover { 
+    background-color: rgba(22, 163, 74, 0.02);
+    border: .1rem solid var(--color-method-post); 
+  }
+  
+  .badgeMethod {
+    background-color: var(--color-method-post-bg);
+    color: var(--color-method-post);
+  }
+}
+
+.methodPut {
+  &:hover { 
+    background-color: rgba(217, 119, 6, 0.02); 
+     border: .1rem solid var(--color-method-put); 
+  }
+  
+  .badgeMethod {
+    background-color: var(--color-method-put-bg);
+    color: var(--color-method-put);
+  }
+}
+
+.methodGet { 
+  &:hover { 
+    background-color: rgba(37, 99, 235, 0.02); 
+    border: .1rem solid var(--color-method-get); 
+  }
+  
+  .badgeMethod {
+    background-color: var(--color-method-get-bg);
+    color: var(--color-method-get);
+  }
+}
+
+.methodDelete { 
+  &:hover { 
+    background-color: rgba(220, 38, 38, 0.02); 
+    border: .1rem solid var(--color-method-delete); 
+  }
+  
+  .badgeMethod {
+    background-color: var(--color-method-delete-bg);
+    color: var(--color-method-delete);
+  }
+}
