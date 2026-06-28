@@ -27,7 +27,7 @@ export function CodeEditor({
   error: string | null;
   texts: typeof TEXT.editor;
 }) {
-  const lineCount = value.trim() ? value.split('\n').length : 0;
+  const lineCount = value.trim() ? value.trim().split('\n').length : 0;
 
   return (
     <section className={`${styles.pane} ${styles.paneEditor}`}>
