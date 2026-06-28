@@ -5,3 +5,15 @@ export const enum ErrorMessage {
   NOT_FOUND = 'No characters found',
   SERVER_ERROR = 'Server error',
 }
+
+export const TEXT = {
+  toolbar: {
+    validStatus: 'Valid · openapi 3.0.3',
+    invalidStatus: 'Invalid',
+    btnImport: 'Import URL',
+    btnSave: 'Save Spec',
+  },
+  editor: {
+    lines: 'lines',
+  },
+};
