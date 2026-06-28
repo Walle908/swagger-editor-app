@@ -4,11 +4,11 @@ import styles from './Input.module.scss';
 
 interface InputProps extends ComponentPropsWithoutRef<'input'> {
   className?: string;
-  variant?: 'default';
+  variant?: 'default' | 'none';
 }
 
 export function Input({ className = '', variant = 'default', ...props }: InputProps): ReactNode {
-  const combinedClasses = clsx(styles.baseInput, styles[variant], className);
+  const combinedClasses = clsx(styles[variant], className);
 
   return <input className={combinedClasses} {...props} />;
 }

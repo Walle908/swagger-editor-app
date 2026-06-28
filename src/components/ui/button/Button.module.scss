@@ -1,14 +1,16 @@
 .default {
-  min-width: max-content;
-  width: 10rem;
-  height: 4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-xxs $space-xl;
+  min-width: 3.2rem;
+  white-space: nowrap;
   border-radius: 0.8rem;
   border: none;
-  padding: 0.6rem 1.2rem;
   font-size: $space-xs;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
-  transition: 0.4s;
+  transition: 0.3s;
 }
 
 .default:hover {
@@ -16,13 +18,12 @@
 }
 
 .icon {
-  border: none;
-  cursor: pointer;
-  font-size: $space-md;
-  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
+  font-size: $space-md;
+  cursor: pointer;
   transition: color 0.3s;
 }
 
@@ -48,4 +49,5 @@
 .light {
   background-color: $color-bg-main;
   color: $color-text-main;
+  border: $color-border-strong;
 }

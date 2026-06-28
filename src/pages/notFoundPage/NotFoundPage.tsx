@@ -1,9 +1,9 @@
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { Text } from '@/components/ui';
-import styles from './NotFoundView.module.scss';
+import styles from './NotFoundPage.module.scss';
 
-export function NotFoundView(): ReactNode {
+export default function NotFoundPage(): ReactNode {
   return (
     <div className={styles.notFoundContainer}>
       <Text size="xl" weight="bold">

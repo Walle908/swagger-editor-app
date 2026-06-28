@@ -1,19 +1,24 @@
-.baseInput {
-  box-sizing: border-box;
-  width: 100%;
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
+.default::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.default {
+  min-height: 2rem;
+  padding: 1.3rem 1.1rem;
+  background-color: transparent;
+  color: $color-text-main;
+  border: 1px solid $color-border-strong;
+  border-radius: 0.9rem;
+  font-size: $space-xs;
+  line-height: 1;
   outline: none;
-  background: transparent;
-  border: none;            
-  padding: 0;              
-  margin: 0;
-  -webkit-tap-highlight-color: transparent; 
-  &::-webkit-search-cancel-button,
-  &::-webkit-search-decoration,
-  &::-webkit-search-results-button,
-  &::-webkit-search-results-decoration {
-    -webkit-appearance: none;
-  }
+  transition: all 0.3s ease-in-out;
+}
+
+.default:hover {
+  border-color: $color-hover;
+}
+
+.default:focus {
+  border-color: $color-focus;
 }

@@ -1,5 +1,5 @@
-import { AboutView } from './_views';
+import AboutPage from '@/pages/aboutPage/AboutPage';
 
-export default function AboutPage() {
-  return <AboutView />;
+export default function About() {
+  return <AboutPage />;
 }

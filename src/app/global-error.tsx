@@ -1,13 +1,13 @@
 'use client';
 
-import { ErrorView } from './_views/ErrorView';
+import ErrorPage from '@/pages/errorPage/ErrorPage';
 
-export default function ErrorPage({
+export default function Error({
   error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  return <ErrorView error={error} reset={reset} />;
+  return <ErrorPage error={error} reset={reset} />;
 }

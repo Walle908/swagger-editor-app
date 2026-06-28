@@ -1,5 +1,5 @@
-import { SignUpView } from './_view';
+import SignUpPage from '@/pages/signUpPage/SignUpPage';
 
-export default function SignUpPage() {
-  return <SignUpView />;
+export default function SignUp() {
+  return <SignUpPage />;
 }
