@@ -1,15 +1,12 @@
 'use client';
 
-import { TEXT } from '@/constants/constants';
 import styles from './SwaggerViewer.module.scss';
-import { EndpointFilter } from './endpoint-filter/EndpointFilter';
 
 interface SwaggerViewerProps {
   title?: string;
   version?: string;
   oasVersion?: string;
   baseUrl?: string;
-  texts: typeof TEXT.viewer;
 }
 
 const mockCategories = [
@@ -92,7 +89,6 @@ export function SwaggerViewer({
   version = '1.0.27',
   oasVersion = '3.0.0',
   baseUrl = 'https://petstore3.swagger.io/api/v3',
-  texts,
 }: SwaggerViewerProps) {
   return (
     <section className={styles.rightSide}>
@@ -106,11 +102,7 @@ export function SwaggerViewer({
       </div>
 
       <div className={styles.viewerContent}>
-        <EndpointFilter
-          placeholder={texts.filterPlaceholder}
-          onFilterChange={(val) => console.log('filter:', val)}
-        />
-
+        
         {mockCategories.map((category) => (
           <div key={category.id} className={styles.apiCategoryGroup}>
             <div className={styles.categoryHeader}>

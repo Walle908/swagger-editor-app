@@ -32,7 +32,6 @@ export default function RootLayout({
       <body className="layoutContainer">
         <Header />
         <main className="mainContent">{children}</main>
-        <p>ваавав</p>
         <Footer />
       </body>
     </html>

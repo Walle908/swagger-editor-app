@@ -1,7 +1,27 @@
-.pageContainer {
+.appGridLayout {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 3rem;
-  width: 100%;
+  height: 100%;
+  width: 100vw;
+}
+
+.splitScreenContainer {
+  display: grid;
+  width: 100vw;
+  height: 100%;
+
+  @media (orientation: landscape) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (orientation: portrait) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--color-bg-main); 
 }

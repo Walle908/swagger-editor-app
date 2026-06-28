@@ -15,6 +15,7 @@ export function FormatSwitcher({ format, onToggleAction }: FormatSwitcherProps) 
         <Input
           type="text"
           value="JSON"
+          variant="none"
           readOnly
           className={`${styles.segmentInput} ${format === 'JSON' ? styles.activeGreen : styles.inactiveWhite}`}
         />
@@ -22,6 +23,7 @@ export function FormatSwitcher({ format, onToggleAction }: FormatSwitcherProps) 
         <Input
           type="text"
           value="YAML"
+          variant="none"
           readOnly
           className={`${styles.segmentInput} ${format === 'YAML' ? styles.activeGreen : styles.inactiveWhite}`}
         />

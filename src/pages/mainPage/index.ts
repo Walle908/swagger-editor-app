@@ -1,3 +1,3 @@
-import MainPageView from './MainPageView';
+import MainPage from './MainPage';
 
-export { MainPageView };
+export { MainPage };
