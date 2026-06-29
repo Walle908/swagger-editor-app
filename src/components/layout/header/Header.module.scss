@@ -1,7 +1,28 @@
 .header {
   display: flex;
   gap: 3rem;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1.2rem 2rem;
+  border-bottom: 1px solid $color-border;
+}
+
+.left,
+.right {
+  display: flex;
+  gap: 3rem;
+}
+
+.switchers,
+.authButtons {
+  display: flex;
+  gap: 2rem;
+}
+
+.pageLinks {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5rem;
 }

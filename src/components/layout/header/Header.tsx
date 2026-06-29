@@ -1,17 +1,54 @@
 'use client';
 
 import { type ReactNode } from 'react';
-import { Text } from '@/components/ui';
+import { usePathname } from 'next/navigation';
+import LinkComponent from '@/components/ui/linkComponent/LinkComponent';
+import Logo from '@/components/logo/Logo';
+import LanguageSwitcher from '@/components/languageSwitcher/LanguageSwitcher';
+import ThemeSwitcher from '@/components/themeSwitcher/ThemeSwitcher';
 import styles from './Header.module.scss';
-import Link from 'next/link';
 
 export function Header(): ReactNode {
+  const pathname = usePathname();
+
   return (
     <header className={styles.header}>
-      <Text>Header</Text>
-      <Link href="/about">About us</Link>
-      <Link href="/signup">Sign up</Link>
-      <Link href="/signin">Sign in</Link>
+      <div className={styles.left}>
+        <Logo />
+        <div className={styles.pageLinks}>
+          <LinkComponent href="/" variant="pageLink" className={pathname === '/' ? 'active' : ''}>
+            Editor
+          </LinkComponent>
+          <LinkComponent
+            href="/about"
+            variant="pageLink"
+            className={pathname === '/about' ? 'active' : ''}>
+            About
+          </LinkComponent>
+          <LinkComponent
+            href="/history"
+            variant="pageLink"
+            className={pathname === '/history' ? 'active' : ''}>
+            History
+          </LinkComponent>
+        </div>
+      </div>
+
+      <div className={styles.right}>
+        <div className={styles.switchers}>
+          <LanguageSwitcher />
+          <ThemeSwitcher />
+        </div>
+
+        <div className={styles.authButtons}>
+          <LinkComponent href="/signin" variant="buttonLink">
+            Sign in
+          </LinkComponent>
+          <LinkComponent className="colorfull" href="/signup" variant="buttonLink">
+            Sign up
+          </LinkComponent>
+        </div>
+      </div>
     </header>
   );
 }

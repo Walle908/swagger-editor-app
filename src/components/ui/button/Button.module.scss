@@ -2,7 +2,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: $space-xxs $space-xl;
   min-width: 3.2rem;
   white-space: nowrap;
   border-radius: 0.8rem;
@@ -49,5 +48,5 @@
 .light {
   background-color: $color-bg-main;
   color: $color-text-main;
-  border: $color-border-strong;
+  border: 1px solid $color-border-strong;
 }
