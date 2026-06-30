@@ -1,28 +1,86 @@
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
-  gap: 3rem;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 2rem;
+  gap: 3rem;
+  padding: 2rem;
+  background-color: $color-bg-main;
   border-bottom: 1px solid $color-border;
+  transition:
+    background-color 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.header.scrolled {
+  background-color: color-mix(in srgb, $color-primary, #fff 75%);
+  border-color: transparent;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .left,
 .right {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 3rem;
 }
 
 .switchers,
-.authButtons {
+.buttons {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 2rem;
 }
 
 .pageLinks {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .header {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .header.scrolled {
+    padding: 1rem 1rem;
+  }
+
+  .left,
+  .right {
+    width: 63%;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .left,
+  .right {
+    width: 100%;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .pageLinks,
+  .switchers,
+  .buttons {
+    width: 50%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageLinks,
+  .switchers,
+  .buttons {
+    width: 60%;
+  }
 }
