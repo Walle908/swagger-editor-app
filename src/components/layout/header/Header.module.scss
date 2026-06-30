@@ -16,9 +16,11 @@
 }
 
 .header.scrolled {
-  background-color: color-mix(in srgb, $color-primary, #fff 75%);
+  background-color: $color-bg-header-scrolled;
   border-color: transparent;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 3px 8px rgba(44, 62, 52, 0.12),
+    0 12px 28px rgba(44, 62, 52, 0.18);
 }
 
 .left,
