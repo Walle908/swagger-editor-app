@@ -2,7 +2,7 @@
 
 import { type ReactNode } from 'react';
 import Image from 'next/image';
-import LinkComponent from '@/components/ui/linkComponent/LinkComponent';
+import { LinkComponent } from '@/components/ui';
 import rsLogo from 'public/rss-logo.svg';
 import styles from './Footer.module.scss';
 

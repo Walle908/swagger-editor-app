@@ -9,7 +9,7 @@ interface LinkComponentProps
   isActive?: true | false;
 }
 
-export default function LinkComponent({
+export function LinkComponent({
   children,
   className = '',
   href,

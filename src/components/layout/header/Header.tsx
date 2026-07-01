@@ -2,8 +2,7 @@
 
 import { type ReactNode, useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import LinkComponent from '@/components/ui/linkComponent/LinkComponent';
-import Logo from '@/components/logo/Logo';
+import { Logo, LinkComponent } from '@/components/ui';
 import LanguageSwitcher from '@/components/languageSwitcher/LanguageSwitcher';
 import ThemeSwitcher from '@/components/themeSwitcher/ThemeSwitcher';
 import styles from './Header.module.scss';
