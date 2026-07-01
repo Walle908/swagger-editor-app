@@ -6,6 +6,7 @@
   --color-bg-muted: #f5f5f4;
   --color-bg-canvas: #f7f7f6;
   --color-bg-code: #fafaf9;
+  --color-bg-header-scrolled: #d1dcd6;
 
   //border
   --color-border: #e7e5e4;
@@ -22,7 +23,7 @@
   --color-text-accent-1: #7c3aed;
 
   --color-primary: #16a34a;
-//валидация
+  //валидация
   --color-error-strong: #b91c1c;
   --color-error-bg: #fef2f2;
   --color-error-border: #fecaca;
@@ -57,16 +58,17 @@
 }
 
 [data-theme='dark'] {
-//поверхности
---color-bg-main: #161a18;
+  //поверхности
+  --color-bg-main: #161a18;
   --color-bg-additional: #ffffff;
   --color-bg-subtle: #11140f;
   --color-bg-muted: #1c211d;
   --color-bg-canvas: #0c0e0d;
   --color-bg-code: #0a0c0a;
+  --color-bg-header-scrolled: #223129;
 
-//border
---color-border: #2a302c;
+  //border
+  --color-border: #2a302c;
   --color-border-strong: #3a403b;
   --color-line-soft: #1c211d;
 
@@ -136,9 +138,6 @@ a:hover {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding:0 2rem;
+  padding:1rem 2rem;
 
 }
-
-
-
