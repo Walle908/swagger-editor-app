@@ -1,0 +1,15 @@
+.themeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  background-color: transparent;
+  border: 1px solid $color-border;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    border-color: $color-hover;
+  }
+}
