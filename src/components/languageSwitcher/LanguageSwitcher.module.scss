@@ -1,0 +1,54 @@
+.langContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+}
+
+.langLabel {
+  cursor: pointer;
+  &:first-child .customButton {
+    border-radius: 0.8rem 0 0 0.8rem;
+  }
+  &:last-child .customButton {
+    border-radius: 0 0.8rem 0.8rem 0;
+  }
+}
+
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+  &:checked + .customButton {
+    border: none;
+    background-color: $color-bg-additional;
+    color: $color-text-additional;
+  }
+
+  &:focus-visible + .customButton {
+    outline: 1px solid $color-focus;
+  }
+}
+
+.customButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 2.5rem;
+  font-family: $font-code;
+  font-size: $space-xxs;
+  font-weight: bold;
+  color: $color-text-muted;
+  background-color: $color-bg-main;
+  border: 1px solid $color-border;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+
+  &:hover {
+    color: $color-hover;
+    border-color: $color-hover;
+  }
+}

@@ -18,6 +18,7 @@ interface TextProps extends HTMLAttributes<HTMLElement> {
     | 'error';
   size?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
   weight?: 'bold' | 'medium' | 'normal';
+  font?: 'main' | 'code';
 }
 
 export function Text({
@@ -27,12 +28,18 @@ export function Text({
   color = 'main',
   size = 'sm',
   weight = 'normal',
-
+  font = 'main',
   ...props
 }: TextProps): ReactNode {
   const Tag = as;
 
-  const combinedClasses = clsx(styles[size], styles[color], styles[weight], className);
+  const combinedClasses = clsx(
+    styles[size],
+    styles[color],
+    styles[weight],
+    styles[font],
+    className
+  );
 
   return (
     <Tag className={combinedClasses} {...props}>
