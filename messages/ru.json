@@ -1,0 +1,10 @@
+{
+  "Navigation": {
+    "editor": "Редактор",
+    "about": "О нас",
+    "history": "История",
+    "signin": "Войти",
+    "signup": "Регистрация",
+    "signout": "Выйти"
+  }
+}

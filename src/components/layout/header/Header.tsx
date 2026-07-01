@@ -1,7 +1,8 @@
 'use client';
 
 import { type ReactNode, useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 import { Logo, LinkComponent } from '@/components/ui';
 import LanguageSwitcher from '@/components/languageSwitcher/LanguageSwitcher';
 import ThemeSwitcher from '@/components/themeSwitcher/ThemeSwitcher';
@@ -10,7 +11,8 @@ import clsx from 'clsx';
 
 export function Header(): ReactNode {
   const pathname = usePathname();
-  const isAuth = true;
+  const isAuth = false;
+  const t = useTranslations('Navigation');
 
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
@@ -34,10 +36,10 @@ export function Header(): ReactNode {
         <Logo />
         <div className={styles.pageLinks}>
           <LinkComponent href="/" variant="pageLink" isActive={pathname === '/'}>
-            Editor
+            {t('editor')}
           </LinkComponent>
-          <LinkComponent href="/about" variant="pageLink" isActive={pathname === '/about'}>
-            About
+          <LinkComponent href="/about" variant="pageLink" isActive={pathname?.endsWith('/about')}>
+            {t('about')}
           </LinkComponent>
         </div>
       </div>
@@ -51,21 +53,24 @@ export function Header(): ReactNode {
         <div className={styles.buttons}>
           {isAuth ? (
             <>
-              <LinkComponent href="/history" variant="pageLink" isActive={pathname === '/history'}>
-                History
+              <LinkComponent
+                href="/history"
+                variant="pageLink"
+                isActive={pathname?.endsWith('/history')}>
+                {t('history')}
               </LinkComponent>
 
               <LinkComponent className="colorfull" href="/" variant="buttonLink">
-                Sign out
+                {t('signout')}
               </LinkComponent>
             </>
           ) : (
             <>
               <LinkComponent href="/signin" variant="buttonLink">
-                Sign in
+                {t('signin')}
               </LinkComponent>
               <LinkComponent className="colorfull" href="/signup" variant="buttonLink">
-                Sign up
+                {t('signup')}
               </LinkComponent>
             </>
           )}
