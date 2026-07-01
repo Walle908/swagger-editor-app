@@ -29,11 +29,11 @@
   border-radius: 0.8rem;
   cursor: pointer;
   transition: 0.3s;
+}
 
-  &:global(.active) {
-    background-color: $color-method-post-bg;
-    color: $color-primary;
-  }
+.active {
+  background-color: $color-method-post-bg;
+  color: $color-primary;
 }
 
 .pageLink:hover {

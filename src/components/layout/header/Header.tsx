@@ -7,6 +7,7 @@ import Logo from '@/components/logo/Logo';
 import LanguageSwitcher from '@/components/languageSwitcher/LanguageSwitcher';
 import ThemeSwitcher from '@/components/themeSwitcher/ThemeSwitcher';
 import styles from './Header.module.scss';
+import clsx from 'clsx';
 
 export function Header(): ReactNode {
   const pathname = usePathname();
@@ -26,20 +27,17 @@ export function Header(): ReactNode {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const headerClassName = `${styles.header} ${isScrolled ? styles.scrolled : ''}`.trim();
+  const headerClassName = clsx(styles.header, isScrolled ? styles.scrolled : '');
 
   return (
     <header className={headerClassName}>
       <div className={styles.left}>
         <Logo />
         <div className={styles.pageLinks}>
-          <LinkComponent href="/" variant="pageLink" className={pathname === '/' ? 'active' : ''}>
+          <LinkComponent href="/" variant="pageLink" isActive={pathname === '/'}>
             Editor
           </LinkComponent>
-          <LinkComponent
-            href="/about"
-            variant="pageLink"
-            className={pathname === '/about' ? 'active' : ''}>
+          <LinkComponent href="/about" variant="pageLink" isActive={pathname === '/about'}>
             About
           </LinkComponent>
         </div>
@@ -54,10 +52,7 @@ export function Header(): ReactNode {
         <div className={styles.buttons}>
           {isAuth ? (
             <>
-              <LinkComponent
-                href="/history"
-                variant="pageLink"
-                className={pathname === '/history' ? 'active' : ''}>
+              <LinkComponent href="/history" variant="pageLink" isActive={pathname === '/history'}>
                 History
               </LinkComponent>
 
