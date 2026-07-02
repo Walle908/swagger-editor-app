@@ -1,9 +1,10 @@
 .editorToolbar {
   grid-row: 1;
+  width: 100%;
   flex-wrap: wrap;
   padding: .8rem 2rem; 
-  background-color: var(--color-bg-subtle);
-  color: var(--color-text-muted); 
+  background-color: $color-bg-subtle;
+  color: $color-text-muted; 
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,7 +21,7 @@
 .divider {
   width: .1rem;
   height: 1.8rem;
-  background-color: var(--color-border);
+  background-color: $color-border;
   flex-shrink: 0; 
   display: block;
 }
@@ -30,7 +31,7 @@
   display: flex;
   align-items: center;
   gap: .6rem;
-  font-family: var(--font-jetbrains-mono), monospace; 
+  font-family: $font-code;
   font-style: normal;
   font-weight: 500;
   font-size: 1.2rem;
@@ -45,13 +46,13 @@
   }
 
   &.valid {
-   color: var(--color-success);
-    &::before { background-color: var(--color-success); }
+   color: $color-success;
+    &::before { background-color: $color-success; }
   }
 
   &.invalid {
-   color: var(--color-error-strong);
-    &::before { background-color: var(--color-error-strong);}
+   color: $color-error-strong;
+    &::before { background-color: $color-error-strong;}
 }
 }
 
@@ -66,12 +67,12 @@
   width: 9rem;
   height: 3rem;
   font-size: 1.1rem;
-  color: var(--color-text-muted);
-  border: .1rem solid var(--color-border-strong);
+  color: $color-text-muted;
+  border: .1rem solid $color-border-strong;
   outline: none;
 
   &:hover {
-    background-color: var(--color-bg-muted) !important; 
+    background-color: $color-bg-muted; 
   }
 }
 
@@ -84,6 +85,6 @@
 
   &:hover {
     opacity: 0.7;
-    background-color: var(--color-bg-additional) !important;
+    background-color: $color-bg-additional;
   }
 }
