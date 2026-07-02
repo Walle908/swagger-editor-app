@@ -13,10 +13,12 @@ const AboutTeamCard = ({ member }: { member: TeamMember }) => {
         height={96}
       />
       <div className={styles.info}>
-        <Text as="h3" weight="bold" color="main" size="md">
+        <Text as="h3" weight="bold" size="md">
           {member.name}
         </Text>
-        <div className={styles.role}>{member.role}</div>
+        <Text weight="medium" className={styles.role}>
+          {member.role}
+        </Text>
         <a className={styles.github} href={member.github} rel="noopener noreferrer" target="_blank">
           GitHub
         </a>

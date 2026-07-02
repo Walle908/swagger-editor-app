@@ -1,10 +1,10 @@
 import { Text } from '@/components/ui';
 import styles from './AboutStack.module.scss';
-import { techStack } from '@/utils/aboutUtils';
-const AboutStack = () => {
+import { techStack } from '@/constants/aboutInfo';
+export const AboutStack = () => {
   return (
     <div className={styles.aboutStack}>
-      <Text as="h2" weight="bold" color="main" size="xxl">
+      <Text as="h2" weight="bold" size="xxl">
         Tech Stack
       </Text>
       <ul className={styles.tags}>
@@ -17,5 +17,3 @@ const AboutStack = () => {
     </div>
   );
 };
-
-export default AboutStack;

@@ -1,14 +1,14 @@
 import { Text } from '@/components/ui';
 import styles from './AboutCourse.module.scss';
-import { skillsList } from '@/utils/aboutUtils';
-const AboutCourse = () => {
+import { skillsList } from '@/constants/aboutInfo';
+export const AboutCourse = () => {
   return (
     <div className={styles.aboutCourse}>
-      <Text as="h2" weight="bold" color="main" size="xxl">
+      <Text as="h2" weight="bold" size="xxl">
         About Our Course
       </Text>
       <div className={styles.courseContent}>
-        <Text as="p" weight="medium" color="main" size="md">
+        <Text weight="medium" size="md">
           This course is aimed at the students of the RS School who have passed RS School Stage #2
           and at the new students who have experience with:
         </Text>
@@ -21,7 +21,7 @@ const AboutCourse = () => {
         </ul>
       </div>
       <div className={styles.ctaWrapper}>
-        <Text as="p" size="md">
+        <Text size="md">
           Ready to start?
           <a href="https://rs.school/react/" target="_blank" className={styles.buttonLink}>
             Join the course here
@@ -31,5 +31,3 @@ const AboutCourse = () => {
     </div>
   );
 };
-
-export default AboutCourse;

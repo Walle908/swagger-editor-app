@@ -4,39 +4,38 @@
   gap: 2.4rem;
   padding: 4rem 0;
 }
-.aboutCourse{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+.aboutCourse {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
-.courseContent{
-    margin-left:2rem;
-    
+.courseContent {
+  margin-left: 2rem;
 }
-.courseList{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    list-style: none;
+.courseList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
 }
-.skillItem{
-    display:flex;
-    align-items: center;
-    gap: 1.2rem;
-    font-size: $space-sm;
-    margin-left:1rem;
+.skillItem {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: $space-sm;
+  margin-left: 1rem;
 }
-.durationText{
-     margin-left:1rem;
+.durationText {
+  margin-left: 1rem;
 }
-.ctaWrapper{
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
+.ctaWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
-.buttonLink{
-    font-family: $font-main;
-    font-weight: 600;
-    margin-left:1rem;
-    text-decoration:underline;
+.buttonLink {
+  font-family: $font-main;
+  font-weight: 600;
+  margin-left: 1rem;
+  text-decoration: underline;
 }
