@@ -1,11 +1,10 @@
 import { type ReactNode } from 'react';
 import { Text } from '@/components/ui';
 import styles from './HistoryPage.module.scss';
-import HistoryCards from './HistoryCards/HistoryCards';
-import HistoryTable from './HistoryTable/HistoryTable';
-import { mockSortedLogs, mockSummary } from './mockLogs';
-import EmptyHistory from './HistoryTable/EmptyHistory/EmptyHistory';
-
+import EmptyHistory from '../../components/history/HistoryTable/EmptyHistory/EmptyHistory';
+import { mockSortedLogs, mockSummary } from '@/utils/historyUtils';
+import HistoryTable from '@/components/history/HistoryTable/HistoryTable';
+import HistoryCards from '@/components/history/HistoryCards/HistoryCards';
 export default function HistoryPage(): ReactNode {
   const logs = mockSortedLogs;
   const hasLogs = logs.length > 0;

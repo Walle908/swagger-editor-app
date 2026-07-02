@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
-import styles from './HistoryTable.module.scss';
-import { columns } from './columnsArray';
 import Link from 'next/link';
+import styles from './HistoryTable.module.scss';
 import { RequestLog } from '@/types/historyTypes';
+import { columns } from '@/utils/historyUtils';
 const HistoryTable = ({ logs }: { logs: RequestLog[] }) => {
   return (
     <div className={styles.wrap}>
@@ -19,7 +19,7 @@ const HistoryTable = ({ logs }: { logs: RequestLog[] }) => {
           <li key={log.id}>
             <Link href={`/history/${log.id}`} className={styles.row}>
               {columns.map((col) => (
-                <Fragment key={col.key}>{col.render(log)}</Fragment>
+                <Fragment key={col.key}>{col.render(log, styles)}</Fragment>
               ))}
             </Link>
           </li>

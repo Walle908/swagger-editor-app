@@ -1,7 +1,7 @@
 import { Text } from '@/components/ui';
-import { getCardsInfo } from './getCardInfo';
 import styles from './HistoryCards.module.scss';
 import { HistorySummary } from '@/types/historyTypes';
+import { getCardsInfo } from '@/utils/historyUtils';
 
 const HistoryCards = ({ summary }: { summary: HistorySummary }) => {
   const cards = getCardsInfo(summary);

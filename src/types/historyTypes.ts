@@ -29,5 +29,5 @@ export type Column<T> = {
   key: string;
   label: string;
   headProps?: HTMLAttributes<HTMLTableCellElement>;
-  render: (row: T) => ReactNode;
+  render: (log: T, styles?: Record<string, string>) => ReactNode;
 };
