@@ -1,6 +1,6 @@
 import { Text } from '@/components/ui';
-import { techStack } from './techStack';
 import styles from './AboutStack.module.scss';
+import { techStack } from '@/utils/aboutUtils';
 const AboutStack = () => {
   return (
     <div className={styles.aboutStack}>

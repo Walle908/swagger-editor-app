@@ -1,9 +1,9 @@
 import { type ReactNode } from 'react';
 import styles from './AboutPage.module.scss';
-import HeroBanner from './HeroBanner/HeroBanner';
-import AboutStack from './AboutStack/AboutStack';
-import AboutTeam from './AboutTeam/AboutTeam';
-import AboutCourse from './AboutCourse/AboutCourse';
+import HeroBanner from '../../components/about/HeroBanner/HeroBanner';
+import AboutStack from '../../components/about/AboutStack/AboutStack';
+import AboutTeam from '../../components/about/AboutTeam/AboutTeam';
+import AboutCourse from '../../components/about/AboutCourse/AboutCourse';
 
 export default function AboutPage(): ReactNode {
   return (

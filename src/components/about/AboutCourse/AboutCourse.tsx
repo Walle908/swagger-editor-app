@@ -1,6 +1,6 @@
 import { Text } from '@/components/ui';
-import { skillsList } from './skillsList';
 import styles from './AboutCourse.module.scss';
+import { skillsList } from '@/utils/aboutUtils';
 const AboutCourse = () => {
   return (
     <div className={styles.aboutCourse}>
