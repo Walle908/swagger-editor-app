@@ -1,5 +1,5 @@
-import MainPage from '@/pages/mainPage/MainPage';
+import MainPage from '@/views/mainPage/MainPage';
 
-export default function HomePage() {
+export default function LocaleRootPage() {
   return <MainPage />;
 }

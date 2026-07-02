@@ -1,3 +1,5 @@
+'use client';
+
 import { type ReactNode } from 'react';
 import { Loader } from '@/components/ui';
 import styles from './LoadingPage.module.scss';

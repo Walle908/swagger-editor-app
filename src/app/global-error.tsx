@@ -1,13 +1,23 @@
 'use client';
 
-import ErrorPage from '@/pages/errorPage/ErrorPage';
+import ErrorPage from '@/views/errorPage/ErrorPage';
 
-export default function Error({
-  error,
-  reset,
-}: {
+interface ErrorProps {
   error: Error & { digest?: string };
   reset: () => void;
-}) {
-  return <ErrorPage error={error} reset={reset} />;
+}
+
+export default function GlobalErrorPage({ error, reset }: ErrorProps) {
+  return (
+    <html lang="en">
+      <body>
+        <ErrorPage
+          error={error}
+          reset={reset}
+          resetText="Reset error /Сбросить ошибку"
+          errorMessage="Something went wrong... / Что-то пошло не так..."
+        />
+      </body>
+    </html>
+  );
 }
