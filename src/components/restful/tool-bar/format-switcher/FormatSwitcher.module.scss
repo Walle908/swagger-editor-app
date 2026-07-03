@@ -4,7 +4,7 @@
   gap: 0.5rem;
   p {
     font-size: 1.2rem;
-    color: var(--color-text-muted);
+    color: $color-text-muted;
   }
 }
 
@@ -13,9 +13,9 @@
   align-items: center;
   width: 10rem;
   height: 2.5rem;
-  border: 0.1rem solid var(--color-border);
-  border-radius: 0.7rem;
-  overflow: hidden;
+  border: .1rem solid $color-border;
+  border-radius: .7rem;
+  overflow: hidden; 
   cursor: pointer;
   user-select: none;
 }
@@ -32,15 +32,15 @@
 }
 
 .activeGreen {
-  background-color: var(--color-primary);
-  color: var(--color-text-additional);
+  background-color: $color-primary;
+  color: $color-text-additional;
 }
 
 .inactiveWhite {
-  background-color: var(--color-bg-main);
-  color: var(--color-text-muted);
+  background-color: $color-bg-main;
+  color: $color-text-muted;
 }
 
 .convertIcon {
-  stroke: var(--color-text-muted);
+  stroke: $color-text-muted; 
 }

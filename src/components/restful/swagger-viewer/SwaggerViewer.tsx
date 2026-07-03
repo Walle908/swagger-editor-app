@@ -1,7 +1,5 @@
 'use client';
-
 import styles from './SwaggerViewer.module.scss';
-
 interface SwaggerViewerProps {
   title?: string;
   version?: string;
