@@ -1,0 +1,40 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-xs;
+  margin-bottom: $space-xl;
+  width: 100%;
+}
+
+.card {
+  background: $color-bg-subtle;
+  border: 1px solid $color-border;
+  border-radius: 1.1rem;
+  padding: 1.6rem 1.8rem;
+}
+
+.label {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.value {
+  letter-spacing: -0.02em;
+  &[data-tone='success'] {
+    color: $color-success;
+  }
+  &[data-tone='error'] {
+    color: $color-error-strong;
+  }
+}
+
+.sub {
+  margin-top: 0.6rem;
+}
