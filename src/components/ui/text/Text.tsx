@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import clsx from 'clsx';
 import styles from './Text.module.scss';
 
-interface TextProps extends HTMLAttributes<HTMLElement> {
+export interface TextProps extends HTMLAttributes<HTMLElement> {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   children: ReactNode;
   className?: string;
@@ -15,8 +15,9 @@ interface TextProps extends HTMLAttributes<HTMLElement> {
     | 'faint'
     | 'accent'
     | 'accent1'
+    | 'black'
     | 'error';
-  size?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
+  size?: 'xxxs' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
   weight?: 'bold' | 'medium' | 'normal';
   font?: 'main' | 'code';
 }
