@@ -6,16 +6,16 @@ import styles from './ErrorPage.module.scss';
 
 interface ErrorPageProps {
   error: Error & { digest?: string };
-  reset: () => void;
+  unstable_retry: () => void;
   errorMessage: string;
-  resetText: string;
+  retryText: string;
 }
 
 export default function ErrorPage({
   error,
-  reset,
+  unstable_retry,
   errorMessage,
-  resetText,
+  retryText,
 }: ErrorPageProps): ReactNode {
   useEffect(() => {
     console.error('Uncaught error:', error);
@@ -23,12 +23,12 @@ export default function ErrorPage({
 
   return (
     <div className={styles.errorContainer}>
-      <Text as="h1" color="error" size="xxl">
+      <Text as="h2" color="error" size="xl">
         {errorMessage}
       </Text>
 
-      <Button className={styles.resetButton} onClick={() => reset()}>
-        {resetText}
+      <Button className={styles.resetButton} onClick={() => unstable_retry()}>
+        {retryText}
       </Button>
     </div>
   );

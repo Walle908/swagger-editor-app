@@ -14,6 +14,6 @@
   },
   "ErrorPage": {
     "message": "Something went wrong...",
-    "reset": "Reset error"
+    "retry": "Try again"
   }
 }
