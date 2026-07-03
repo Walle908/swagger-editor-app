@@ -9,16 +9,12 @@
 
 .head {
   display: grid;
-  grid-template-columns:5rem 5fr repeat(5, 1fr);
+  grid-template-columns: 5rem 5fr repeat(5, 1fr);
   gap: $space-xs;
   padding: 0 1.4rem 1rem;
   border-bottom: 1px solid $color-border;
-  font-family: $font-code;
-  font-size: 1rem;
-  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: $color-text-faint;
 }
 
 .rows {
@@ -31,24 +27,20 @@
 
 .row {
   display: grid;
-  grid-template-columns:5rem 5fr repeat(5, 1fr);
+  grid-template-columns: 5rem 5fr repeat(5, 1fr);
   gap: $space-xs;
   align-items: center;
   padding: 1.3rem 1.4rem;
   border-bottom: 1px solid $color-line-soft;
   text-decoration: none;
   transition: background-color 0.15s;
-
   &:hover {
     background: $color-bg-muted;
   }
 }
 
 .method {
-  font-family: $font-code;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 1.2rem;
   text-align: center;
   padding: 0.5rem 0;
   border-radius: $radius-sm;
@@ -76,21 +68,15 @@
 }
 
 .endpoint {
-  font-family: $font-code;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: $color-text-main;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .status {
-  font-family: $font-code;
   font-size: 1.2rem;
   font-weight: 700;
-
-  display:inline-flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: $radius-sm;
@@ -111,9 +97,7 @@
 }
 
 .cell {
-  font-family: $font-code;
-  font-size: 1.25rem;
+  text-align: center;
   font-weight: 500;
-  color: $color-text-secondary;
-  text-align:left
+  text-align: left;
 }

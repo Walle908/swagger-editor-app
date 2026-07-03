@@ -1,4 +1,5 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { TextProps } from '@/components/ui/text/Text';
+import { HTMLAttributes } from 'react';
 
 export type statusToneType = 'success' | 'warning' | 'error';
 
@@ -28,6 +29,16 @@ export interface HistorySummary {
 export type Column<T> = {
   key: string;
   label: string;
-  headProps?: HTMLAttributes<HTMLTableCellElement>;
-  render: (log: T, styles?: Record<string, string>) => ReactNode;
+  textProps?: {
+    elementType?: TextProps['as'];
+    weight?: TextProps['weight'];
+    font?: TextProps['font'];
+    color?: TextProps['color'];
+    size?: TextProps['size'];
+    classNameElement?: string;
+    getValueElement: (val: T) => string;
+    getDataAttributes?: (val: T) => Record<string, string>;
+  };
+
+  headProps?: HTMLAttributes<HTMLElement>;
 };

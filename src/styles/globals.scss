@@ -12,7 +12,7 @@
   --color-border: #e7e5e4;
   --color-border-strong: #d6d3d1;
   --color-line-soft: #f0efed;
- --color-dark-border: #000000;
+  --color-dark-border: #000000;
   //текст
   --color-text-main: #1c1917;
   --color-text-additional: #ffffff;
@@ -138,6 +138,5 @@ a:hover {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding:1rem 2rem;
-
+  padding: 1rem 2rem;
 }

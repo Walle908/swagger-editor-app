@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import { Text } from '@/components/ui';
 import styles from './HistoryPage.module.scss';
-import EmptyHistory from '../../components/history/HistoryTable/EmptyHistory/EmptyHistory';
+import EmptyHistory from '@/components/history/HistoryTable/EmptyHistory/EmptyHistory';
 import { mockSortedLogs, mockSummary } from '@/utils/historyUtils';
 import HistoryTable from '@/components/history/HistoryTable/HistoryTable';
 import HistoryCards from '@/components/history/HistoryCards/HistoryCards';
@@ -15,7 +15,7 @@ export default function HistoryPage(): ReactNode {
         <Text as="h1" color="main" size="xxl">
           History & Analytics
         </Text>
-        <Text as="p" color="muted" size="sm">
+        <Text color="muted" size="sm">
           Every request runs through the SSR proxy and is recorded here
         </Text>
       </div>

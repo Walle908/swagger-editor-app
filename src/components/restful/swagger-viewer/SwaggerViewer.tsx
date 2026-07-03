@@ -102,7 +102,6 @@ export function SwaggerViewer({
       </div>
 
       <div className={styles.viewerContent}>
-        
         {mockCategories.map((category) => (
           <div key={category.id} className={styles.apiCategoryGroup}>
             <div className={styles.categoryHeader}>

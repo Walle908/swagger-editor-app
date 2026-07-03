@@ -14,10 +14,8 @@
 }
 
 .label {
-  font-family: $font-code;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: $color-text-black;
   margin-bottom: 1.1rem;
 }
 
@@ -28,20 +26,13 @@
 }
 
 .value {
-  font-size: 2.8rem;
   letter-spacing: -0.02em;
-  color: $color-text-main;
-
   &[data-tone='success'] {
     color: $color-success;
   }
   &[data-tone='error'] {
     color: $color-error-strong;
   }
-}
-
-.unit {
-  font-family: $font-code;
 }
 
 .sub {

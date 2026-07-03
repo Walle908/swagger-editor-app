@@ -1,7 +1,6 @@
-import Link from 'next/link';
 import styles from './EmptyHistory.module.scss';
 import clsx from 'clsx';
-import { Text } from '@/components/ui';
+import { LinkComponent, Text } from '@/components/ui';
 const EmptyHistory = () => {
   return (
     <div className={styles.empty}>
@@ -12,17 +11,17 @@ const EmptyHistory = () => {
         <Text as="h2" size="xl" weight="bold" className={styles.title}>
           No requests yet
         </Text>
-        <Text as="p" size="md" color="secondary" className={styles.text}>
+        <Text size="md" color="secondary" className={styles.text}>
           You haven&apos;t executed any requests. Try an endpoint to see analytics here.
         </Text>
       </div>
       <div className={styles.actions}>
-        <Link href="/" className={clsx(styles.btn, styles.editorBtn)}>
+        <LinkComponent href="/" variant="buttonLink" className={clsx('colorfull', styles.btn)}>
           Open Editor
-        </Link>
-        <Link href="/" className={clsx(styles.btn, styles.viewerBtn)}>
+        </LinkComponent>
+        <LinkComponent href="/" variant="buttonLink" className={clsx('buttonLink', styles.btn)}>
           Viewer
-        </Link>
+        </LinkComponent>
       </div>
     </div>
   );
