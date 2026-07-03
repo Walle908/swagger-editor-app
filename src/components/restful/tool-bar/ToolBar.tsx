@@ -5,7 +5,7 @@ import { Button } from '@/components/ui';
 
 interface ToolBarProps {
   format: 'JSON' | 'YAML';
-  setFormat: React.Dispatch<React.SetStateAction<'JSON' | 'YAML'>>;
+  setFormat: () => void;
   error: string | null;
   texts: typeof TEXT.toolbar;
 }
@@ -15,13 +15,10 @@ export function ToolBar({ format, setFormat, error, texts }: ToolBarProps) {
     <section className={styles.editorToolbar}>
       <div className={styles.toolbarLeft}>
         <p className={`${styles.statusText} ${error ? styles.invalid : styles.valid}`}>
-          {error ? `${texts.invalidStatus} · ${format.toLowerCase()}` : texts.validStatus}
+          {error ? `${texts.invalidStatus}` : texts.validStatus}
         </p>
         <span className={styles.divider}></span>
-        <FormatSwitcher
-          format={format}
-          onToggleAction={() => setFormat(format === 'JSON' ? 'YAML' : 'JSON')}
-        />
+        <FormatSwitcher format={format} onToggleAction={() => setFormat()} />
       </div>
 
       <div className={styles.toolbarRight}>
