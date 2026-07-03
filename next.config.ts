@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
       @use "@/styles/variables" as *;
     `,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

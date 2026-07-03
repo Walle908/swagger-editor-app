@@ -1,0 +1,25 @@
+.hero {
+  background: $color-bg-additional;
+  padding: 6rem 6rem 5.2rem;
+  width: 100%;
+}
+
+.eyebrow {
+  display: inline-block;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.title {
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  max-width: 56rem;
+  margin: 0 0 1.8rem;
+}
+
+.description {
+  line-height: 1.6;
+  max-width: 70rem;
+  margin: 0;
+}
