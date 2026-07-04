@@ -1,13 +1,14 @@
 .mainPageLayout {
   display: flex;
   flex-direction: column;
+  //  width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 .splitScreenContainer {
   display: grid;
-  width: 100vw;
+  // width: 100vw;
   min-height: 0;
   flex: 1;
   overflow: hidden;
