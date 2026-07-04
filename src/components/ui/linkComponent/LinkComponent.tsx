@@ -1,10 +1,11 @@
-import Link, { type LinkProps } from 'next/link';
-import { type AnchorHTMLAttributes, type ReactNode } from 'react';
+import { Link } from '@/i18n/navigation';
+import type { AnchorHTMLAttributes, ReactNode, ComponentPropsWithoutRef } from 'react';
 import clsx from 'clsx';
 import styles from './LinkComponent.module.scss';
 
+type I18nLinkProps = ComponentPropsWithoutRef<typeof Link>;
 interface LinkComponentProps
-  extends LinkProps, Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> {
+  extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof I18nLinkProps>, I18nLinkProps {
   variant?: 'baseLink' | 'pageLink' | 'buttonLink';
   isActive?: true | false;
 }

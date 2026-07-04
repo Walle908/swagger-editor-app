@@ -15,6 +15,7 @@ $color-line-soft: var(--color-line-soft);
 $color-text-main: var(--color-text-main);
 $color-text-additional: var(--color-text-additional);
 $color-text-secondary: var(--color-text-secondary);
+$color-text-black: var(--color-text-black);
 $color-text-muted: var(--color-text-muted);
 $color-text-faint: var(--color-text-faint);
 $color-text-accent: var(--color-text-accent);
@@ -65,6 +66,7 @@ $breakpoint-desktop: 1280px;
 // Шрифты и размеры
 $font-main: var(--font-libre-franklin), sans-serif;
 $font-code: var(--font-jetbrains-mono), monospace;
+$space-xxxs: 1rem;
 $space-xxs: 1.2rem;
 $space-xs: 1.4rem;
 $space-sm: 1.6rem;
@@ -73,3 +75,5 @@ $space-lg: 2rem;
 $space-xl: 2.4rem;
 $space-2xl: 3.2rem;
 $space-3xl: 4.8rem;
+
+$radius-sm: var(--radius-sm);

@@ -91,14 +91,14 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: .7rem;
+  gap: 0.7rem;
   align-self: stretch;
 }
 
 .categoryHeader {
   display: flex;
   align-items: baseline;
-  padding: 0 0 .9rem;
+  padding: 0 0 0.9rem;
   gap: 1rem;
   align-self: stretch;
   border-bottom: .1rem solid $color-border;
@@ -110,7 +110,8 @@
     letter-spacing: -0.016rem;
   }
 
-  .categoryDesc, .userDescCustom {
+  .categoryDesc,
+  .userDescCustom {
     font-size: 1.25rem;
     line-height: 1.6rem;
     color: $color-text-faint;
@@ -201,7 +202,7 @@
     background-color: rgba(37, 99, 235, 0.02);
     border-color: $color-method-get; 
   }
-  
+
   .badgeMethod {
     background-color: $color-method-get-bg;
     color: $color-method-get;
@@ -249,7 +250,7 @@
     background-color: rgba(220, 38, 38, 0.02);
     border-color: $color-method-delete; 
   }
-  
+
   .badgeMethod {
     background-color: $color-method-delete-bg;
     color: $color-method-delete;

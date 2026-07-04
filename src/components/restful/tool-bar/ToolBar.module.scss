@@ -22,7 +22,7 @@
 }
 
 .divider {
-  width: .1rem;
+  width: 0.1rem;
   height: 1.8rem;
   background-color: $color-border;
 }
@@ -38,10 +38,10 @@
   font-size: 1.2rem;
   line-height: 1.2rem;
 
-    &::before {
-    content: "";
-    width: .7rem;
-    height: .7rem;
+  &::before {
+    content: '';
+    width: 0.7rem;
+    height: 0.7rem;
     border-radius: 50%;
     transition: background-color 0.3s ease-in-out;
   }
@@ -63,8 +63,8 @@
   gap: 1.5rem;
 }
 
-.importUrlBtn { 
-  padding: .7rem 1.2rem;
+.importUrlBtn {
+  padding: 0.7rem 1.2rem;
   width: 9rem;
   height: 3rem;
   font-size: 1.1rem;
@@ -78,7 +78,7 @@
 }
 
 .saveSpecBtn {
-  padding: .7rem 1.4rem;
+  padding: 0.7rem 1.4rem;
   width: 9rem;
   height: 3rem;
   font-size: 1.1rem;

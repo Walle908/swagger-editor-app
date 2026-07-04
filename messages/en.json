@@ -1,0 +1,19 @@
+{
+  "Navigation": {
+    "editor": "Editor",
+    "about": "About",
+    "history": "History",
+    "signin": "Sign in",
+    "signup": "Sign up",
+    "signout": "Sign out"
+  },
+  "NotFound": {
+    "title": "Error 404",
+    "message": "Page not found",
+    "link": "Go to main page"
+  },
+  "ErrorPage": {
+    "message": "Something went wrong...",
+    "retry": "Try again"
+  }
+}

@@ -1,18 +1,24 @@
+'use client';
+
 import { type ReactNode } from 'react';
-import Link from 'next/link';
-import { Text } from '@/components/ui';
+import { useTranslations } from 'next-intl';
+import { Text, LinkComponent } from '@/components/ui';
 import styles from './NotFoundPage.module.scss';
 
 export default function NotFoundPage(): ReactNode {
+  const t = useTranslations('NotFound');
+
   return (
     <div className={styles.notFoundContainer}>
       <Text size="xl" weight="bold">
-        Error 404
+        {t('title')}
       </Text>
-      <Text as="h1" color="error" size="xl">
-        Page not found
+      <Text as="h1" color="error" size="xxl">
+        {t('message')}
       </Text>
-      <Link href="/">Go to main page</Link>
+      <LinkComponent variant="buttonLink" className="colorfull" href="/">
+        {t('link')}
+      </LinkComponent>
     </div>
   );
 }

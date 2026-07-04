@@ -1,0 +1,103 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 5rem 5fr repeat(5, 1fr);
+  gap: $space-xs;
+  padding: 0 1.4rem 1rem;
+  border-bottom: 1px solid $color-border;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 5rem 5fr repeat(5, 1fr);
+  gap: $space-xs;
+  align-items: center;
+  padding: 1.3rem 1.4rem;
+  border-bottom: 1px solid $color-line-soft;
+  text-decoration: none;
+  transition: background-color 0.15s;
+  &:hover {
+    background: $color-bg-muted;
+  }
+}
+
+.method {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 0.5rem 0;
+  border-radius: $radius-sm;
+
+  &[data-method='get'] {
+    color: $color-method-get;
+    background: $color-method-get-bg;
+  }
+  &[data-method='post'] {
+    color: $color-method-post;
+    background: $color-method-post-bg;
+  }
+  &[data-method='put'] {
+    color: $color-method-put;
+    background: $color-method-put-bg;
+  }
+  &[data-method='patch'] {
+    color: $color-method-patch;
+    background: $color-method-patch-bg;
+  }
+  &[data-method='delete'] {
+    color: $color-method-delete;
+    background: $color-method-delete-bg;
+  }
+}
+
+.endpoint {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status {
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-sm;
+  width: 5.2rem;
+  height: 2.4rem;
+  &[data-tone='success'] {
+    color: $color-success;
+    background: $color-success-bg;
+  }
+  &[data-tone='warning'] {
+    color: $color-warning;
+    background: $color-warning-bg;
+  }
+  &[data-tone='error'] {
+    color: $color-error-strong;
+    background: $color-error-bg;
+  }
+}
+
+.cell {
+  text-align: center;
+  font-weight: 500;
+  text-align: left;
+}
