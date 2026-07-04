@@ -130,8 +130,9 @@ a:hover {
 .layoutContainer {
   display: flex;
   flex-direction: column;
+  max-width: $breakpoint-desktop;
   min-height: 100vh;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .mainContent {
