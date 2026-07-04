@@ -1,17 +1,18 @@
 'use client';
 
 import { type ReactNode } from 'react';
-import Link from 'next/link';
-import { Text } from '@/components/ui';
+import RegisterForm from '@/components/authPages/registerForm/RegisterForm';
 import styles from './SignUpPage.module.scss';
+import { RegisterFields } from '@/schema/authValidation';
 
 export default function SignUpPage(): ReactNode {
+  const handleFormSubmit = (data: RegisterFields) => {
+    console.log(data);
+  };
+
   return (
     <div className={styles.signUpContainer}>
-      <Text as="h1" color="accent" size="xl">
-        Sign up
-      </Text>
-      <Link href="/">Go to main page</Link>
+      <RegisterForm onSubmit={handleFormSubmit} />
     </div>
   );
 }
