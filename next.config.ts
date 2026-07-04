@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
       @use "@/styles/variables" as *;
     `,
   },
+  typedRoutes: false,
 };
 
 export default nextConfig;

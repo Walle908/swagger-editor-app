@@ -1,6 +1,6 @@
 'use client';
 
-import ErrorPage from '@/pages/errorPage/ErrorPage';
+import ErrorPage from '@/views/errorPage/ErrorPage';
 
 export default function Error({
   error,

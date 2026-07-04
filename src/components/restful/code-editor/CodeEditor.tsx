@@ -41,7 +41,7 @@ export function CodeEditor({
 
   const cmExtensions = [githubLight, EditorView.lineWrapping, codeMirrorScrollTheme];
 
-  if (lang !== 'text') {
+  if (lang === 'json' || lang === 'yaml') {
     cmExtensions.push(langs[lang]());
   }
 

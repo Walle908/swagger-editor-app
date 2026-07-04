@@ -18,13 +18,17 @@
   gap: .5rem;
   flex-shrink: 0;
   align-self: stretch;
-  background-color: $color-bg-main;
   border-bottom: .1rem solid $color-border;
+}
+
+.viewerContentEmpty {
+  width: 100%;
+  text-align: center;
+
 }
 
 .apiTitleRow {
   display: flex;
-  flex-direction: row;
   align-items: center;
   gap: 1rem;
   align-self: stretch;
@@ -34,7 +38,6 @@
     font-size: 1.8rem;
     line-height: 2.3rem;
     letter-spacing: -0.036rem;
-    color: $color-text-main;
   }
 }
 
@@ -52,7 +55,7 @@
 
 .badgeOas {
   display: flex;
-  padding: .5rem  .7rem;
+  padding: .5rem .7rem;
   background-color: $color-bg-muted;
   border-radius: .5rem;
   font-family: $font-code;
@@ -105,7 +108,6 @@
     font-size: 1.6rem;
     line-height: 2rem;
     letter-spacing: -0.016rem;
-    color: $color-text-main;
   }
 
   .categoryDesc, .userDescCustom {
@@ -122,6 +124,16 @@
   align-self: stretch;
 }
 
+.methodCardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch; 
+  border-radius: 0.9rem;
+  background-color: $color-bg-main;
+  border: .1rem solid $color-border; 
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
 .methodCard {
   display: flex;
   align-items: center;
@@ -129,10 +141,8 @@
   padding: 1.2rem 1.4rem;
   min-height: 5rem;
   align-self: stretch;
-  background-color: $color-bg-main;
-  border: .1rem solid $color-border;
-  border-radius: .9rem;
-  transition: all 0.2s ease-in-out;
+  background-color: transparent;
+  cursor: pointer;
 
   .methodInfoLeft {
     display: flex;
@@ -166,64 +176,102 @@
     color: $color-text-main;
   }
 
-.descriptionText {
+  .descriptionText {
     font-size: 1.25rem;
     line-height: 1.6rem;
     color: $color-text-muted;
   }
-
-  .arrowIcon {
-    font-size: 1.6rem;
-    line-height: 2rem;
-    color: $color-text-faint;
-    user-select: none;
-  }
 }
 
-.methodPost {
-  &:hover { 
-    background-color: rgba(22, 163, 74, 0.02);
-    border: .1rem solid $color-method-post; 
-  }
+.arrowIcon {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  color: $color-text-faint;
+  user-select: none;
+  transition: transform 0.2s ease;
   
-  .badgeMethod {
-    background-color: $color-method-post-bg;
-    color: $color-method-post;
+  &.arrowExpanded {
+    transform: rotate(180deg) translateY(2px); 
   }
 }
 
-.methodPut {
-  &:hover { 
-    background-color: rgba(217, 119, 6, 0.02); 
-     border: .1rem solid $color-method-put; 
-  }
-  
-  .badgeMethod {
-    background-color: $color-method-put-bg;
-    color: $color-method-put;
-  }
-}
 
-.methodGet { 
-  &:hover { 
-    background-color: rgba(37, 99, 235, 0.02); 
-    border: .1rem solid $color-method-get; 
+.methodGet {
+  &:not(.cardExpanded):hover { 
+    background-color: rgba(37, 99, 235, 0.02);
+    border-color: $color-method-get; 
   }
   
   .badgeMethod {
     background-color: $color-method-get-bg;
     color: $color-method-get;
   }
+
+  &.cardExpanded {
+    border-color: $color-method-get;
+  }
+}
+
+.methodPost {
+  &:not(.cardExpanded):hover { 
+    background-color: rgba(22, 163, 74, 0.02);
+    border-color: $color-method-post; 
+  }
+  
+  .badgeMethod {
+    background-color: $color-method-post-bg;
+    color: $color-method-post;
+  }
+
+  &.cardExpanded {
+    border-color: $color-method-post;
+  }
+}
+
+.methodPut {
+  &:not(.cardExpanded):hover { 
+    background-color: rgba(217, 119, 6, 0.02);
+    border-color: $color-method-put; 
+  }
+  
+  .badgeMethod {
+    background-color: $color-method-put-bg;
+    color: $color-method-put;
+  }
+
+  &.cardExpanded {
+    border-color: $color-method-put;
+  }
 }
 
 .methodDelete { 
-  &:hover { 
-    background-color: rgba(220, 38, 38, 0.02); 
-    border: .1rem solid $color-method-delete; 
+  &:not(.cardExpanded):hover { 
+    background-color: rgba(220, 38, 38, 0.02);
+    border-color: $color-method-delete; 
   }
   
   .badgeMethod {
     background-color: $color-method-delete-bg;
     color: $color-method-delete;
+  }
+
+  &.cardExpanded {
+    border-color: $color-method-delete;
+  }
+}
+
+.methodPatch {
+  &:not(.cardExpanded):hover { 
+    background-color: rgba(168, 85, 247, 0.02);
+    border-color: $color-method-patch; 
+  }
+  
+  .badgeMethod {
+    background-color: $color-method-patch-bg;
+    color: $color-method-patch;
+  }
+
+  &.cardExpanded {
+    border-color: $color-method-patch;
   }
 }

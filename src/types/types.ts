@@ -17,4 +17,4 @@ export interface TextLocal {
   };
 }
 
-export type LangType = 'json' | 'yaml' | 'text';
+export type LangType = 'json' | 'yaml';

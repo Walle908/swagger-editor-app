@@ -2,15 +2,46 @@ import { TEXT } from '@/constants/constants';
 import { FormatSwitcher } from './format-switcher/FormatSwitcher';
 import styles from './ToolBar.module.scss';
 import { Button } from '@/components/ui';
+import { LangType } from '@/types/types';
+import { importSchemaFromUrl } from '@/utils/importSchema';
 
 interface ToolBarProps {
-  format: 'JSON' | 'YAML';
+  format: LangType;
   setFormat: () => void;
   error: string | null;
   texts: typeof TEXT.toolbar;
+  onUrlImport: (fetchedContent: string) => void;
 }
 
-export function ToolBar({ format, setFormat, error, texts }: ToolBarProps) {
+export function ToolBar({ format, setFormat, error, texts, onUrlImport }: ToolBarProps) {
+  const handleImportClick = async () => {
+    const url = prompt(
+      'Enter URL OpenAPI/Swagger schema:',
+      'https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.json'
+    );
+
+    if (!url || !url.trim()) return;
+
+    const result = await importSchemaFromUrl(url);
+
+    if (!result.success) {
+      alert(result.error);
+
+      if (result.textData) {
+        onUrlImport(result.textData);
+      }
+      return;
+    }
+
+    if (result.detectedFormat && format !== result.detectedFormat) {
+      setFormat();
+    }
+
+    if (result.textData) {
+      onUrlImport(result.textData);
+    }
+  };
+
   return (
     <section className={styles.editorToolbar}>
       <div className={styles.toolbarLeft}>
@@ -22,10 +53,7 @@ export function ToolBar({ format, setFormat, error, texts }: ToolBarProps) {
       </div>
 
       <div className={styles.toolbarRight}>
-        <Button
-          color="light"
-          className={styles.importUrlBtn}
-          onClick={() => console.log('Import URL clicked')}>
+        <Button color="light" className={styles.importUrlBtn} onClick={handleImportClick}>
           {texts.btnImport}
         </Button>
 

@@ -3,9 +3,10 @@
 import { Input } from '@/components/ui';
 import styles from './FormatSwitcher.module.scss';
 import clsx from 'clsx';
+import { LangType } from '@/types/types';
 
 interface FormatSwitcherProps {
-  format: 'JSON' | 'YAML';
+  format: LangType;
   onToggleAction?: () => void;
 }
 
@@ -20,7 +21,7 @@ export function FormatSwitcher({ format, onToggleAction }: FormatSwitcherProps) 
           readOnly
           className={clsx(
             styles.segmentInput,
-            format === 'JSON' ? styles.activeGreen : styles.inactiveWhite
+            format === 'json' ? styles.activeGreen : styles.inactiveWhite
           )}
         />
 
@@ -31,7 +32,7 @@ export function FormatSwitcher({ format, onToggleAction }: FormatSwitcherProps) 
           readOnly
           className={clsx(
             styles.segmentInput,
-            format === 'YAML' ? styles.activeGreen : styles.inactiveWhite
+            format === 'yaml' ? styles.activeGreen : styles.inactiveWhite
           )}
         />
       </div>

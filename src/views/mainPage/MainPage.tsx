@@ -5,19 +5,22 @@ import { CodeEditor, SwaggerViewer, ToolBar } from '@/components/restful';
 import { TEXT } from '@/constants/constants';
 import { useState, useEffect } from 'react';
 import 'swagger-ui-react/swagger-ui.css';
-import { convertFormat, detectFormat } from '@/utils/swagger-convert';
-import * as yaml from 'js-yaml';
+import { convertFormat, detectFormat, validateSwagger } from '@/utils/swaggerConvert';
+import { LangType } from '@/types/types';
+import { OpenAPISchema } from '@/types/openapi';
 
 const MainPage: React.FC = () => {
   const [code, setCode] = useState<string>('');
-  const [format, setFormat] = useState<'JSON' | 'YAML'>('JSON');
+  const [format, setFormat] = useState<LangType>('json');
   const [error, setError] = useState<string | null>(null);
+  const [parsedSchema, setParsedSchema] = useState<OpenAPISchema | null>(null);
 
   const handleCodeChange = (newValue: string) => {
     setCode(newValue);
 
     if (!newValue.trim()) {
       setError(null);
+      setParsedSchema(null);
       return;
     }
     const detectedData = detectFormat(newValue);
@@ -25,16 +28,19 @@ const MainPage: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!code.trim()) return;
+    if (!code.trim()) {
+      return;
+    }
 
-    const delayDebounce = setTimeout(() => {
-      try {
-        yaml.load(code);
+    const delayDebounce = setTimeout(async () => {
+      const result = await validateSwagger(code);
+
+      if (result.isValid && result.parsedData) {
         setError(null);
-      } catch (err: unknown) {
-        if (err instanceof Error) {
-          setError(err.message);
-        }
+        setParsedSchema(result.parsedData);
+      } else {
+        setError(result.error || 'error validate schema');
+        setParsedSchema(null);
       }
     }, 400);
 
@@ -45,12 +51,17 @@ const MainPage: React.FC = () => {
     if (error) {
       return;
     }
-    const nextFormat = format === 'JSON' ? 'YAML' : 'JSON';
+    const nextFormat = format === 'json' ? 'yaml' : 'json';
     const convertedCode = convertFormat(code, nextFormat);
 
     setCode(convertedCode);
     setFormat(nextFormat);
   };
+
+  const viewerTitle = parsedSchema?.info?.title;
+  const viewerVersion = parsedSchema?.info?.version;
+  const viewerOasVersion = parsedSchema?.openapi || parsedSchema?.swagger;
+  const viewerBaseUrl = parsedSchema?.servers?.[0]?.url;
 
   return (
     <div className={styles.mainPageLayout}>
@@ -59,6 +70,7 @@ const MainPage: React.FC = () => {
         setFormat={() => handleFormatToggle()}
         error={error}
         texts={TEXT.toolbar}
+        onUrlImport={(content) => handleCodeChange(content)}
       />
 
       <div className={styles.splitScreenContainer}>
@@ -66,16 +78,17 @@ const MainPage: React.FC = () => {
           readOnly={false}
           value={code}
           height="100%"
-          lang={format === 'JSON' ? 'json' : 'yaml'}
+          lang={format === 'json' ? 'json' : 'yaml'}
           onChangeAction={handleCodeChange}
           error={error}
           texts={TEXT.editor}
         />
         <SwaggerViewer
-          title={undefined}
-          version={undefined}
-          oasVersion={undefined}
-          baseUrl={undefined}
+          title={viewerTitle}
+          version={viewerVersion}
+          oasVersion={viewerOasVersion}
+          baseUrl={viewerBaseUrl}
+          schema={parsedSchema}
         />
       </div>
     </div>
