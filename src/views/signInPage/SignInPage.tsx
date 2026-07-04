@@ -1,17 +1,18 @@
 'use client';
 
 import { type ReactNode } from 'react';
-import Link from 'next/link';
-import { Text } from '@/components/ui';
+import LoginForm from '@/components/authPages/loginForm/LoginForm';
+import { LoginFields } from '@/schema/authValidation';
 import styles from './SignInPage.module.scss';
 
 export default function SignInPage(): ReactNode {
+  const handleFormSubmit = (data: LoginFields) => {
+    console.log(data);
+  };
+
   return (
     <div className={styles.signInContainer}>
-      <Text as="h1" color="accent" size="xl">
-        Sign in
-      </Text>
-      <Link href="/">Go to main page</Link>
+      <LoginForm onSubmit={handleFormSubmit} />
     </div>
   );
 }
