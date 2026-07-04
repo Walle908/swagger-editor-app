@@ -66,7 +66,7 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps): ReactNode
         {...register('confirmPassword')}
       />
       <Button type="submit" disabled={isButtonDisabled}>
-        Submit
+        Create account
       </Button>
     </form>
   );

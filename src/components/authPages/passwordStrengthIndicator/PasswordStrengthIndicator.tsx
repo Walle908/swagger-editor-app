@@ -87,7 +87,7 @@ export default function PasswordStrengthIndicator({
           size="xxs"
           className={strength.hasSpecialChar ? styles.validRule : styles.invalidRule}>
           <span className={styles.iconBox}>{strength.hasSpecialChar ? '✓' : '•'}</span>
-          Special Char
+          Special char
         </Text>
       </div>
 
