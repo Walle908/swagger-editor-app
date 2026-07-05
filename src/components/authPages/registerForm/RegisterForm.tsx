@@ -2,6 +2,7 @@
 
 import { type ReactNode } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerSchema, RegisterFields } from '@/schema/authValidation';
 import FormComponent from '../formComponent/FormComponent';
@@ -14,6 +15,8 @@ interface RegisterFormProps {
 }
 
 export default function RegisterForm({ onSubmit }: RegisterFormProps): ReactNode {
+  const t = useTranslations('Form');
+
   const {
     register,
     handleSubmit,
@@ -36,23 +39,23 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps): ReactNode
     <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)} noValidate>
       <FormComponent
         type="text"
-        placeholder="Enter your name..."
-        label="Name"
+        placeholder={t('placeholderName')}
+        label={t('name')}
         error={errors.name?.message}
         {...register('name')}
       />
       <FormComponent
         type="email"
-        placeholder="Enter your email..."
-        label="Email"
+        placeholder={t('placeholderEmail')}
+        label={t('email')}
         error={errors.email?.message}
         {...register('email')}
       />
       <div className={styles.columnWrapper}>
         <FormComponent
           isPassword
-          placeholder="Enter your password..."
-          label="Password"
+          placeholder={t('placeholderPassword')}
+          label={t('password')}
           error={errors.password?.message}
           {...register('password')}
         />
@@ -60,13 +63,13 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps): ReactNode
       </div>
       <FormComponent
         isPassword
-        placeholder="Confirm password..."
-        label="Confirm password"
+        placeholder={t('placeholderConfPassword')}
+        label={t('confirmPassword')}
         error={errors.confirmPassword?.message}
         {...register('confirmPassword')}
       />
       <Button type="submit" disabled={isButtonDisabled}>
-        Create account
+        {t('createAccount')}
       </Button>
     </form>
   );

@@ -9,7 +9,7 @@ import { Text, LinkComponent } from '@/components/ui';
 import styles from './SignInPage.module.scss';
 
 export default function SignInPage(): ReactNode {
-  const t = useTranslations('Navigation');
+  const t = useTranslations('SignInPage');
   const handleFormSubmit = (data: LoginFields) => {
     console.log(data);
   };
@@ -22,10 +22,10 @@ export default function SignInPage(): ReactNode {
         <div className={styles.contentContainer}>
           <div className={styles.textContainer}>
             <Text as="h1" size="xl">
-              Welcome back
+              {t('welcomeBack')}
             </Text>
             <Text size="xs" color="muted">
-              Sign in to your account
+              {t('signIn')}
             </Text>
           </div>
 
@@ -33,7 +33,7 @@ export default function SignInPage(): ReactNode {
 
           <div className={styles.linkContainer}>
             <Text size="xs" color="muted">
-              No account?
+              {t('noAcc')}
             </Text>
             <LinkComponent className={styles.link} href="/signup">
               {t('signup')}

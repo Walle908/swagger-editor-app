@@ -8,7 +8,7 @@ import { RegisterFields } from '@/schema/authValidation';
 import styles from './SignUpPage.module.scss';
 
 export default function SignUpPage(): ReactNode {
-  const t = useTranslations('Navigation');
+  const t = useTranslations('SignUpPage');
 
   const handleFormSubmit = (data: RegisterFields) => {
     console.log(data);
@@ -18,12 +18,12 @@ export default function SignUpPage(): ReactNode {
     <div className={styles.signUpContainer}>
       <div className={styles.container}>
         <Text as="h1" size="xxl" className={styles.title}>
-          Create your account
+          {t('createAccount')}
         </Text>
         <RegisterForm onSubmit={handleFormSubmit} />
         <div className={styles.linkContainer}>
           <Text size="xs" color="muted">
-            Already have one?
+            {t('alreadyHave')}
           </Text>
           <LinkComponent className={styles.link} href="/signin">
             {t('signin')}

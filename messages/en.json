@@ -15,5 +15,39 @@
   "ErrorPage": {
     "message": "Something went wrong...",
     "retry": "Try again"
+  },
+  "DecorPanel": {
+    "title": "Edit, browse & test any OpenAPI spec.",
+    "subtitle": "Sign in to save specs and keep request history."
+  },
+  "PasswordIndicator": {
+    "letter": "Letter",
+    "digit": "Digit",
+    "specChar": "Spec char",
+    "minLength": "8+ char"
+  },
+  "Form": {
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "createAccount": "Create account",
+    "submit": "Submit",
+    "placeholderName": "Enter your name...",
+    "placeholderEmail": "Enter your email...",
+    "placeholderPassword": "Enter your password...",
+    "placeholderConfPassword": "Confirm password..."
+  },
+  "AuthErrors": {},
+  "SignInPage": {
+    "welcomeBack": "Welcome back",
+    "signIn": "Sign in to your account",
+    "noAcc": "No account?",
+    "signup": "Sign up"
+  },
+  "SignUpPage": {
+    "createAccount": "Create account",
+    "alreadyHave": "Already have one?",
+    "signin": "Sign in"
   }
 }

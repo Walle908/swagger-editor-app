@@ -15,5 +15,39 @@
   "ErrorPage": {
     "message": "Что-то пошло не так...",
     "retry": "Повторить попытку"
+  },
+  "DecorPanel": {
+    "title": "Редактируйте, просматривайте и тестируйте любые спецификации OpenAPI.",
+    "subtitle": "Войдите в систему, чтобы сохранить характеристики и историю запросов."
+  },
+  "PasswordIndicator": {
+    "letter": "Буква",
+    "digit": "Цифра",
+    "specChar": "Спец символ",
+    "minLength": "8+ символов"
+  },
+  "Form": {
+    "name": "Имя",
+    "email": "Email",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "createAccount": "Зарегистрироваться",
+    "submit": "Отправить",
+    "placeholderName": "Введите имя...",
+    "placeholderEmail": "Введите email...",
+    "placeholderPassword": "Введите пароль...",
+    "placeholderConfPassword": "Подтвердите пароль..."
+  },
+  "AuthErrors": {},
+  "SignInPage": {
+    "welcomeBack": "Добро пожаловать",
+    "signIn": "Войдите в аккаунт",
+    "noAcc": "Нет аккаунта?",
+    "signup": "Создать аккаунт"
+  },
+  "SignUpPage": {
+    "createAccount": "Создать аккаунт",
+    "alreadyHave": "Уже есть аккаунт?",
+    "signin": "Войти"
   }
 }

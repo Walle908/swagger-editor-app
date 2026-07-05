@@ -1,7 +1,10 @@
+'use client';
+
 import { type ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
 import { Text } from '@/components/ui';
-import styles from './PasswordStrengthIndicator.module.scss';
 import clsx from 'clsx';
+import styles from './PasswordStrengthIndicator.module.scss';
 
 interface PasswordStrengthIndicatorProps {
   value: string;
@@ -28,6 +31,8 @@ const getPasswordStrength = (password: string) => {
 export default function PasswordStrengthIndicator({
   value,
 }: PasswordStrengthIndicatorProps): ReactNode {
+  const t = useTranslations('PasswordIndicator');
+
   const strength = getPasswordStrength(value);
 
   return (
@@ -47,7 +52,7 @@ export default function PasswordStrengthIndicator({
           size="xxs"
           className={strength.hasLetter ? styles.validRule : styles.invalidRule}>
           <span className={styles.iconBox}>{strength.hasLetter ? '✓' : '•'}</span>
-          Letter
+          {t('letter')}
         </Text>
       </div>
 
@@ -66,7 +71,7 @@ export default function PasswordStrengthIndicator({
           size="xxs"
           className={strength.hasDigit ? styles.validRule : styles.invalidRule}>
           <span className={styles.iconBox}>{strength.hasDigit ? '✓' : '•'}</span>
-          Digit
+          {t('digit')}
         </Text>
       </div>
 
@@ -87,7 +92,7 @@ export default function PasswordStrengthIndicator({
           size="xxs"
           className={strength.hasSpecialChar ? styles.validRule : styles.invalidRule}>
           <span className={styles.iconBox}>{strength.hasSpecialChar ? '✓' : '•'}</span>
-          Special char
+          {t('specChar')}
         </Text>
       </div>
 
@@ -105,7 +110,7 @@ export default function PasswordStrengthIndicator({
           size="xxs"
           className={strength.hasLength ? styles.validRule : styles.invalidRule}>
           <span className={styles.iconBox}>{strength.hasLength ? '✓' : '•'}</span>
-          8+ chars
+          {t('minLength')}
         </Text>
       </div>
     </div>

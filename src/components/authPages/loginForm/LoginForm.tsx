@@ -2,6 +2,7 @@
 
 import { type ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema, LoginFields } from '@/schema/authValidation';
 import FormComponent from '../formComponent/FormComponent';
@@ -13,6 +14,8 @@ interface LoginFormProps {
 }
 
 export default function LoginForm({ onSubmit }: LoginFormProps): ReactNode {
+  const t = useTranslations('Form');
+
   const {
     register,
     handleSubmit,
@@ -28,22 +31,22 @@ export default function LoginForm({ onSubmit }: LoginFormProps): ReactNode {
     <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)} noValidate>
       <FormComponent
         type="email"
-        placeholder="Enter your email..."
-        label="Email"
+        placeholder={t('placeholderEmail')}
+        label={t('email')}
         error={errors.email?.message}
         {...register('email')}
       />
 
       <FormComponent
         isPassword
-        placeholder="Enter your password..."
-        label="Password"
+        placeholder={t('placeholderPassword')}
+        label={t('password')}
         error={errors.password?.message}
         {...register('password')}
       />
 
       <Button type="submit" disabled={isButtonDisabled}>
-        Submit
+        {t('submit')}
       </Button>
     </form>
   );
