@@ -1,14 +1,14 @@
 .mainPageLayout {
   display: flex;
   flex-direction: column;
+  //  width: 100vw;
   height: 100vh;
-  width: 100vw;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 .splitScreenContainer {
   display: grid;
-  width: 100vw;
+  // width: 100vw;
   min-height: 0;
   flex: 1;
   overflow: hidden;
@@ -18,6 +18,6 @@
   }
 
   @media (orientation: portrait) {
-    grid-template: .5fr .5fr / 1fr;
+    grid-template: 0.5fr 0.5fr / 1fr;
   }
 }

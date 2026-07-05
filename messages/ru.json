@@ -72,5 +72,49 @@
       "resSize": "Отв.размер",
       "timestamp": "Время"
     }
+  "DecorPanel": {
+    "title": "Редактируйте, просматривайте и тестируйте любые спецификации OpenAPI.",
+    "subtitle": "Войдите в систему, чтобы сохранить характеристики и историю запросов."
+  },
+  "PasswordIndicator": {
+    "letter": "Буква",
+    "digit": "Цифра",
+    "specChar": "Спецсимвол",
+    "minLength": "8+ символов"
+  },
+  "Form": {
+    "name": "Имя",
+    "email": "Email",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "createAccount": "Зарегистрироваться",
+    "signIn": "Войти",
+    "placeholderName": "Введите имя...",
+    "placeholderEmail": "Введите email...",
+    "placeholderPassword": "Введите пароль...",
+    "placeholderConfPassword": "Подтвердите пароль..."
+  },
+  "AuthErrors": {
+    "name": "Имя обязательно для заполнения",
+    "tooShort": "Минимальная длина имени — 2 символа",
+    "invalidEmail": "Пожалуйста, введите корректный email (например, name@domain.io)",
+    "passwordRequired": "Пароль обязателен для заполнения",
+    "passwordNoLetter": "Пароль должен содержать хотя бы одну букву",
+    "passwordNoDigit": "Пароль должен содержать хотя бы одну цифру",
+    "passwordNoSpecial": "Пароль должен содержать хотя бы один спецсимвол",
+    "passwordTooShort": "Минимальная длина пароля — 8 символов",
+    "confirmPasswordRequired": "Подтверждение пароля обязательно",
+    "passwordsDontMatch": "Пароли должны совпадать"
+  },
+  "SignInPage": {
+    "welcomeBack": "Добро пожаловать",
+    "signIn": "Войдите в аккаунт",
+    "noAcc": "Нет аккаунта?",
+    "signup": "Создать аккаунт"
+  },
+  "SignUpPage": {
+    "createAccount": "Создать аккаунт",
+    "alreadyHave": "Уже есть аккаунт?",
+    "signin": "Войти"
   }
 }

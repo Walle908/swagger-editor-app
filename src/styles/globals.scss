@@ -35,6 +35,7 @@
   --color-hover: #15803d;
   --color-focus: #16a34a;
   --color-disabled: #d6d3d1;
+  --color-hover-activeBtn: rgba(22, 163, 74, 0.24);
 
   //тени
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -130,13 +131,13 @@ a:hover {
 .layoutContainer {
   display: flex;
   flex-direction: column;
+  max-width: $breakpoint-desktop;
   min-height: 100vh;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .mainContent {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 1rem 2rem;
 }
