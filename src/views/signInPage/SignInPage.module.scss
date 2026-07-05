@@ -1,7 +1,36 @@
 .signInContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5%;
+}
+
+.contentContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  justify-self: center;
   gap: 4rem;
-  margin: auto;
+  padding: 2rem;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.linkContainer {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .signInContainer {
+    grid-template-columns: 1fr;
+  }
 }

@@ -15,5 +15,50 @@
   "ErrorPage": {
     "message": "Something went wrong...",
     "retry": "Try again"
+  },
+  "DecorPanel": {
+    "title": "Edit, browse & test any OpenAPI spec.",
+    "subtitle": "Sign in to save specs and keep request history."
+  },
+  "PasswordIndicator": {
+    "letter": "Letter",
+    "digit": "Digit",
+    "specChar": "Spec char",
+    "minLength": "8+ char"
+  },
+  "Form": {
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "createAccount": "Create account",
+    "signIn": "Sign in",
+    "placeholderName": "Enter your name...",
+    "placeholderEmail": "Enter your email...",
+    "placeholderPassword": "Enter your password...",
+    "placeholderConfPassword": "Confirm password..."
+  },
+  "AuthErrors": {
+    "name": "Name is required",
+    "tooShort": "Minimum name length is 2 characters",
+    "invalidEmail": "Please enter a valid email address (e.g., name@domain.io)",
+    "passwordRequired": "Password is required",
+    "passwordNoLetter": "Password must contain at least one letter",
+    "passwordNoDigit": "Password must contain at least one digit",
+    "passwordNoSpecial": "Password must contain at least one special character",
+    "passwordTooShort": "Minimum password length is 8 characters",
+    "confirmPasswordRequired": "Confirm password is required",
+    "passwordsDontMatch": "Passwords must match"
+  },
+  "SignInPage": {
+    "welcomeBack": "Welcome back",
+    "signIn": "Sign in to your account",
+    "noAcc": "No account?",
+    "signup": "Sign up"
+  },
+  "SignUpPage": {
+    "createAccount": "Create account",
+    "alreadyHave": "Already have one?",
+    "signin": "Sign in"
   }
 }
