@@ -23,7 +23,7 @@
   "PasswordIndicator": {
     "letter": "Буква",
     "digit": "Цифра",
-    "specChar": "Спец символ",
+    "specChar": "Спецсимвол",
     "minLength": "8+ символов"
   },
   "Form": {
@@ -38,7 +38,18 @@
     "placeholderPassword": "Введите пароль...",
     "placeholderConfPassword": "Подтвердите пароль..."
   },
-  "AuthErrors": {},
+  "AuthErrors": {
+    "name": "Имя обязательно для заполнения",
+    "tooShort": "Минимальная длина имени — 2 символа",
+    "invalidEmail": "Пожалуйста, введите корректный email (например, name@domain.io)",
+    "passwordRequired": "Пароль обязателен для заполнения",
+    "passwordNoLetter": "Пароль должен содержать хотя бы одну букву",
+    "passwordNoDigit": "Пароль должен содержать хотя бы одну цифру",
+    "passwordNoSpecial": "Пароль должен содержать хотя бы один спецсимвол",
+    "passwordTooShort": "Минимальная длина пароля — 8 символов",
+    "confirmPasswordRequired": "Подтверждение пароля обязательно",
+    "passwordsDontMatch": "Пароли должны совпадать"
+  },
   "SignInPage": {
     "welcomeBack": "Добро пожаловать",
     "signIn": "Войдите в аккаунт",

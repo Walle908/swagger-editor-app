@@ -1,10 +1,10 @@
 'use client';
 
-import { type ReactNode } from 'react';
+import { type ReactNode, useMemo } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { registerSchema, RegisterFields } from '@/schema/authValidation';
+import { getRegisterSchema, RegisterFields } from '@/schema/authValidation';
 import FormComponent from '../formComponent/FormComponent';
 import PasswordStrengthIndicator from '../passwordStrengthIndicator/PasswordStrengthIndicator';
 import { Button } from '@/components/ui';
@@ -16,6 +16,9 @@ interface RegisterFormProps {
 
 export default function RegisterForm({ onSubmit }: RegisterFormProps): ReactNode {
   const t = useTranslations('Form');
+  const tErr = useTranslations('AuthErrors');
+
+  const registerSchema = useMemo(() => getRegisterSchema(tErr), [tErr]);
 
   const {
     register,

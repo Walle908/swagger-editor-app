@@ -1,10 +1,10 @@
 'use client';
 
-import { type ReactNode } from 'react';
+import { type ReactNode, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, LoginFields } from '@/schema/authValidation';
+import { getLoginSchema, LoginFields } from '@/schema/authValidation';
 import FormComponent from '../formComponent/FormComponent';
 import { Button } from '@/components/ui';
 import styles from './LoginForm.module.scss';
@@ -15,6 +15,9 @@ interface LoginFormProps {
 
 export default function LoginForm({ onSubmit }: LoginFormProps): ReactNode {
   const t = useTranslations('Form');
+  const tErr = useTranslations('AuthErrors');
+
+  const loginSchema = useMemo(() => getLoginSchema(tErr), [tErr]);
 
   const {
     register,
