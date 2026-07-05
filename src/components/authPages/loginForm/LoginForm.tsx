@@ -49,7 +49,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps): ReactNode {
       />
 
       <Button type="submit" disabled={isButtonDisabled}>
-        {t('submit')}
+        {t('signIn')}
       </Button>
     </form>
   );

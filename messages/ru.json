@@ -32,7 +32,7 @@
     "password": "Пароль",
     "confirmPassword": "Подтвердите пароль",
     "createAccount": "Зарегистрироваться",
-    "submit": "Отправить",
+    "signIn": "Войти",
     "placeholderName": "Введите имя...",
     "placeholderEmail": "Введите email...",
     "placeholderPassword": "Введите пароль...",

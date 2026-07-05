@@ -16,29 +16,27 @@ export default function SignInPage(): ReactNode {
 
   return (
     <div className={styles.signInContainer}>
-      <div className={styles.container}>
-        <DecorPanel />
+      <DecorPanel />
 
-        <div className={styles.contentContainer}>
-          <div className={styles.textContainer}>
-            <Text as="h1" size="xl">
-              {t('welcomeBack')}
-            </Text>
-            <Text size="xs" color="muted">
-              {t('signIn')}
-            </Text>
-          </div>
+      <div className={styles.contentContainer}>
+        <div className={styles.textContainer}>
+          <Text as="h1" size="xxl">
+            {t('welcomeBack')}
+          </Text>
+          <Text size="sm" color="muted">
+            {t('signIn')}
+          </Text>
+        </div>
 
-          <LoginForm onSubmit={handleFormSubmit} />
+        <LoginForm onSubmit={handleFormSubmit} />
 
-          <div className={styles.linkContainer}>
-            <Text size="xs" color="muted">
-              {t('noAcc')}
-            </Text>
-            <LinkComponent className={styles.link} href="/signup">
-              {t('signup')}
-            </LinkComponent>
-          </div>
+        <div className={styles.linkContainer}>
+          <Text size="xs" color="muted">
+            {t('noAcc')}
+          </Text>
+          <LinkComponent className={styles.link} href="/signup">
+            {t('signup')}
+          </LinkComponent>
         </div>
       </div>
     </div>

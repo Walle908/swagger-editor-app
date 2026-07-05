@@ -1,25 +1,18 @@
 .signInContainer {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.container {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  width: 60rem;
-  height: 52rem;
+  gap: 5%;
 }
 
 .contentContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  justify-self: center;
   gap: 4rem;
-  padding: 2.6rem;
+  padding: 2rem;
 }
 
 .textContainer {
@@ -43,11 +36,7 @@
 }
 
 @media (max-width: $breakpoint-mobile) {
-  .container {
+  .signInContainer {
     grid-template-columns: 1fr;
-    width: 46rem;
-  }
-  .contentContainer {
-    padding: 1rem;
   }
 }

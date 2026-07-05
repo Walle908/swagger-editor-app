@@ -32,7 +32,7 @@
     "password": "Password",
     "confirmPassword": "Confirm password",
     "createAccount": "Create account",
-    "submit": "Submit",
+    "signIn": "Sign in",
     "placeholderName": "Enter your name...",
     "placeholderEmail": "Enter your email...",
     "placeholderPassword": "Enter your password...",
