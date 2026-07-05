@@ -6,7 +6,7 @@ import styles from './LinkComponent.module.scss';
 type I18nLinkProps = ComponentPropsWithoutRef<typeof Link>;
 interface LinkComponentProps
   extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof I18nLinkProps>, I18nLinkProps {
-  variant?: 'baseLink' | 'pageLink' | 'buttonLink';
+  variant?: 'baseLink' | 'pageLink' | 'buttonLink' | 'authLink';
   isActive?: true | false;
 }
 

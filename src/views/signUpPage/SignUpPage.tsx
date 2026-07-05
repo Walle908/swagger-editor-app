@@ -27,7 +27,7 @@ export default function SignUpPage(): ReactNode {
           <Text size="xs" color="muted">
             {t('alreadyHave')}
           </Text>
-          <LinkComponent className={styles.link} href="/signin">
+          <LinkComponent variant="authLink" href="/signin">
             {t('signin')}
           </LinkComponent>
         </div>

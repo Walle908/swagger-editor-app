@@ -34,7 +34,7 @@ export default function SignInPage(): ReactNode {
           <Text size="xs" color="muted">
             {t('noAcc')}
           </Text>
-          <LinkComponent className={styles.link} href="/signup">
+          <LinkComponent variant="authLink" href="/signup">
             {t('signup')}
           </LinkComponent>
         </div>

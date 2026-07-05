@@ -65,3 +65,14 @@
     border: none;
   }
 }
+
+.buttonLink:hover {
+  background-color: $color-method-post-bg;
+  color: $color-hover;
+}
+
+.authLink {
+  color: $color-primary;
+  font-size: $space-xs;
+  font-weight: bold;
+}
