@@ -66,10 +66,17 @@ export function Header(): ReactNode {
             </>
           ) : (
             <>
-              <LinkComponent href="/signin" variant="buttonLink">
+              <LinkComponent
+                href="/signin"
+                variant="buttonLink"
+                isActive={pathname?.endsWith('/signin')}>
                 {t('signin')}
               </LinkComponent>
-              <LinkComponent className="colorfull" href="/signup" variant="buttonLink">
+              <LinkComponent
+                className="colorfull"
+                href="/signup"
+                variant="buttonLink"
+                isActive={pathname?.endsWith('/signup')}>
                 {t('signup')}
               </LinkComponent>
             </>

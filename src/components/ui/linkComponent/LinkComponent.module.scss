@@ -9,10 +9,6 @@
   transition: 0.3s;
 }
 
-.baseLink:hover {
-  color: $color-hover;
-}
-
 .pageLink {
   text-decoration: none;
   display: inline-flex;
@@ -29,15 +25,11 @@
   border-radius: 0.8rem;
   cursor: pointer;
   transition: 0.3s;
-}
 
-.active {
-  background-color: $color-method-post-bg;
-  color: $color-primary;
-}
-
-.pageLink:hover {
-  color: $color-hover;
+  &.active {
+    background-color: $color-method-post-bg;
+    color: $color-primary;
+  }
 }
 
 .buttonLink {
@@ -63,16 +55,32 @@
     background-color: $color-primary;
     color: $color-text-additional;
     border: none;
-  }
-}
 
-.buttonLink:hover {
-  background-color: $color-method-post-bg;
-  color: $color-hover;
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  &.active {
+    background-color: $color-method-post-bg;
+    color: $color-primary;
+    border: none;
+
+    &:hover {
+      color: $color-hover;
+      background-color: $color-method-post-bg;
+    }
+  }
 }
 
 .authLink {
   color: $color-primary;
   font-size: $space-xs;
   font-weight: bold;
+}
+
+.baseLink:hover,
+.pageLink:hover,
+.authLink:hover {
+  color: $color-hover;
 }
