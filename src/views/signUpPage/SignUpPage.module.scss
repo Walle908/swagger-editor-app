@@ -29,3 +29,20 @@
   font-size: $space-xs;
   font-weight: bold;
 }
+
+.title {
+  text-align: center;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .container {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: $breakpoint-mobile-small) {
+  .container {
+    width: 32rem;
+    padding: 1rem;
+  }
+}

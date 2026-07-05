@@ -17,7 +17,7 @@ export default function SignUpPage(): ReactNode {
   return (
     <div className={styles.signUpContainer}>
       <div className={styles.container}>
-        <Text as="h1" size="xxl">
+        <Text as="h1" size="xxl" className={styles.title}>
           Create your account
         </Text>
         <RegisterForm onSubmit={handleFormSubmit} />

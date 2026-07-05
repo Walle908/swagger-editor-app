@@ -41,3 +41,13 @@
   font-size: $space-xs;
   font-weight: bold;
 }
+
+@media (max-width: $breakpoint-mobile) {
+  .container {
+    grid-template-columns: 1fr;
+    width: 46rem;
+  }
+  .contentContainer {
+    padding: 1rem;
+  }
+}

@@ -4,3 +4,9 @@
   flex-direction: column;
   gap: 2rem;
 }
+
+@media (max-width: $breakpoint-mobile) {
+  .formContainer {
+    gap: 1.5rem;
+  }
+}
