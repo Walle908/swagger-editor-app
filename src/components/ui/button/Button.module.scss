@@ -11,6 +11,14 @@
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+
+  &:disabled {
+    background-color: $color-disabled;
+    color: $color-text-muted;
+    opacity: 0.8;
+    cursor: none;
+    pointer-events: none;
+  }
 }
 
 .default:hover {

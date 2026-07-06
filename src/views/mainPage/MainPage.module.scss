@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden;
 }
 
 .splitScreenContainer {
@@ -17,6 +16,6 @@
   }
 
   @media (orientation: portrait) {
-    grid-template: .5fr .5fr / 1fr;
+    grid-template: 0.5fr 0.5fr / 1fr;
   }
 }

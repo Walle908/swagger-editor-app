@@ -1,7 +1,9 @@
 import styles from './EmptyHistory.module.scss';
 import clsx from 'clsx';
 import { LinkComponent, Text } from '@/components/ui';
+import { useTranslations } from 'next-intl';
 const EmptyHistory = () => {
+  const t = useTranslations('HistoryPage.empty');
   return (
     <div className={styles.empty}>
       <div className={styles.content}>
@@ -9,18 +11,18 @@ const EmptyHistory = () => {
           -
         </div>
         <Text as="h2" size="xl" weight="bold" className={styles.title}>
-          No requests yet
+          {t('title')}
         </Text>
         <Text size="md" color="secondary" className={styles.text}>
-          You haven&apos;t executed any requests. Try an endpoint to see analytics here.
+          {t('text')}
         </Text>
       </div>
       <div className={styles.actions}>
         <LinkComponent href="/" variant="buttonLink" className={clsx('colorfull', styles.btn)}>
-          Open Editor
+          {t('openEditor')}
         </LinkComponent>
         <LinkComponent href="/" variant="buttonLink" className={clsx('buttonLink', styles.btn)}>
-          Viewer
+          {t('browseViewer')}
         </LinkComponent>
       </div>
     </div>

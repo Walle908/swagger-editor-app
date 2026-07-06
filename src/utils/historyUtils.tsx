@@ -38,26 +38,18 @@ export const buildSummaryElements = (logs: RequestLog[]): HistorySummary => {
 export const getCardsInfo = (summary: HistorySummary) => {
   const successRate = summary.total ? Math.round((summary.successCount / summary.total) * 100) : 0;
   const cards = [
+    { id: '1', label: 'total', value: String(summary.total), unit: '', tone: 'default' },
     {
-      label: 'Total requests',
-      value: String(summary.total),
-      unit: '',
-      tone: 'default',
-    },
-    {
-      label: 'Avg duration',
+      id: '2',
+      label: 'avgDuration',
       value: String(summary.avgDurationMs),
       unit: 'ms',
       tone: 'default',
     },
+    { id: '3', label: 'successRate', value: String(successRate), unit: '%', tone: 'success' },
     {
-      label: 'Success rate',
-      value: String(successRate),
-      unit: '%',
-      tone: 'success',
-    },
-    {
-      label: 'Errors',
+      id: '4',
+      label: 'errors',
       value: String(summary.errorCount4xx + summary.errorCount5xx),
       unit: '',
       tone: 'error',

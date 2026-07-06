@@ -9,6 +9,7 @@
   padding: 2rem;
   background-color: $color-bg-main;
   border-bottom: 1px solid $color-border;
+  flex-shrink: 0;
   transition:
     background-color 0.5s cubic-bezier(0.25, 1, 0.5, 1),
     box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1),
