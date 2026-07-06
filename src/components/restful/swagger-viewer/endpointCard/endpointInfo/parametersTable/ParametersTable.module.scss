@@ -1,0 +1,98 @@
+.tableWrapper {
+  align-self: stretch;
+}
+
+.editSection {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  border: .1rem solid $color-border-strong;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tableHeaderFrame {
+  display: grid;
+  grid-template-columns: 10rem 5rem 1fr;
+  padding: 0.9rem 1.2rem;
+  align-self: stretch;
+  background: $color-bg-muted;
+  gap: 1rem;
+}
+
+.tableHeaderText {
+  font-family: $font-code;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: $color-text-secondary;
+  letter-spacing: 0.05rem;
+}
+
+.tableRowData {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 10rem 5rem 1fr;
+  align-items: center;
+  padding: 1.1rem 1.2rem;
+  align-self: stretch;
+  border-top: 1px solid $color-border;
+  background-color: $color-bg-main;
+  gap: 1rem;
+}
+
+.paramNameText {
+  font-family: $font-code;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.requiredStar {
+  color: $color-error-strong;
+}
+
+.paramInText {
+  font-family: $font-code;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: $color-text-muted;
+}
+
+.inputWrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: .7rem 1.1rem;
+  background: $color-bg-subtle;
+  border: .1rem solid $color-border-strong;
+  border-radius: .7rem;
+  align-self: stretch;
+  position: relative;
+}
+
+.paramInput, .paramSelect {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: $font-code;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: $color-text-main;
+}
+
+.paramSelect {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 2rem;
+}
+
+.selectArrow {
+  position: absolute;
+  right: 1.1rem;
+  font-family: $font-code;
+  font-size: 1.2rem;
+  color: $color-text-faint;
+  pointer-events: none;
+  user-select: none;
+}

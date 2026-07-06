@@ -3,13 +3,17 @@
 import { Input } from '@/components/ui';
 import styles from './FormatSwitcher.module.scss';
 import clsx from 'clsx';
+import { LangType } from '@/types/types';
+import { useTranslations } from 'next-intl';
 
 interface FormatSwitcherProps {
-  format: 'JSON' | 'YAML';
+  format: LangType;
   onToggleAction?: () => void;
 }
 
 export function FormatSwitcher({ format, onToggleAction }: FormatSwitcherProps) {
+  const t = useTranslations('MainPage.toolbar');
+
   return (
     <div className={styles.switcherWrapper}>
       <div className={styles.segmentedControl} onClick={onToggleAction}>
@@ -20,7 +24,7 @@ export function FormatSwitcher({ format, onToggleAction }: FormatSwitcherProps) 
           readOnly
           className={clsx(
             styles.segmentInput,
-            format === 'JSON' ? styles.activeGreen : styles.inactiveWhite
+            format === 'json' ? styles.activeGreen : styles.inactiveWhite
           )}
         />
 
@@ -31,14 +35,14 @@ export function FormatSwitcher({ format, onToggleAction }: FormatSwitcherProps) 
           readOnly
           className={clsx(
             styles.segmentInput,
-            format === 'YAML' ? styles.activeGreen : styles.inactiveWhite
+            format === 'yaml' ? styles.activeGreen : styles.inactiveWhite
           )}
         />
       </div>
 
       <svg
         className={styles.convertIcon}
-        xmlns="http://w3.org"
+        xmlns="https://w3.org"
         width="24"
         height="12"
         viewBox="0 0 24 24"
@@ -53,7 +57,7 @@ export function FormatSwitcher({ format, onToggleAction }: FormatSwitcherProps) 
         <path d="M4 17h16" />
       </svg>
 
-      <p> auto-convert </p>
+      <p> {t('autoConvert')} </p>
     </div>
   );
 }

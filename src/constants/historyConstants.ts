@@ -47,7 +47,7 @@ export const columns: Column<RequestLog>[] = [
     },
   },
   {
-    key: 'requestSize',
+    key: 'reqSize',
     label: 'Req. size',
     textProps: {
       size: 'xxs',
@@ -57,7 +57,7 @@ export const columns: Column<RequestLog>[] = [
     },
   },
   {
-    key: 'responseSize',
+    key: 'resSize',
     label: 'Res. size',
     textProps: {
       size: 'xxs',

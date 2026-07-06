@@ -4,7 +4,9 @@ import styles from './HistoryTable.module.scss';
 import { RequestLog } from '@/types/historyTypes';
 import { Text } from '@/components/ui';
 import { columns } from '@/constants/historyConstants';
+import { useTranslations } from 'next-intl';
 const HistoryTable = ({ logs }: { logs: RequestLog[] }) => {
+  const t = useTranslations('HistoryPage.table');
   return (
     <div className={styles.wrap}>
       <div className={styles.head}>
@@ -17,7 +19,7 @@ const HistoryTable = ({ logs }: { logs: RequestLog[] }) => {
             color="muted"
             size="xxxs"
             className={styles.headProps}>
-            {col.label}
+            {t(col.key)}
           </Text>
         ))}
       </div>

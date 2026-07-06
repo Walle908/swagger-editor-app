@@ -16,6 +16,107 @@
     "message": "Что-то пошло не так...",
     "retry": "Повторить попытку"
   },
+  "MainPage": {
+    "toolbar": {
+      "validStatus": "Валидно · openapi 3.0.3",
+      "invalidStatus": "Невалидно",
+      "btnImport": "Импорт URL",
+      "btnSave": "Сохранить",
+      "autoConvert": "авто-конвертация",
+      "promptTitle": "Введите URL схемы OpenAPI/Swagger:"
+    },
+    "editor": {
+      "lines": "строк",
+      "fallbackError": "Ошибка валидации схемы"
+    },
+    "viewer": {
+      "placeholderTitle": "Swagger Petstore",
+      "emptyMessage": "Пожалуйста, импортируйте или вставьте валидную схему.",
+      "defaultCategoryDesc": "Общие операции",
+      "customCategoryDesc": "Операции, связанные с {category}",
+      "descriptionLabel": "ОПИСАНИЕ:",
+      "parametersLabel": "ПАРАМЕТРЫ:",
+      "noParameters": "Нет параметров",
+      "requestBodyLabel": "ТЕЛО ЗАПРОСА:",
+      "requestSchema": "Схема запроса:",
+      "examplePayload": "Пример полезной нагрузки",
+      "responsesLabel": "ОТВЕТЫ:",
+      "thCode": "Код",
+      "thDesc": "Описание",
+      "thLinks": "Ссылки",
+      "noLinks": "Нет ссылок",
+      "responseSchema": "Схема ответа:",
+      "responseExample": "Пример ответа:",
+      "btnExecute": "Выполнить",
+      "btnGenerate": "Сгенерировать cURL",
+      "btnClear": "Очистить",
+      "thName": "ИМЯ",
+      "thIn": "ГДЕ",
+      "thValue": "ЗНАЧЕНИЕ",
+      "placeholderEnter": "Введите {name}...",
+      "executeStub": "Кнопка Execute работает! Логика запроса будет добавлена завтра.",
+      "curlStub": "Кнопка Generate cURL работает! Команда появится позже.",
+      "noSummary": "Нет краткого описания",
+      "noDescription": "Нет описания"
+    }
+  },
+  "AboutPage": {
+    "eyebrow": "RS School | Курс React | Финальное задание",
+    "title": "Редактор OpenAPI и REST-клиент, созданный командой",
+    "description": "Forge позволяет вставить любую спецификацию OpenAPI / Swagger, просмотреть её эндпоинты и выполнять запросы через SSR-прокси — без проблем с CORS. Создано на современном SSR-фреймворке React, с TypeScript, i18n и полным покрытием тестами",
+    "teamHeading": "Команда",
+    "builtWithHeading": "Технологии",
+    "members": {
+      "member1": "Юлия",
+      "member2": "Елена",
+      "member3": "Карина"
+    },
+    "roles": {
+      "role1": "Frontend разработчик",
+      "role2": "Тимлид. Frontend разработчик",
+      "role3": "Frontend разработчик"
+    },
+    "course": {
+      "heading": "О нашем курсе",
+      "intro": "Курс рассчитан на студентов RS School, прошедших Stage #2, а также на новых студентов, имеющих опыт работы с:",
+      "requirements": [
+        "JavaScript",
+        "TypeScript",
+        "Git, GitHub (clone, add, commit, push, pull, merge, rebase, pull request flow)",
+        "NPM, Webpack",
+        "CSS3 / HTML5",
+        "Chrome DevTools, Figma",
+        "Понимание того, как взаимодействовать с API (общее понимание REST и GraphQL)"
+      ],
+      "ctaQuestion": "Готовы начать?",
+      "ctaLink": "Присоединиться к курсу"
+    }
+  },
+  "HistoryPage": {
+    "title": "История и аналитика",
+    "subtitle": "Каждый выполненный запрос логируется на сервере и агрегируется здесь.",
+    "empty": {
+      "title": "Запросов пока нет",
+      "text": "Вы не выполнили ни одного запроса. Попробуйте использовать эндпоинт, чтобы увидеть здесь аналитику",
+      "openEditor": "Открыть редактор",
+      "browseViewer": "Перейти во вьюер"
+    },
+    "cards": {
+      "total": "Всего запросов",
+      "avgDuration": "Ср. длительность",
+      "successRate": "Успешные",
+      "errors": "Ошибки"
+    },
+    "table": {
+      "method": "Метод",
+      "endpoint": "Эндпоинт",
+      "status": "Статус",
+      "duration": "Длительность",
+      "reqSize": "Запр.размер",
+      "resSize": "Отв.размер",
+      "timestamp": "Время"
+    }
+  },
   "DecorPanel": {
     "title": "Редактируйте, просматривайте и тестируйте любые спецификации OpenAPI.",
     "subtitle": "Войдите в систему, чтобы сохранить характеристики и историю запросов."
