@@ -3,6 +3,7 @@
 import { OpenAPIParameterData } from '@/types/openapi';
 import styles from './ParametersTable.module.scss';
 import clsx from 'clsx';
+import { useTranslations } from 'next-intl';
 
 interface ParametersTableProps {
   parameters: OpenAPIParameterData[];
@@ -11,15 +12,17 @@ interface ParametersTableProps {
 }
 
 export function ParametersTable({ parameters, paramValues, onParamChange }: ParametersTableProps) {
+  const t = useTranslations('MainPage.viewer');
+
   if (!parameters || parameters.length === 0) return null;
 
   return (
     <div className={styles.tableWrapper}>
       <div className={styles.editSection}>
         <div className={styles.tableHeaderFrame}>
-          <div className={clsx(styles.colName, styles.tableHeaderText)}>NAME</div>
-          <div className={clsx(styles.colIn, styles.tableHeaderText)}>IN</div>
-          <div className={clsx(styles.colValue, styles.tableHeaderText)}>VALUE</div>
+          <div className={clsx(styles.colName, styles.tableHeaderText)}>{t('thName')}</div>
+          <div className={clsx(styles.colIn, styles.tableHeaderText)}>{t('thIn')}</div>
+          <div className={clsx(styles.colValue, styles.tableHeaderText)}>{t('thValue')}</div>
         </div>
 
         {parameters.map((param) => {
@@ -56,7 +59,7 @@ export function ParametersTable({ parameters, paramValues, onParamChange }: Para
                     <input
                       type="text"
                       className={styles.paramInput}
-                      placeholder={`Enter ${param.name}...`}
+                      placeholder={t('placeholderEnter', { name: param.name })}
                       value={currentValue}
                       onChange={(e) => onParamChange(param.name, e.target.value)}
                     />

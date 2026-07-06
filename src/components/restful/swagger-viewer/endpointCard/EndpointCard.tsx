@@ -7,12 +7,8 @@ import clsx from 'clsx';
 import { EndpointInfo } from './endpointInfo/EndpoinInfo';
 import { ParsedResponseData } from '@/utils/openapi';
 import { LangType } from '@/types/types';
-
-interface ExtendedParameterData extends OpenAPIParameterData {
-  type?: string;
-  default?: string;
-  enum?: string[];
-}
+import { useTranslations } from 'next-intl';
+import { ParametersTable } from './endpointInfo/parametersTable/ParametersTable';
 
 interface EndpointCardProps {
   method: string;
@@ -20,7 +16,7 @@ interface EndpointCardProps {
   summary: string;
   description: string;
   type: HttpMethodType;
-  parameters?: ExtendedParameterData[] | null;
+  parameters?: OpenAPIParameterData[] | null;
   baseUrl: string;
   requestBodyFormat?: LangType;
   requestBodyExample?: string;
@@ -41,6 +37,8 @@ export function EndpointCard({
   requestBodySchema,
   responses,
 }: EndpointCardProps) {
+  const t = useTranslations('MainPage.viewer');
+
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const [paramValues, setParamValues] = useState<Record<string, string>>({});
@@ -59,11 +57,11 @@ export function EndpointCard({
   const handleExecute = async () => {
     buildFinalUrl();
     setResponseStatus(200);
-    setResponseBody('Кнопка Execute работает! Логика запроса будет добавлена завтра.');
+    setResponseBody(t('executeStub'));
   };
 
   const handleGenerateCurl = () => {
-    alert('Кнопка Generate cURL работает! Команда появится позже.');
+    alert(t('curlStub'));
   };
 
   const handleClear = () => {
@@ -76,11 +74,10 @@ export function EndpointCard({
     setResponseStatus(null);
   };
 
-  let methodClass = styles.methodGet;
-  if (type === 'post') methodClass = styles.methodPost;
-  if (type === 'put') methodClass = styles.methodPut;
-  if (type === 'delete') methodClass = styles.methodDelete;
-  if (type === 'patch') methodClass = styles.methodPatch;
+  const classNameKey = `method${type.charAt(0).toUpperCase()}${type.slice(1)}`;
+  const methodClass = styles[classNameKey] || styles.methodGet;
+
+  const hasParameters = !!(parameters && parameters.length > 0);
 
   return (
     <div className={clsx(styles.methodCardWrapper, methodClass, isExpanded && styles.cardExpanded)}>
@@ -97,9 +94,7 @@ export function EndpointCard({
         <div className={styles.endpointDetailsContainer}>
           <EndpointInfo
             description={description}
-            parameters={parameters}
-            paramValues={paramValues}
-            onParamChange={handleParamChange}
+            hasParameters={hasParameters}
             onExecute={handleExecute}
             onGenerateCurl={handleGenerateCurl}
             onClear={handleClear}
@@ -107,11 +102,20 @@ export function EndpointCard({
             requestBodyExample={requestBodyExample}
             requestBodySchema={requestBodySchema}
             responses={responses}
+            parametersTable={
+              hasParameters ? (
+                <ParametersTable
+                  parameters={parameters}
+                  paramValues={paramValues}
+                  onParamChange={handleParamChange}
+                />
+              ) : null
+            }
           />
           {responseBody && (
             <div className={styles.responseContainer}>
               <h4 className={styles.responseTitle}>
-                RESPONSES {responseStatus && `[STATUS: ${responseStatus}]`}
+                {t('responsesLabel')} {responseStatus && `[STATUS: ${responseStatus}]`}
               </h4>
               <pre className={styles.responsePre}>{responseBody}</pre>
             </div>

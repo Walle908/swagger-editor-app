@@ -15,5 +15,49 @@
   "ErrorPage": {
     "message": "Something went wrong...",
     "retry": "Try again"
+  },
+  "MainPage": {
+    "toolbar": {
+      "validStatus": "Valid · openapi 3.0.3",
+      "invalidStatus": "Invalid",
+      "btnImport": "Import URL",
+      "btnSave": "Save Spec",
+      "autoConvert": "auto-convert",
+      "promptTitle": "Enter URL OpenAPI/Swagger schema:"
+    },
+    "editor": {
+      "lines": "lines",
+      "fallbackError": "Error validating schema"
+    },
+    "viewer": {
+      "placeholderTitle": "Swagger Petstore",
+      "emptyMessage": "Please import or paste a valid schema.",
+      "defaultCategoryDesc": "General operations",
+      "customCategoryDesc": "Operations about {category}",
+      "descriptionLabel": "DESCRIPTION:",
+      "parametersLabel": "PARAMETERS:",
+      "noParameters": "No parameters",
+      "requestBodyLabel": "REQUEST BODY:",
+      "requestSchema": "Request Schema:",
+      "examplePayload": "Example Payload",
+      "responsesLabel": "RESPONSES:",
+      "thCode": "Code",
+      "thDesc": "Description",
+      "thLinks": "Links",
+      "noLinks": "No links",
+      "responseSchema": "Response Schema:",
+      "responseExample": "Response Example:",
+      "btnExecute": "Execute",
+      "btnGenerate": "Generate cURL",
+      "btnClear": "Clear",
+      "thName": "NAME",
+      "thIn": "IN",
+      "thValue": "VALUE",
+      "placeholderEnter": "Enter {name}...",
+      "executeStub": "The Execute button works! Request logic will be added tomorrow.",
+      "curlStub": "The Generate cURL button works! The command will appear later.",
+      "noSummary": "No summary",
+      "noDescription": "No description"
+    }
   }
 }

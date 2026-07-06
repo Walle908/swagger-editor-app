@@ -1,22 +1,29 @@
-import { TEXT } from '@/constants/constants';
 import { FormatSwitcher } from './format-switcher/FormatSwitcher';
 import styles from './ToolBar.module.scss';
 import { Button } from '@/components/ui';
 import { LangType } from '@/types/types';
 import { importSchemaFromUrl } from '@/utils/importSchema';
+import { useTranslations } from 'next-intl';
+import { memo } from 'react';
 
 interface ToolBarProps {
   format: LangType;
   setFormat: () => void;
   error: string | null;
-  texts: typeof TEXT.toolbar;
   onUrlImport: (fetchedContent: string) => void;
 }
 
-export function ToolBar({ format, setFormat, error, texts, onUrlImport }: ToolBarProps) {
+export const ToolBar = memo(function ToolBar({
+  format,
+  setFormat,
+  error,
+  onUrlImport,
+}: ToolBarProps) {
+  const t = useTranslations('MainPage.toolbar');
+
   const handleImportClick = async () => {
     const url = prompt(
-      'Enter URL OpenAPI/Swagger schema:',
+      t('promptTitle'),
       'https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.json'
     );
 
@@ -46,7 +53,7 @@ export function ToolBar({ format, setFormat, error, texts, onUrlImport }: ToolBa
     <section className={styles.editorToolbar}>
       <div className={styles.toolbarLeft}>
         <p className={`${styles.statusText} ${error ? styles.invalid : styles.valid}`}>
-          {error ? `${texts.invalidStatus}` : texts.validStatus}
+          {error ? `${t('invalidStatus')}` : t('validStatus')}
         </p>
         <span className={styles.divider}></span>
         <FormatSwitcher format={format} onToggleAction={() => setFormat()} />
@@ -54,16 +61,16 @@ export function ToolBar({ format, setFormat, error, texts, onUrlImport }: ToolBa
 
       <div className={styles.toolbarRight}>
         <Button color="light" className={styles.importUrlBtn} onClick={handleImportClick}>
-          {texts.btnImport}
+          {t('btnImport')}
         </Button>
 
         <Button
           color="dark"
           className={styles.saveSpecBtn}
           onClick={() => console.log('Save Spec clicked')}>
-          {texts.btnSave}
+          {t('btnSave')}
         </Button>
       </div>
     </section>
   );
-}
+});

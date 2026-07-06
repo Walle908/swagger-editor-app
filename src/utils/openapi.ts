@@ -111,7 +111,9 @@ function getExampleAndSchema(contentNode: unknown): {
 }
 
 export function parseAndGroupSchema(
-  schema: OpenAPISchema | null | undefined
+  schema: OpenAPISchema | null | undefined,
+  noSummaryText: string,
+  noDescriptionText: string
 ): Record<string, CleanEndpoint[]> {
   const groups: Record<string, CleanEndpoint[]> = {};
 
@@ -221,13 +223,13 @@ export function parseAndGroupSchema(
         summary:
           'summary' in operation && typeof operation.summary === 'string'
             ? operation.summary
-            : 'No summary',
+            : noSummaryText,
         description:
           'description' in operation &&
           typeof operation.description === 'string' &&
           operation.description.trim() !== ''
             ? operation.description
-            : 'No description',
+            : noDescriptionText,
         type: finalType,
         parameters: formattedParameters.length > 0 ? formattedParameters : null,
         requestBodyFormat,

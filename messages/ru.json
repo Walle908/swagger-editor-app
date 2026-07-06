@@ -15,5 +15,49 @@
   "ErrorPage": {
     "message": "Что-то пошло не так...",
     "retry": "Повторить попытку"
+  },
+  "MainPage": {
+    "toolbar": {
+      "validStatus": "Валидно · openapi 3.0.3",
+      "invalidStatus": "Невалидно",
+      "btnImport": "Импорт URL",
+      "btnSave": "Сохранить",
+      "autoConvert": "авто-конвертация",
+      "promptTitle": "Введите URL схемы OpenAPI/Swagger:"
+    },
+    "editor": {
+      "lines": "строк",
+      "fallbackError": "Ошибка валидации схемы"
+    },
+    "viewer": {
+      "placeholderTitle": "Swagger Petstore",
+      "emptyMessage": "Пожалуйста, импортируйте или вставьте валидную схему.",
+      "defaultCategoryDesc": "Общие операции",
+      "customCategoryDesc": "Операции, связанные с {category}",
+      "descriptionLabel": "ОПИСАНИЕ:",
+      "parametersLabel": "ПАРАМЕТРЫ:",
+      "noParameters": "Нет параметров",
+      "requestBodyLabel": "ТЕЛО ЗАПРОСА:",
+      "requestSchema": "Схема запроса:",
+      "examplePayload": "Пример полезной нагрузки",
+      "responsesLabel": "ОТВЕТЫ:",
+      "thCode": "Код",
+      "thDesc": "Описание",
+      "thLinks": "Ссылки",
+      "noLinks": "Нет ссылок",
+      "responseSchema": "Схема ответа:",
+      "responseExample": "Пример ответа:",
+      "btnExecute": "Выполнить",
+      "btnGenerate": "Сгенерировать cURL",
+      "btnClear": "Очистить",
+      "thName": "ИМЯ",
+      "thIn": "ГДЕ",
+      "thValue": "ЗНАЧЕНИЕ",
+      "placeholderEnter": "Введите {name}...",
+      "executeStub": "Кнопка Execute работает! Логика запроса будет добавлена завтра.",
+      "curlStub": "Кнопка Generate cURL работает! Команда появится позже.",
+      "noSummary": "Нет краткого описания",
+      "noDescription": "Нет описания"
+    }
   }
 }

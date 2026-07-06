@@ -2,12 +2,12 @@
 
 import styles from './MainPage.module.scss';
 import { CodeEditor, SwaggerViewer, ToolBar } from '@/components/restful';
-import { TEXT } from '@/constants/constants';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import 'swagger-ui-react/swagger-ui.css';
 import { convertFormat, detectFormat, validateSwagger } from '@/utils/swaggerConvert';
 import { LangType } from '@/types/types';
 import { OpenAPISchema } from '@/types/openapi';
+import { useTranslations } from 'next-intl';
 
 const MainPage: React.FC = () => {
   const [code, setCode] = useState<string>('');
@@ -15,7 +15,9 @@ const MainPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [parsedSchema, setParsedSchema] = useState<OpenAPISchema | null>(null);
 
-  const handleCodeChange = (newValue: string) => {
+  const t = useTranslations('MainPage');
+
+  const handleCodeChange = useCallback((newValue: string) => {
     setCode(newValue);
 
     if (!newValue.trim()) {
@@ -25,7 +27,7 @@ const MainPage: React.FC = () => {
     }
     const detectedData = detectFormat(newValue);
     setFormat(detectedData);
-  };
+  }, []);
 
   useEffect(() => {
     if (!code.trim()) {
@@ -39,7 +41,7 @@ const MainPage: React.FC = () => {
         setError(null);
         setParsedSchema(result.parsedData);
       } else {
-        setError(result.error || 'error validate schema');
+        setError(result.error || t('editor.fallbackError'));
         setParsedSchema(null);
       }
     }, 400);
@@ -47,7 +49,7 @@ const MainPage: React.FC = () => {
     return () => clearTimeout(delayDebounce);
   }, [code]);
 
-  const handleFormatToggle = () => {
+  const handleFormatToggle = useCallback(() => {
     if (error) {
       return;
     }
@@ -56,7 +58,7 @@ const MainPage: React.FC = () => {
 
     setCode(convertedCode);
     setFormat(nextFormat);
-  };
+  }, [code, format, error]);
 
   const viewerTitle = parsedSchema?.info?.title;
   const viewerVersion = parsedSchema?.info?.version;
@@ -69,7 +71,6 @@ const MainPage: React.FC = () => {
         format={format}
         setFormat={() => handleFormatToggle()}
         error={error}
-        texts={TEXT.toolbar}
         onUrlImport={(content) => handleCodeChange(content)}
       />
 
@@ -78,10 +79,9 @@ const MainPage: React.FC = () => {
           readOnly={false}
           value={code}
           height="100%"
-          lang={format === 'json' ? 'json' : 'yaml'}
+          lang={format}
           onChangeAction={handleCodeChange}
           error={error}
-          texts={TEXT.editor}
         />
         <SwaggerViewer
           title={viewerTitle}

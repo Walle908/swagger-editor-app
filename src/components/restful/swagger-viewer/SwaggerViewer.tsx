@@ -4,6 +4,7 @@ import { OpenAPISchema } from '@/types/openapi';
 import styles from './SwaggerViewer.module.scss';
 import { EndpointCard } from './endpointCard/EndpointCard';
 import { parseAndGroupSchema } from '@/utils/openapi';
+import { useTranslations } from 'next-intl';
 
 interface SwaggerViewerProps {
   title?: string;
@@ -20,6 +21,8 @@ export function SwaggerViewer({
   baseUrl = 'https://swagger.io',
   schema,
 }: SwaggerViewerProps) {
+  const t = useTranslations('MainPage.viewer');
+
   if (!schema || !schema.paths) {
     return (
       <section className={styles.rightSide}>
@@ -28,13 +31,13 @@ export function SwaggerViewer({
           <p className={styles.apiUrl}>{baseUrl}</p>
         </div>
         <div className={styles.viewerContent}>
-          <h3 className={styles.viewerContentEmpty}>Please import or paste a valid schema.</h3>
+          <h3 className={styles.viewerContentEmpty}>{t('emptyMessage')}</h3>
         </div>
       </section>
     );
   }
 
-  const groupedEndpoints = parseAndGroupSchema(schema);
+  const groupedEndpoints = parseAndGroupSchema(schema, t('noSummary'), t('noDescription'));
   const categoriesList = Object.entries(groupedEndpoints);
   const dynamicBaseUrl = schema.servers?.[0]?.url || baseUrl;
 
@@ -57,8 +60,8 @@ export function SwaggerViewer({
               <span
                 className={categoryName === 'user' ? styles.userDescCustom : styles.categoryDesc}>
                 {categoryName === 'default'
-                  ? 'General operations'
-                  : `Operations about ${categoryName}`}
+                  ? t('defaultCategoryDesc')
+                  : t('customCategoryDesc', { category: categoryName })}
               </span>
             </div>
 
