@@ -72,6 +72,7 @@
       "resSize": "Res. size",
       "timestamp": "Timestamp"
     }
+  },
   "DecorPanel": {
     "title": "Edit, browse & test any OpenAPI spec.",
     "subtitle": "Sign in to save specs and keep request history."
