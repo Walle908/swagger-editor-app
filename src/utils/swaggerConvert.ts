@@ -1,22 +1,24 @@
 import * as yaml from 'js-yaml';
 import SwaggerParser from '@apidevtools/swagger-parser';
+import { LangType } from '@/types/types';
+import { OpenAPISchema, ParameterInLocation } from '@/types/openapi';
 
 interface ValidationResult {
   isValid: boolean;
   error: string | null;
-  parsedData: unknown;
+  parsedData: OpenAPISchema | null;
 }
 
-export function detectFormat(value: string): 'JSON' | 'YAML' {
+export function detectFormat(value: string): LangType {
   const data = value.trim();
-  if (!data) return 'JSON';
+  if (!data) return 'json';
   if (data.startsWith('{') || data.startsWith('[')) {
-    return 'JSON';
+    return 'json';
   }
-  return 'YAML';
+  return 'yaml';
 }
 
-export function convertFormat(value: string, format: 'JSON' | 'YAML'): string {
+export function convertFormat(value: string, format: LangType): string {
   const data = value.trim();
   if (!data) return '';
 
@@ -24,7 +26,7 @@ export function convertFormat(value: string, format: 'JSON' | 'YAML'): string {
     const parsedObj = yaml.load(data);
     if (typeof parsedObj !== 'object' || parsedObj === null) return value;
 
-    if (format === 'JSON') {
+    if (format === 'json') {
       return JSON.stringify(parsedObj, null, 2);
     } else {
       return yaml.dump(parsedObj, { indent: 2 });
@@ -47,7 +49,7 @@ export async function validateSwagger(value: string): Promise<ValidationResult> 
       throw new Error('Data must be ob (JSON или YAML)');
     }
 
-    const api: unknown = await SwaggerParser.validate(JSON.parse(JSON.stringify(parsed)));
+    const api = (await SwaggerParser.validate(JSON.parse(JSON.stringify(parsed)))) as OpenAPISchema;
 
     return { isValid: true, error: null, parsedData: api };
   } catch (err: unknown) {
@@ -63,4 +65,8 @@ export async function validateSwagger(value: string): Promise<ValidationResult> 
       parsedData: null,
     };
   }
+}
+
+export function isValidParameterLocation(value: string): value is ParameterInLocation {
+  return ['path', 'query', 'header', 'cookie'].includes(value);
 }

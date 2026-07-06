@@ -21,6 +21,7 @@
   --color-text-faint: #a8a29e;
   --color-text-accent: #d97706;
   --color-text-accent-1: #7c3aed;
+  --color-text-accent-2: #bd721d;
 
   --color-primary: #16a34a;
   //валидация
@@ -82,6 +83,7 @@
   --color-text-faint: #5a615b;
   --color-text-accent: #fbbf24;
   --color-text-accent-1: #a78bfa;
+  --color-text-accent-2: #94560f;
 
   --color-primary: #22c55e;
   //валидация
@@ -106,6 +108,7 @@
 
 html {
   font-size: 10px;
+  scrollbar-gutter: stable;
 }
 
 body {

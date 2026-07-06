@@ -69,9 +69,7 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-.env
-.env.*
-.env.local
+
 .env.development.local
 .env.test.local
 .env.production.local
@@ -157,4 +155,3 @@ vite.config.ts.timestamp-*
 Thumbs.db
 *.pem
 
-next-env.d.ts
