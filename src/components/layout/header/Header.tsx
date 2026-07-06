@@ -4,12 +4,12 @@ import { type ReactNode, useState, useEffect } from 'react';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { auth } from '@/firebase';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onIdTokenChanged, signOut } from 'firebase/auth';
 import { Logo, LinkComponent } from '@/components/ui';
 import LanguageSwitcher from '@/components/languageSwitcher/LanguageSwitcher';
 import ThemeSwitcher from '@/components/themeSwitcher/ThemeSwitcher';
-import styles from './Header.module.scss';
 import clsx from 'clsx';
+import styles from './Header.module.scss';
 
 export function Header(): ReactNode {
   const pathname = usePathname();
@@ -17,13 +17,12 @@ export function Header(): ReactNode {
   const t = useTranslations('Navigation');
 
   const [isAuth, setIsAuth] = useState<boolean>(false);
+  const [userName, setUserName] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const [userName, setUserName] = useState<string | null>(null);
-
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onIdTokenChanged(auth, (user) => {
       if (user) {
         setIsAuth(true);
         setUserName(user.displayName);
@@ -53,11 +52,12 @@ export function Header(): ReactNode {
 
   const handleSignOut = async (e: React.MouseEvent) => {
     e.preventDefault();
+
     try {
       await signOut(auth);
       router.push('/');
     } catch (error) {
-      console.error('Sign out error', error);
+      console.error('Sign out error:', error);
     }
   };
 
