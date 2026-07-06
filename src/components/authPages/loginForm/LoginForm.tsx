@@ -22,13 +22,13 @@ export default function LoginForm({ onSubmit }: LoginFormProps): ReactNode {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isDirty, isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm<LoginFields>({
     resolver: zodResolver(loginSchema),
     mode: 'onChange',
   });
 
-  const isButtonDisabled = !isDirty || !isValid || Object.keys(errors).length > 0 || isSubmitting;
+  const isButtonDisabled = isSubmitting;
 
   return (
     <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)} noValidate>

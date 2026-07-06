@@ -54,11 +54,15 @@
     "welcomeBack": "Welcome back",
     "signIn": "Sign in to your account",
     "noAcc": "No account?",
-    "signup": "Sign up"
+    "signup": "Sign up",
+    "errorInvalidCredentials": "Invalid email or password",
+    "errorGlobal": "Login failed. Please try again"
   },
   "SignUpPage": {
     "createAccount": "Create account",
     "alreadyHave": "Already have one?",
-    "signin": "Sign in"
+    "signin": "Sign in",
+    "errorEmailInUse": "This email is already registered. Try signing in",
+    "errorGlobal": "Registration failed. Please try again"
   }
 }

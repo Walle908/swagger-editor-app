@@ -24,7 +24,7 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps): ReactNode
     register,
     handleSubmit,
     control,
-    formState: { errors, isValid, isDirty, isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm<RegisterFields>({
     resolver: zodResolver(registerSchema),
     mode: 'onChange',
@@ -36,7 +36,7 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps): ReactNode
     defaultValue: '',
   });
 
-  const isButtonDisabled = !isDirty || !isValid || Object.keys(errors).length > 0 || isSubmitting;
+  const isButtonDisabled = isSubmitting;
 
   return (
     <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)} noValidate>
