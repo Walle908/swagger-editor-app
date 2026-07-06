@@ -9,6 +9,7 @@ import { Logo, LinkComponent } from '@/components/ui';
 import LanguageSwitcher from '@/components/languageSwitcher/LanguageSwitcher';
 import ThemeSwitcher from '@/components/themeSwitcher/ThemeSwitcher';
 import clsx from 'clsx';
+import getInitials from '@/utils/getInitials';
 import styles from './Header.module.scss';
 
 export function Header(): ReactNode {
@@ -26,7 +27,6 @@ export function Header(): ReactNode {
       if (user) {
         setIsAuth(true);
         setUserName(user.displayName);
-        console.log('Данные от Firebase:', user.email, user.displayName);
       } else {
         setIsAuth(false);
         setUserName(null);
@@ -95,6 +95,10 @@ export function Header(): ReactNode {
                     {t('history')}
                   </LinkComponent>
 
+                  <div className={styles.avatarBlock} title={userName || 'User'}>
+                    {getInitials(userName)}
+                  </div>
+
                   <LinkComponent
                     className="colorfull"
                     href="/"
@@ -102,8 +106,6 @@ export function Header(): ReactNode {
                     onClick={handleSignOut}>
                     {t('signout')}
                   </LinkComponent>
-
-                  {userName && <span className={styles.userGreeting}>{userName}</span>}
                 </>
               ) : (
                 <>
