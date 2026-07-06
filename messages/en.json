@@ -16,6 +16,63 @@
     "message": "Something went wrong...",
     "retry": "Try again"
   },
+  "AboutPage": {
+    "eyebrow": "RS School | React Course | Final Task",
+    "title": "An OpenAPI editor & REST client, built as a team",
+    "description": "Forge lets you paste any OpenAPI / Swagger spec, browse its endpoints, and execute live requests through an SSR proxy — no CORS headaches. Built with a modern SSR React framework, TypeScript, i18n and full test coverage.",
+    "teamHeading": "The team",
+    "builtWithHeading": "Built with",
+    "roles": {
+      "role1": "Frontend developer",
+      "role2": "Team Lead. Frontend developer",
+      "role3": "Frontend developer"
+    },
+    "members": {
+      "member1": "Yulia",
+      "member2": "Elena",
+      "member3": "Karyna"
+    },
+    "course": {
+      "heading": "About Our Course",
+      "intro": "This course is aimed at the students of the RS School who have passed RS School Stage #2 and at the new students who have experience with:",
+      "requirements": [
+        "JavaScript",
+        "TypeScript",
+        "Git, GitHub (clone, add, commit, push, pull, merge, rebase, pull request flow)",
+        "NPM, Webpack",
+        "CSS3 / HTML5",
+        "Chrome DevTools, Figma",
+        "Understanding of how to interact with APIs (general understanding of REST and GraphQL)"
+      ],
+      "ctaQuestion": "Ready to start?",
+      "ctaLink": "Join the course here"
+    }
+  },
+  "HistoryPage": {
+    "title": "History & Analytics",
+    "subtitle": "Every request you execute is logged server-side and aggregated here.",
+    "empty": {
+      "title": "No requests yet",
+      "text": "You haven't executed any requests. Try an endpoint to see analytics here",
+      "openEditor": "Open Editor",
+      "browseViewer": "Browse Viewer"
+    },
+    "cards": {
+      "total": "Total requests",
+      "avgDuration": "Avg duration",
+      "successRate": "Success rate",
+      "errors": "Errors"
+    },
+    "table": {
+      "method": "Method",
+      "endpoint": "Endpoint",
+      "status": "Status",
+      "duration": "Duration",
+      "reqSize": "Req. size",
+      "resSize": "Res. size",
+      "timestamp": "Timestamp"
+    }
+  },
   "DecorPanel": {
     "title": "Edit, browse & test any OpenAPI spec.",
     "subtitle": "Sign in to save specs and keep request history."

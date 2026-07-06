@@ -1,6 +1,8 @@
 import { Text } from '@/components/ui';
 import styles from './HeroBanner.module.scss';
+import { useTranslations } from 'next-intl';
 export const HeroBanner = () => {
+  const t = useTranslations('AboutPage');
   return (
     <section className={styles.hero}>
       <Text
@@ -10,15 +12,13 @@ export const HeroBanner = () => {
         font="code"
         size="xxs"
         weight="medium">
-        RS SCHOOL | REACT COURSE | FINAL TASK
+        {t('eyebrow')}
       </Text>
       <Text as="h1" className={styles.title} weight="bold" color="additional" size="xxxl">
-        An OpenAPI editor & REST client, built as a team
+        {t('title')}
       </Text>
       <Text className={styles.description} color="muted">
-        OpenAPI Studio lets you paste any OpenAPI / Swagger spec, browse its endpoints, and execute
-        live requests through an SSR proxy — no CORS headaches. Built with a modern SSR React
-        framework, TypeScript, i18n and full test coverage.
+        {t('description')}
       </Text>
     </section>
   );

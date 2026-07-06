@@ -7,18 +7,19 @@ import EmptyHistory from '@/components/history/HistoryTable/EmptyHistory/EmptyHi
 import { mockSortedLogs, mockSummary } from '@/utils/historyUtils';
 import HistoryTable from '@/components/history/HistoryTable/HistoryTable';
 import HistoryCards from '@/components/history/HistoryCards/HistoryCards';
+import { useTranslations } from 'next-intl';
 export default function HistoryPage(): ReactNode {
   const logs = mockSortedLogs;
   const hasLogs = logs.length > 0;
-
+  const t = useTranslations('HistoryPage');
   return (
     <div className={styles.historyContainer}>
       <div className={styles.header}>
         <Text as="h1" color="main" size="xxl">
-          History & Analytics
+          {t('title')}
         </Text>
         <Text color="muted" size="sm">
-          Every request runs through the SSR proxy and is recorded here
+          {t('subtitle')}
         </Text>
       </div>
       <div className={styles.content}>
