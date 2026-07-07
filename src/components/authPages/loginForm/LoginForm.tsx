@@ -28,8 +28,6 @@ export default function LoginForm({ onSubmit }: LoginFormProps): ReactNode {
     mode: 'onChange',
   });
 
-  const isButtonDisabled = isSubmitting;
-
   return (
     <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)} noValidate>
       <FormComponent
@@ -48,7 +46,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps): ReactNode {
         {...register('password')}
       />
 
-      <Button type="submit" disabled={isButtonDisabled}>
+      <Button type="submit" disabled={isSubmitting}>
         {t('signIn')}
       </Button>
     </form>

@@ -36,8 +36,6 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps): ReactNode
     defaultValue: '',
   });
 
-  const isButtonDisabled = isSubmitting;
-
   return (
     <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)} noValidate>
       <FormComponent
@@ -71,7 +69,7 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps): ReactNode
         error={errors.confirmPassword?.message}
         {...register('confirmPassword')}
       />
-      <Button type="submit" disabled={isButtonDisabled}>
+      <Button type="submit" disabled={isSubmitting}>
         {t('createAccount')}
       </Button>
     </form>
