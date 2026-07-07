@@ -24,7 +24,7 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps): ReactNode
     register,
     handleSubmit,
     control,
-    formState: { errors, isValid, isDirty, isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm<RegisterFields>({
     resolver: zodResolver(registerSchema),
     mode: 'onChange',
@@ -35,8 +35,6 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps): ReactNode
     name: 'password',
     defaultValue: '',
   });
-
-  const isButtonDisabled = !isDirty || !isValid || Object.keys(errors).length > 0 || isSubmitting;
 
   return (
     <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -71,7 +69,7 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps): ReactNode
         error={errors.confirmPassword?.message}
         {...register('confirmPassword')}
       />
-      <Button type="submit" disabled={isButtonDisabled}>
+      <Button type="submit" disabled={isSubmitting}>
         {t('createAccount')}
       </Button>
     </form>
