@@ -7,7 +7,14 @@ import tseslint from 'typescript-eslint';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 const eslintConfig = defineConfig([
-  globalIgnores(['node_modules/**', '.next/**', 'out/**', 'coverage/**', 'dist/**', 'next-env.d.ts']),
+  globalIgnores([
+    'node_modules/**',
+    '.next/**',
+    'out/**',
+    'coverage/**',
+    'dist/**',
+    'next-env.d.ts',
+  ]),
 
   ...nextVitals,
   ...nextTs,
@@ -29,7 +36,6 @@ const eslintConfig = defineConfig([
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-non-null-assertion': 'error',
     },
-    
   },
 ]);
 

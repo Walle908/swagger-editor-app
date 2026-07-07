@@ -7,6 +7,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { Header, Footer } from '@/components/layout';
 import '@/styles/globals.scss';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Swagger editor app',
@@ -37,6 +38,14 @@ type Props = {
 
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
+  const themeInit = `
+  try {
+    const raw = localStorage.getItem('theme-storage');
+    const theme = raw ? JSON.parse(raw).state.theme : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch {}
+`;
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -44,7 +53,17 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${libreFranklin.variable} ${jetBrainsMono.variable}`}>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={`${libreFranklin.variable} ${jetBrainsMono.variable}`}>
+      <head>
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeInit }}
+        />
+      </head>
       <body className="layoutContainer">
         <NextIntlClientProvider>
           <Header />

@@ -62,8 +62,8 @@
   },
   "AboutPage": {
     "eyebrow": "RS School | React Course | Final Task",
-    "title": "An OpenAPI editor & REST client, built as a team",
-    "description": "Forge lets you paste any OpenAPI / Swagger spec, browse its endpoints, and execute live requests through an SSR proxy — no CORS headaches. Built with a modern SSR React framework, TypeScript, i18n and full test coverage.",
+    "title": "OpenAPI Studio is an API spec editor with REST client capabilities",
+    "description": "The app lets you paste any OpenAPI / Swagger spec, browse its endpoints, and execute live requests through an SSR proxy - no CORS headaches. Built with Next.js, TypeScript, Next-Intl and full test coverage",
     "teamHeading": "The team",
     "builtWithHeading": "Built with",
     "roles": {
