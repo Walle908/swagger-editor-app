@@ -40,11 +40,30 @@
   gap: 2rem;
 }
 
+.buttons {
+  gap: 1.5rem;
+}
+
 .pageLinks {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
+}
+
+.avatarBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  font-size: $space-xs;
+  font-weight: bold;
+  background-color: $color-method-post-bg;
+  color: $color-primary;
+  border: 1px solid $color-primary;
+  user-select: none;
 }
 
 @media (max-width: $breakpoint-tablet) {

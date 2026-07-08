@@ -24,7 +24,7 @@ export const AboutCourse = () => {
       <div className={styles.ctaWrapper}>
         <Text size="md">
           {t('ctaQuestion')}
-          <a href="https://rs.school/react/" target="_blank" className={styles.buttonLink}>
+          <a href="https://rs.school/courses/reactjs" target="_blank" className={styles.buttonLink}>
             {t('ctaLink')}
           </a>
         </Text>

@@ -22,13 +22,11 @@ export default function LoginForm({ onSubmit }: LoginFormProps): ReactNode {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isDirty, isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm<LoginFields>({
     resolver: zodResolver(loginSchema),
     mode: 'onChange',
   });
-
-  const isButtonDisabled = !isDirty || !isValid || Object.keys(errors).length > 0 || isSubmitting;
 
   return (
     <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -48,7 +46,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps): ReactNode {
         {...register('password')}
       />
 
-      <Button type="submit" disabled={isButtonDisabled}>
+      <Button type="submit" disabled={isSubmitting}>
         {t('signIn')}
       </Button>
     </form>

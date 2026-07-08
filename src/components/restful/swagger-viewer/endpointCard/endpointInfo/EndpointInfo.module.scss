@@ -35,8 +35,8 @@
   margin: 0.5rem 0 0 0;
   padding: 1rem;
   background: $color-bg-subtle;
-  border: .1rem solid $color-border;
-  border-radius: .6rem;
+  border: 0.1rem solid $color-border;
+  border-radius: 0.6rem;
   color: $color-text-secondary;
   font-family: $font-code;
   font-size: 1.1rem;
@@ -49,8 +49,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: .1rem solid $color-border;
-  border-radius: .6rem;
+  border: 0.1rem solid $color-border;
+  border-radius: 0.6rem;
   overflow: hidden;
 }
 
@@ -60,9 +60,9 @@
   align-items: center;
   padding: 0.8rem 1rem;
   background-color: $color-bg-muted;
-  border-bottom: .1rem solid $color-border;
+  border-bottom: 0.1rem solid $color-border;
   gap: 1rem;
-  
+
   div {
     font-weight: 600;
     font-size: 1.1rem;
@@ -74,7 +74,7 @@
   flex-direction: column;
   padding: 1rem;
   gap: 0.5rem;
-  border-bottom: .1rem solid $color-border;
+  border-bottom: 0.1rem solid $color-border;
 
   &:last-child {
     border-bottom: none;
@@ -88,48 +88,48 @@
   gap: 1rem;
 }
 
-.swaggerCodeSuccess, .swaggerCodeError {
+.swaggerCodeSuccess,
+.swaggerCodeError {
   font-family: $font-code;
   font-size: 1.15rem;
   font-weight: 700;
 }
 
-.swaggerCodeSuccess { 
-  color: $color-success; 
+.swaggerCodeSuccess {
+  color: $color-success;
 }
 
-.swaggerCodeError { 
-  color: $color-error-strong; 
+.swaggerCodeError {
+  color: $color-error-strong;
 }
 
-.swaggerCodeDesc { 
+.swaggerCodeDesc {
   font-size: 1.15rem;
 }
 
-.swaggerColLinks { 
-  font-size: 1.1rem; 
-  text-align: right; 
+.swaggerColLinks {
+  font-size: 1.1rem;
+  text-align: right;
 }
 
-.swaggerMediaTypeLabel { 
-  font-size: 1rem; 
-   margin-top: 0.8rem; 
-   color: $color-text-accent-1;
-  }
+.swaggerMediaTypeLabel {
+  font-size: 1rem;
+  margin-top: 0.8rem;
+  color: $color-text-accent-1;
+}
 
-
-.btnSection { 
+.btnSection {
   display: flex;
-   align-items: center; 
-   gap: 0.8rem; 
-   align-self: stretch; 
-  }
-
-.btnSpacer { 
-  flex: 1; 
+  align-items: center;
+  gap: 0.8rem;
+  align-self: stretch;
 }
 
-.clearBtnCustom { 
-  font-weight: 500 !important; 
-  color: $color-text-muted !important; 
+.btnSpacer {
+  flex: 1;
+}
+
+.clearBtnCustom {
+  font-weight: 500 !important;
+  color: $color-text-muted !important;
 }
