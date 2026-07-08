@@ -21,6 +21,7 @@ export function Header(): ReactNode {
   const [userName, setUserName] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const unsubscribe = onIdTokenChanged(auth, (user) => {
@@ -50,34 +51,73 @@ export function Header(): ReactNode {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => document.body.classList.remove('no-scroll');
+  }, [isMenuOpen]);
+
   const handleSignOut = async (e: React.MouseEvent) => {
     e.preventDefault();
 
     try {
       await signOut(auth);
+      setIsMenuOpen(false);
       router.push('/');
     } catch (error) {
       console.error('Sign out error:', error);
     }
   };
 
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   const headerClassName = clsx(styles.header, isScrolled ? styles.scrolled : '');
+  const menuClassName = clsx(styles.mobileMenu, isMenuOpen && styles.menuActive);
+  const burgerClassName = clsx(styles.burger, isMenuOpen && styles.burgerActive);
 
   return (
     <header className={headerClassName}>
       <div className={styles.left}>
         <Logo />
-        <div className={styles.pageLinks}>
-          <LinkComponent href="/" variant="pageLink" isActive={pathname === '/'}>
-            {t('editor')}
-          </LinkComponent>
-          <LinkComponent href="/about" variant="pageLink" isActive={pathname?.endsWith('/about')}>
-            {t('about')}
-          </LinkComponent>
+
+        <div className={styles.desktopOnly}>
+          <div className={styles.pageLinks}>
+            <LinkComponent href="/" variant="pageLink" isActive={pathname === '/'}>
+              {t('editor')}
+            </LinkComponent>
+            <LinkComponent href="/about" variant="pageLink" isActive={pathname?.endsWith('/about')}>
+              {t('about')}
+            </LinkComponent>
+          </div>
         </div>
       </div>
 
-      <div className={styles.right}>
+      <div className={menuClassName}>
+        <div className={styles.mobileOnly}>
+          <div className={styles.pageLinks}>
+            <LinkComponent
+              href="/"
+              variant="pageLink"
+              isActive={pathname === '/'}
+              onClick={handleLinkClick}>
+              {t('editor')}
+            </LinkComponent>
+            <LinkComponent
+              href="/about"
+              variant="pageLink"
+              isActive={pathname?.endsWith('/about')}
+              onClick={handleLinkClick}>
+              {t('about')}
+            </LinkComponent>
+          </div>
+        </div>
+
         <div className={styles.switchers}>
           <LanguageSwitcher />
           <ThemeSwitcher />
@@ -90,8 +130,9 @@ export function Header(): ReactNode {
                 <>
                   <LinkComponent
                     href="/history"
-                    variant="pageLink"
-                    isActive={pathname?.endsWith('/history')}>
+                    variant="buttonLink"
+                    isActive={pathname?.endsWith('/history')}
+                    onClick={handleLinkClick}>
                     {t('history')}
                   </LinkComponent>
 
@@ -112,14 +153,16 @@ export function Header(): ReactNode {
                   <LinkComponent
                     href="/signin"
                     variant="buttonLink"
-                    isActive={pathname?.endsWith('/signin')}>
+                    isActive={pathname?.endsWith('/signin')}
+                    onClick={handleLinkClick}>
                     {t('signin')}
                   </LinkComponent>
                   <LinkComponent
                     className="colorfull"
                     href="/signup"
                     variant="buttonLink"
-                    isActive={pathname?.endsWith('/signup')}>
+                    isActive={pathname?.endsWith('/signup')}
+                    onClick={handleLinkClick}>
                     {t('signup')}
                   </LinkComponent>
                 </>
@@ -128,6 +171,17 @@ export function Header(): ReactNode {
           )}
         </div>
       </div>
+
+      {isMenuOpen && <div className={styles.overlay} onClick={() => setIsMenuOpen(false)} />}
+
+      <button
+        className={burgerClassName}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label="Toggle menu">
+        <span />
+        <span />
+        <span />
+      </button>
     </header>
   );
 }
