@@ -244,11 +244,28 @@ export function parseAndGroupSchema(
     if (!groups[category]) {
       return;
     }
+
+    const METHOD_ORDER: Record<string, number> = {
+      GET: 1,
+      HEAD: 2,
+      POST: 3,
+      PUT: 4,
+      DELETE: 5,
+      CONNECT: 6,
+      OPTIONS: 7,
+      TRACE: 8,
+      PATCH: 9,
+    };
+
     groups[category].sort((a, b) => {
       if (a.path !== b.path) {
         return a.path.localeCompare(b.path);
       }
-      return a.method.localeCompare(b.method);
+
+      const weightA = METHOD_ORDER[a.method] || 99;
+      const weightB = METHOD_ORDER[b.method] || 99;
+
+      return weightA - weightB;
     });
   });
 

@@ -57,7 +57,9 @@
       "executeStub": "The Execute button works! Request logic will be added tomorrow.",
       "curlStub": "The Generate cURL button works! The command will appear later.",
       "noSummary": "No summary",
-      "noDescription": "No description"
+      "noDescription": "No description",
+      "curlCopiedSuccess": "cURL command successfully copied to clipboard!",
+      "copyError": "Failed to copy the command to clipboard."
     }
   },
   "AboutPage": {
