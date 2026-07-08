@@ -3,7 +3,7 @@ import Image from 'next/image';
 import moon from 'public/moon.svg';
 import sunny from 'public/sunny.svg';
 import styles from './ThemeSwitcher.module.scss';
-import { useThemeStore } from '@/utils/themeUtils';
+import { useThemeStore } from '@/store/themeStore';
 
 export default function ThemeSwitcher(): ReactNode {
   const theme = useThemeStore((s) => s.theme);
