@@ -122,6 +122,10 @@
 }
 
 @media (max-width: $breakpoint-desktop-small) {
+  .header {
+    padding: 1.5rem 2rem;
+  }
+
   .desktopOnly {
     display: none;
   }
@@ -138,7 +142,7 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 300px;
+    width: 28rem;
     height: 100vh;
     background-color: $color-bg-main;
     border-left: 1px solid $color-border;
@@ -159,7 +163,7 @@
     }
   }
 
-  .mobileMenu.menuActive {
+  .menuActive {
     right: 0;
   }
 }
