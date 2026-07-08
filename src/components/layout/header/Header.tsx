@@ -52,71 +52,52 @@ export function Header(): ReactNode {
   }, []);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
-
+    document.body.classList.toggle('no-scroll', isMenuOpen);
     return () => document.body.classList.remove('no-scroll');
   }, [isMenuOpen]);
+
+  const closeMenu = () => setIsMenuOpen(false);
 
   const handleSignOut = async (e: React.MouseEvent) => {
     e.preventDefault();
 
     try {
       await signOut(auth);
-      setIsMenuOpen(false);
+      closeMenu();
       router.push('/');
     } catch (error) {
       console.error('Sign out error:', error);
     }
   };
 
-  const handleLinkClick = () => {
-    setIsMenuOpen(false);
-  };
-
-  const headerClassName = clsx(styles.header, isScrolled ? styles.scrolled : '');
+  const headerClassName = clsx(styles.header, isScrolled && styles.scrolled);
   const menuClassName = clsx(styles.mobileMenu, isMenuOpen && styles.menuActive);
   const burgerClassName = clsx(styles.burger, isMenuOpen && styles.burgerActive);
+
+  const pageLinks = (
+    <div className={styles.pageLinks}>
+      <LinkComponent href="/" variant="pageLink" isActive={pathname === '/'} onClick={closeMenu}>
+        {t('editor')}
+      </LinkComponent>
+      <LinkComponent
+        href="/about"
+        variant="pageLink"
+        isActive={pathname?.endsWith('/about')}
+        onClick={closeMenu}>
+        {t('about')}
+      </LinkComponent>
+    </div>
+  );
 
   return (
     <header className={headerClassName}>
       <div className={styles.left}>
         <Logo />
-
-        <div className={styles.desktopOnly}>
-          <div className={styles.pageLinks}>
-            <LinkComponent href="/" variant="pageLink" isActive={pathname === '/'}>
-              {t('editor')}
-            </LinkComponent>
-            <LinkComponent href="/about" variant="pageLink" isActive={pathname?.endsWith('/about')}>
-              {t('about')}
-            </LinkComponent>
-          </div>
-        </div>
+        <div className={styles.desktopOnly}>{pageLinks}</div>
       </div>
 
       <div className={menuClassName}>
-        <div className={styles.mobileOnly}>
-          <div className={styles.pageLinks}>
-            <LinkComponent
-              href="/"
-              variant="pageLink"
-              isActive={pathname === '/'}
-              onClick={handleLinkClick}>
-              {t('editor')}
-            </LinkComponent>
-            <LinkComponent
-              href="/about"
-              variant="pageLink"
-              isActive={pathname?.endsWith('/about')}
-              onClick={handleLinkClick}>
-              {t('about')}
-            </LinkComponent>
-          </div>
-        </div>
+        <div className={styles.mobileOnly}>{pageLinks}</div>
 
         <div className={styles.switchers}>
           <LanguageSwitcher />
@@ -132,7 +113,7 @@ export function Header(): ReactNode {
                     href="/history"
                     variant="buttonLink"
                     isActive={pathname?.endsWith('/history')}
-                    onClick={handleLinkClick}>
+                    onClick={closeMenu}>
                     {t('history')}
                   </LinkComponent>
 
@@ -154,7 +135,7 @@ export function Header(): ReactNode {
                     href="/signin"
                     variant="buttonLink"
                     isActive={pathname?.endsWith('/signin')}
-                    onClick={handleLinkClick}>
+                    onClick={closeMenu}>
                     {t('signin')}
                   </LinkComponent>
                   <LinkComponent
@@ -162,7 +143,7 @@ export function Header(): ReactNode {
                     href="/signup"
                     variant="buttonLink"
                     isActive={pathname?.endsWith('/signup')}
-                    onClick={handleLinkClick}>
+                    onClick={closeMenu}>
                     {t('signup')}
                   </LinkComponent>
                 </>
@@ -172,7 +153,7 @@ export function Header(): ReactNode {
         </div>
       </div>
 
-      {isMenuOpen && <div className={styles.overlay} onClick={() => setIsMenuOpen(false)} />}
+      {isMenuOpen && <div className={styles.overlay} onClick={closeMenu} />}
 
       <button
         className={burgerClassName}
