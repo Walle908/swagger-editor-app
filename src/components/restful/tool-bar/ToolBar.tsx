@@ -11,6 +11,8 @@ interface ToolBarProps {
   setFormat: () => void;
   error: string | null;
   onUrlImport: (fetchedContent: string) => void;
+  onSave: () => void;
+  isCanSave: boolean;
 }
 
 export const ToolBar = memo(function ToolBar({
@@ -18,6 +20,8 @@ export const ToolBar = memo(function ToolBar({
   setFormat,
   error,
   onUrlImport,
+  onSave,
+  isCanSave,
 }: ToolBarProps) {
   const t = useTranslations('MainPage.toolbar');
 
@@ -64,10 +68,7 @@ export const ToolBar = memo(function ToolBar({
           {t('btnImport')}
         </Button>
 
-        <Button
-          color="dark"
-          className={styles.saveSpecBtn}
-          onClick={() => console.log('Save Spec clicked')}>
+        <Button color="dark" className={styles.saveSpecBtn} onClick={onSave} disabled={!isCanSave}>
           {t('btnSave')}
         </Button>
       </div>
