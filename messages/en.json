@@ -47,7 +47,7 @@
       "noLinks": "No links",
       "responseSchema": "Response Schema:",
       "responseExample": "Response Example:",
-      "btnExecute": "Execute",
+      "btnExecute": "Try it out",
       "btnGenerate": "Generate cURL",
       "btnClear": "Clear",
       "thName": "NAME",
