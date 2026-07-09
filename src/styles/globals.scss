@@ -120,6 +120,10 @@ body {
     color 0.3s;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 a {
   color: var(--color-text-main);
   text-decoration: none;

@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   padding: 2rem;
   background-color: $color-bg-main;
   border-bottom: 1px solid $color-border;
@@ -24,31 +24,11 @@
     0 12px 28px rgba(44, 62, 52, 0.18);
 }
 
-.left,
-.right {
+.left {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 3rem;
-}
-
-.switchers,
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-}
-
-.buttons {
-  gap: 1.5rem;
-}
-
-.pageLinks {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .avatarBlock {
@@ -66,43 +46,124 @@
   user-select: none;
 }
 
-@media (max-width: $breakpoint-tablet) {
-  .header {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.5rem 1rem;
-  }
-
-  .header.scrolled {
-    padding: 1rem 1rem;
-  }
-
-  .left,
-  .right {
-    width: 63%;
-  }
+.switchers,
+.buttons,
+.pageLinks {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
-@media (max-width: $breakpoint-mobile) {
-  .left,
-  .right {
+.desktopOnly {
+  display: flex;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+.mobileMenu {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-left: auto;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2.4rem;
+  height: 1.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 110;
+
+  span {
     width: 100%;
-    flex-direction: column;
-    gap: 1.5rem;
+    height: 2px;
+    background-color: $color-primary;
+    transition: all 0.3s ease;
   }
 
-  .pageLinks,
-  .switchers,
-  .buttons {
-    width: 50%;
-    justify-content: space-between;
+  &Active {
+    span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
   }
 }
 
-@media (max-width: $breakpoint-mobile-small) {
-  .pageLinks,
-  .switchers,
-  .buttons {
-    width: 60%;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 102;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: $breakpoint-desktop-small) {
+  .header {
+    padding: 1.5rem 2rem;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: flex;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .mobileMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 28rem;
+    height: 100vh;
+    background-color: $color-bg-main;
+    border-left: 1px solid $color-border;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8rem 3rem 3rem 3rem;
+    gap: 4rem;
+    transition: right 0.4s ease;
+    z-index: 105;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+
+    .pageLinks,
+    .switchers,
+    .buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  .menuActive {
+    right: 0;
   }
 }
