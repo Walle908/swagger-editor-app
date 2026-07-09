@@ -1,51 +1,51 @@
 import { FormatSwitcher } from './format-switcher/FormatSwitcher';
 import styles from './ToolBar.module.scss';
 import { Button } from '@/components/ui';
-import { LangType } from '@/types/types';
 import { importSchemaFromUrl } from '@/utils/importSchema';
 import { useTranslations } from 'next-intl';
 import { memo } from 'react';
+import { useSchemaStore } from '../store/useSchemaStore';
 
-interface ToolBarProps {
-  format: LangType;
-  setFormat: () => void;
-  error: string | null;
-  onUrlImport: (fetchedContent: string) => void;
-}
+export const ToolBar = memo(function ToolBar() {
+  const format = useSchemaStore((state) => state.format);
+  const error = useSchemaStore((state) => state.error);
+  const toggleFormat = useSchemaStore((state) => state.toggleFormatAction);
+  const setCodeAction = useSchemaStore((state) => state.setCodeAction);
+  const parsedSchema = useSchemaStore((state) => state.parsedSchema);
 
-export const ToolBar = memo(function ToolBar({
-  format,
-  setFormat,
-  error,
-  onUrlImport,
-}: ToolBarProps) {
   const t = useTranslations('MainPage.toolbar');
+  const tEditor = useTranslations('MainPage.editor');
+
+  const oasVersion = parsedSchema?.openapi || parsedSchema?.swagger;
 
   const handleImportClick = async () => {
     const url = prompt(
       t('promptTitle'),
-      'https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.json'
+      'https://raw.githubusercontent.com/sebastienlevert/jsonplaceholder-api/main/openapi.yaml'
     );
 
     if (!url || !url.trim()) return;
 
-    const result = await importSchemaFromUrl(url);
+    try {
+      const result = await importSchemaFromUrl(url);
 
-    if (!result.success) {
-      alert(result.error);
-
-      if (result.textData) {
-        onUrlImport(result.textData);
+      if (!result.success) {
+        alert(result.error);
+        if (result.textData) {
+          setCodeAction(result.textData, tEditor('fallbackError'));
+        }
+        return;
       }
-      return;
-    }
+      if (result.detectedFormat && format !== result.detectedFormat) {
+        toggleFormat();
+      }
+      if (result.textData) {
+        setCodeAction(result.textData, tEditor('fallbackError'));
+      }
+    } catch (err) {
+      console.error('Failed to fetch schema:', err);
 
-    if (result.detectedFormat && format !== result.detectedFormat) {
-      setFormat();
-    }
-
-    if (result.textData) {
-      onUrlImport(result.textData);
+      alert('Network Error: Failed to fetch schema. Please check your internet connection.');
     }
   };
 
@@ -53,10 +53,10 @@ export const ToolBar = memo(function ToolBar({
     <section className={styles.editorToolbar}>
       <div className={styles.toolbarLeft}>
         <p className={`${styles.statusText} ${error ? styles.invalid : styles.valid}`}>
-          {error ? `${t('invalidStatus')}` : t('validStatus')}
+          {error ? `${t('invalidStatus')}` : t('validStatus')} {oasVersion}
         </p>
         <span className={styles.divider}></span>
-        <FormatSwitcher format={format} onToggleAction={() => setFormat()} />
+        <FormatSwitcher format={format} onToggleAction={toggleFormat} />
       </div>
 
       <div className={styles.toolbarRight}>

@@ -40,9 +40,10 @@
   color: $color-text-secondary;
   font-family: $font-code;
   font-size: 1.1rem;
-  white-space: pre-wrap;
-  overflow-x: auto;
   align-self: stretch;
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
+  overflow-x: hidden !important;  
 }
 
 .swaggerResponsesTable {
@@ -121,10 +122,13 @@
 .btnSection {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: .5rem;
   align-self: stretch;
 }
 
+.btnGenUrl {
+ font-size: 1.2rem;
+}
 .btnSpacer {
   flex: 1;
 }

@@ -49,14 +49,19 @@ export function generateCurlCommand({
     });
   }
 
-  let finalUrl = `${baseUrl}${dynamicPath}`;
+  const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+  const cleanPath = dynamicPath.startsWith('/') ? dynamicPath : `/${dynamicPath}`;
+
+  let finalUrl = `${cleanBaseUrl}${cleanPath}`;
   if (queryParams.length > 0) {
     finalUrl += `?${queryParams.join('&')}`;
   }
 
   const curlParts = [`curl -X ${method.toUpperCase()} "${finalUrl}"`];
 
-  if (requestBodyExample && requestBodyExample.trim() !== '') {
+  const hasBody = requestBodyExample && requestBodyExample.trim() !== '';
+
+  if (hasBody) {
     const contentType = requestBodyFormat === 'yaml' ? 'application/yaml' : 'application/json';
     curlParts.push(`-H "Content-Type: ${contentType}"`);
   }
@@ -69,10 +74,10 @@ export function generateCurlCommand({
     curlParts.push(`-H "Cookie: ${cookies.join('; ')}"`);
   }
 
-  if (requestBodyExample && requestBodyExample.trim() !== '') {
-    const escapedBody = requestBodyExample.replace(/'/g, "'\\''");
-    curlParts.push(`--data '${escapedBody}'`);
+  if (hasBody && requestBodyExample) {
+    const escapedBody = requestBodyExample.replace(/"/g, '\\"');
+    curlParts.push(`-d "${escapedBody}"`);
   }
 
-  return curlParts.join(' ');
+  return curlParts.join(' \\\n  ');
 }

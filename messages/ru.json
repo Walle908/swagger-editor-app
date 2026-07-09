@@ -18,7 +18,7 @@
   },
   "MainPage": {
     "toolbar": {
-      "validStatus": "Валидно · openapi 3.0.3",
+      "validStatus": "Валидно · openapi",
       "invalidStatus": "Невалидно",
       "btnImport": "Импорт URL",
       "btnSave": "Сохранить",
@@ -48,7 +48,7 @@
       "responseSchema": "Схема ответа:",
       "responseExample": "Пример ответа:",
       "btnExecute": "Выполнить",
-      "btnGenerate": "Сгенерировать cURL",
+      "btnGenerate": "Сгенерировать URL",
       "btnClear": "Очистить",
       "thName": "ИМЯ",
       "thIn": "ГДЕ",
@@ -59,7 +59,9 @@
       "noSummary": "Нет краткого описания",
       "noDescription": "Нет описания",
       "curlCopiedSuccess": "Команда cURL успешно скопирована в буфер обмена!",
-      "copyError": "Не удалось скопировать команду в буфер обмена."
+      "copyError": "Не удалось скопировать команду в буфер обмена.",
+      "viewHeadersLabel": "Показать заголовки ответа",
+      "generatedCurlLabel": "Сгенерированная команда cURL:"
     }
   },
   "AboutPage": {

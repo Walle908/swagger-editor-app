@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { auth } from '@/firebase';
 import { HttpMethodType, OpenAPIParameterData } from '@/types/openapi';
 import styles from '../SwaggerViewer.module.scss';
 import clsx from 'clsx';
@@ -9,8 +10,9 @@ import { ParsedResponseData } from '@/utils/openapi';
 import { LangType } from '@/types/types';
 import { useTranslations } from 'next-intl';
 import { ParametersTable } from './endpointInfo/parametersTable/ParametersTable';
-import { Toast, Text } from '@/components/ui';
+import { Toast } from '@/components/ui';
 import { generateCurlCommand } from '@/utils/cUrlGenerator';
+import { ExecutionResult } from './execution-result/ExecutionResult';
 
 interface EndpointCardProps {
   method: string;
@@ -106,11 +108,18 @@ export function EndpointCard({
         customHeaders['Cookie'] = customCookies.join('; ');
       }
 
+      const currentUser = auth.currentUser;
+      const proxyHeaders: Record<string, string> = {
+        'Content-Type': 'application/json',
+      };
+
+      if (currentUser) {
+        proxyHeaders['x-user-id'] = currentUser.uid;
+      }
+
       const res = await fetch('/api/proxy', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: proxyHeaders,
         body: JSON.stringify({
           url: targetUrl,
           method: method.toUpperCase(),
@@ -121,10 +130,19 @@ export function EndpointCard({
 
       const data = await res.json();
 
-      setResponseStatus(res.status);
+      if (!res.ok && data.error) {
+        setResponseStatus(res.status);
+        setResponseHeaders(JSON.stringify({ error: 'Proxy execution failed' }, null, 2));
+        setResponseBody(`Proxy Error: ${data.error}`);
+        return;
+      }
+
+      setResponseStatus(data.status ?? res.status);
       setResponseHeaders(JSON.stringify(data.headers || {}, null, 2));
       setResponseBody(
-        typeof data.body === 'object' ? JSON.stringify(data.body, null, 2) : data.body
+        typeof data.body === 'object'
+          ? JSON.stringify(data.body, null, 2)
+          : data.body || 'No response body returned'
       );
     } catch (err) {
       console.error(err);
@@ -209,47 +227,12 @@ export function EndpointCard({
               ) : null
             }
           />
-
-          {displayedCurl && (
-            <div className={styles.curlDisplayContainer} style={{ marginTop: '1.5rem' }}>
-              <h4 className={styles.responseTitle}>Generated cURL:</h4>
-              <pre
-                className={styles.responsePre}
-                style={{
-                  backgroundColor: '#1e1e1e',
-                  color: '#f8f8f2',
-                  padding: '1.2rem',
-                  borderRadius: '6px',
-                  overflowX: 'auto',
-                }}>
-                <Text as="code" font="code" size="xs" color="secondary">
-                  {displayedCurl}
-                </Text>
-              </pre>
-            </div>
-          )}
-
-          {responseBody && (
-            <div className={styles.responseContainer}>
-              <h4 className={styles.responseTitle}>
-                {t('responsesLabel')} {responseStatus && `[STATUS: ${responseStatus}]`}
-              </h4>
-
-              {responseHeaders && (
-                <details style={{ marginBottom: '1rem', cursor: 'pointer' }}>
-                  <summary
-                    style={{ fontSize: '1.2rem', color: 'var(--color-text-secondary, #666)' }}>
-                    View Response Headers
-                  </summary>
-                  <pre className={styles.responsePre} style={{ fontSize: '1.1rem', opacity: 0.8 }}>
-                    {responseHeaders}
-                  </pre>
-                </details>
-              )}
-
-              <pre className={styles.responsePre}>{responseBody}</pre>
-            </div>
-          )}
+          <ExecutionResult
+            displayedCurl={displayedCurl}
+            responseBody={responseBody}
+            responseHeaders={responseHeaders}
+            responseStatus={responseStatus}
+          />
         </div>
       )}
       {toastMessage && (

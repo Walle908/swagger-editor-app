@@ -247,14 +247,10 @@ export function parseAndGroupSchema(
 
     const METHOD_ORDER: Record<string, number> = {
       GET: 1,
-      HEAD: 2,
       POST: 3,
       PUT: 4,
-      DELETE: 5,
-      CONNECT: 6,
-      OPTIONS: 7,
-      TRACE: 8,
       PATCH: 9,
+      DELETE: 5,
     };
 
     groups[category].sort((a, b) => {
