@@ -76,7 +76,9 @@ export function EndpointCard({
       });
     }
 
-    let finalUrl = `${baseUrl}${dynamicPath}`;
+    const normalizedBase = baseUrl.replace(/\/+$/, '');
+    const normalizedPath = dynamicPath.startsWith('/') ? dynamicPath : `/${dynamicPath}`;
+    let finalUrl = `${normalizedBase}${normalizedPath}`;
     if (queryParams.length > 0) {
       finalUrl += `?${queryParams.join('&')}`;
     }

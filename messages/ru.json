@@ -119,6 +119,18 @@
       "reqSize": "Запр.размер",
       "resSize": "Отв.размер",
       "timestamp": "Время"
+    },
+    "detail": {
+      "backToHistory": "Назад к истории",
+      "notFound": "Запрос не найден",
+      "loadError": "Не удалось загрузить детали запроса. Попробуйте еще раз.",
+      "status": "Статус",
+      "timestamp": "Время",
+      "duration": "Длительность",
+      "requestSize": "Размер запроса",
+      "responseSize": "Размер ответа",
+      "endpoint": "Эндпоинт",
+      "errorDetails": "Детали ошибки"
     }
   },
   "DecorPanel": {

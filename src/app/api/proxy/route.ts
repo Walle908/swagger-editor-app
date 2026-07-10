@@ -52,6 +52,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing target URL for proxying' }, { status: 400 });
     }
 
+    const requestSize = typeof body === 'string' ? Buffer.byteLength(body, 'utf-8') : 0;
+    const startTime = Date.now();
+
     const response = await fetch(url, {
       method: method.toUpperCase(),
       headers: {
@@ -62,13 +65,21 @@ export async function POST(request: NextRequest) {
       body: method !== 'GET' && method !== 'HEAD' ? body : undefined,
     });
 
-    let responseBody;
+    const durationMs = Date.now() - startTime;
+    const rawResponseText = await response.text();
+    const responseSize = Buffer.byteLength(rawResponseText, 'utf-8');
+
     const contentType = response.headers.get('content-type');
+    let responseBody: unknown;
 
     if (contentType && contentType.includes('application/json')) {
-      responseBody = await response.json();
+      try {
+        responseBody = JSON.parse(rawResponseText);
+      } catch {
+        responseBody = rawResponseText;
+      }
     } else {
-      responseBody = await response.text();
+      responseBody = rawResponseText;
     }
 
     const responseHeaders: Record<string, string> = {};
@@ -88,6 +99,9 @@ export async function POST(request: NextRequest) {
           url: url,
           status: response.status,
           timestamp: new Date().toISOString(),
+          durationMs,
+          requestSize,
+          responseSize,
         });
       } catch (firebaseErr) {
         console.error('Error in Firebase:', firebaseErr);

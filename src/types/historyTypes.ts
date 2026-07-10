@@ -12,9 +12,9 @@ export interface RequestLog {
   endpoint: string;
   url: string;
   statusCode: number;
-  durationMs: number;
-  requestSize: number;
-  responseSize: number;
+  durationMs?: number;
+  requestSize?: number;
+  responseSize?: number;
   timestamp: string;
   errorDetails: string | null;
 }
@@ -42,3 +42,19 @@ export type Column<T> = {
 
   headProps?: HTMLAttributes<HTMLElement>;
 };
+export type ErrorHistoryDetailPageProps = {
+  label: string;
+  errorMessage: string;
+};
+export interface FirestoreData {
+  url?: string;
+  userId?: string;
+  method?: string;
+  status?: number | string;
+  statusCode?: number | string;
+  durationMs?: number;
+  requestSize?: number;
+  responseSize?: number;
+  timestamp?: string;
+  errorDetails?: string | null;
+}

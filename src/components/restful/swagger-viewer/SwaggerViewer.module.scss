@@ -85,8 +85,8 @@
   overflow-y: auto;
   overflow-x: hidden;
 
-    @media (max-width:$breakpoint-tablet) {
-      padding: 1rem;
+  @media (max-width: $breakpoint-tablet) {
+    padding: 1rem;
   }
 }
 
