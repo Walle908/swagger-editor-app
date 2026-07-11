@@ -42,7 +42,7 @@ export function FormatSwitcher({ format, onToggleAction }: FormatSwitcherProps) 
 
       <svg
         className={styles.convertIcon}
-        xmlns="https://w3.org"
+        xmlns="http://w3.org"
         width="24"
         height="12"
         viewBox="0 0 24 24"
