@@ -4,11 +4,12 @@ import { getTranslations } from 'next-intl/server';
 import { Text } from '@/components/ui';
 import styles from './HistoryPage.module.scss';
 import EmptyHistory from '@/components/history/HistoryTable/EmptyHistory/EmptyHistory';
-import HistoryTable from '@/components/history/HistoryTable/HistoryTable';
-import HistoryCards from '@/components/history/HistoryCards/HistoryCards';
 import { buildSummaryElements, getRequestLogsForUser } from '@/utils/historyUtils';
 import { RequestLog } from '@/types/historyTypes';
+import dynamic from 'next/dynamic';
 
+const HistoryTable = dynamic(() => import('@/components/history/HistoryTable/HistoryTable'));
+const HistoryCards = dynamic(() => import('@/components/history/HistoryCards/HistoryCards'));
 export default async function HistoryPage() {
   const cookieStore = await cookies();
   const uid = cookieStore.get('uid')?.value;
