@@ -18,7 +18,7 @@
   },
   "MainPage": {
     "toolbar": {
-      "validStatus": "Valid · openapi 3.0.3",
+      "validStatus": "Valid · openapi",
       "invalidStatus": "Invalid",
       "btnImport": "Import URL",
       "btnSave": "Save Spec",
@@ -47,7 +47,7 @@
       "noLinks": "No links",
       "responseSchema": "Response Schema:",
       "responseExample": "Response Example:",
-      "btnExecute": "Execute",
+      "btnExecute": "Try it out",
       "btnGenerate": "Generate cURL",
       "btnClear": "Clear",
       "thName": "NAME",
@@ -57,7 +57,11 @@
       "executeStub": "The Execute button works! Request logic will be added tomorrow.",
       "curlStub": "The Generate cURL button works! The command will appear later.",
       "noSummary": "No summary",
-      "noDescription": "No description"
+      "noDescription": "No description",
+      "curlCopiedSuccess": "cURL command successfully copied to clipboard!",
+      "copyError": "Failed to copy the command to clipboard.",
+      "viewHeadersLabel": "View Response Headers",
+      "generatedCurlLabel": "Generated cURL:"
     }
   },
   "AboutPage": {

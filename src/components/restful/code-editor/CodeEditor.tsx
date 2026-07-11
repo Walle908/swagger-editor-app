@@ -1,12 +1,11 @@
 import { langs } from '@uiw/codemirror-extensions-langs';
-import { githubLight } from '@uiw/codemirror-theme-github';
 import CodeMirror from '@uiw/react-codemirror';
 import styles from './CodeEditor.module.scss';
 import { EditorView } from '@codemirror/view';
-import { LangType } from '@/types/types';
 import { useTranslations } from 'next-intl';
 import clsx from 'clsx';
 import { useMemo } from 'react';
+import { useSchemaStore } from '../store/useSchemaStore';
 
 const codeMirrorScrollTheme = EditorView.theme({
   '&': {
@@ -18,30 +17,24 @@ const codeMirrorScrollTheme = EditorView.theme({
   },
 });
 
-export function CodeEditor({
-  readOnly,
-  value = '',
-  onChangeAction,
-  onBlurAction,
-  lang = 'json',
-  fileName = 'petstore',
-  error,
-}: {
+interface CodeEditorProps {
   readOnly: boolean;
-  value?: string;
-  height?: string;
-  onChangeAction?: (value: string) => void;
   onBlurAction?: () => void;
-  lang?: LangType;
   fileName?: string;
-  error: string | null;
-}) {
+}
+
+export function CodeEditor({ readOnly, onBlurAction, fileName = 'petstore' }: CodeEditorProps) {
+  const value = useSchemaStore((state) => state.code);
+  const lang = useSchemaStore((state) => state.format);
+  const error = useSchemaStore((state) => state.error);
+  const setCodeAction = useSchemaStore((state) => state.setCodeAction);
+
   const lineCount = value.trim() ? value.trim().split('\n').length : 0;
 
   const t = useTranslations('MainPage.editor');
 
   const cmExtensions = useMemo(() => {
-    const extensions = [githubLight, EditorView.lineWrapping, codeMirrorScrollTheme];
+    const extensions = [EditorView.lineWrapping, codeMirrorScrollTheme];
     if (lang === 'json' || lang === 'yaml') {
       extensions.push(langs[lang]());
     }
@@ -67,15 +60,14 @@ export function CodeEditor({
           onBlur={onBlurAction}
           extensions={cmExtensions}
           readOnly={readOnly}
+          theme="none"
           height="100%"
-          theme={githubLight}
           style={{ height: '100%', maxHeight: '100%', display: 'flex', flexDirection: 'column' }}
           value={value}
-          onChange={onChangeAction}
+          onChange={(newValue) => setCodeAction(newValue, t('fallbackError'))}
           editable={!readOnly}
           basicSetup={{
             foldGutter: true,
-
             highlightActiveLineGutter: false,
             highlightActiveLine: false,
           }}

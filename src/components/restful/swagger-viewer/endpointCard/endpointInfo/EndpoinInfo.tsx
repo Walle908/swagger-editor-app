@@ -81,7 +81,7 @@ export function EndpointInfo({
         <Button color="primary" onClick={onExecute}>
           {t('btnExecute')}
         </Button>
-        <Button color="light" onClick={onGenerateCurl}>
+        <Button color="light" className={styles.btnGenUrl} onClick={onGenerateCurl}>
           {t('btnGenerate')}
         </Button>
         <div className={styles.btnSpacer} />

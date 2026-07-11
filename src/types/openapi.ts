@@ -1,4 +1,5 @@
 export type HttpMethodType = 'get' | 'post' | 'put' | 'delete' | 'patch';
+
 export type ParameterInLocation = 'path' | 'query' | 'header' | 'cookie';
 export interface OpenAPIInfo {
   title: string;

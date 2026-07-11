@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import styles from './Text.module.scss';
 
 export interface TextProps extends HTMLAttributes<HTMLElement> {
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'code';
   children: ReactNode;
   className?: string;
   color?:
