@@ -1,47 +1,55 @@
 import { FormatSwitcher } from './format-switcher/FormatSwitcher';
 import styles from './ToolBar.module.scss';
 import { Button } from '@/components/ui';
+import { LangType } from '@/types/types';
 import { importSchemaFromUrl } from '@/utils/importSchema';
 import { useTranslations } from 'next-intl';
 import { memo } from 'react';
-import { useSchemaStore } from '../store/useSchemaStore';
 
-export const ToolBar = memo(function ToolBar() {
-  const format = useSchemaStore((state) => state.format);
-  const error = useSchemaStore((state) => state.error);
-  const toggleFormat = useSchemaStore((state) => state.toggleFormatAction);
-  const setCodeAction = useSchemaStore((state) => state.setCodeAction);
-  const parsedSchema = useSchemaStore((state) => state.parsedSchema);
+interface ToolBarProps {
+  format: LangType;
+  setFormat: () => void;
+  error: string | null;
+  onUrlImport: (fetchedContent: string) => void;
+  onSave: () => void;
+  isCanSave: boolean;
+}
 
+export const ToolBar = memo(function ToolBar({
+  format,
+  setFormat,
+  error,
+  onUrlImport,
+  onSave,
+  isCanSave,
+}: ToolBarProps) {
   const t = useTranslations('MainPage.toolbar');
-  const tEditor = useTranslations('MainPage.editor');
-
-  const oasVersion = parsedSchema?.openapi || parsedSchema?.swagger;
 
   const handleImportClick = async () => {
     const url = prompt(
       t('promptTitle'),
-      'https://raw.githubusercontent.com/sebastienlevert/jsonplaceholder-api/main/openapi.yaml'
+      'https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.json'
     );
 
     if (!url || !url.trim()) return;
 
-    try {
-      const result = await importSchemaFromUrl(url);
+    const result = await importSchemaFromUrl(url);
 
-      if (!result.success) {
-        useSchemaStore.setState({
-          error: result.error || tEditor('fallbackError'),
-          parsedSchema: null,
-        });
-        return;
-      }
+    if (!result.success) {
+      alert(result.error);
 
       if (result.textData) {
-        setCodeAction(result.textData, tEditor('fallbackError'));
+        onUrlImport(result.textData);
       }
-    } catch (err: unknown) {
-      Object.keys({ err });
+      return;
+    }
+
+    if (result.detectedFormat && format !== result.detectedFormat) {
+      setFormat();
+    }
+
+    if (result.textData) {
+      onUrlImport(result.textData);
     }
   };
 
@@ -49,10 +57,10 @@ export const ToolBar = memo(function ToolBar() {
     <section className={styles.editorToolbar}>
       <div className={styles.toolbarLeft}>
         <p className={`${styles.statusText} ${error ? styles.invalid : styles.valid}`}>
-          {error ? `${t('invalidStatus')}` : t('validStatus')} {oasVersion}
+          {error ? `${t('invalidStatus')}` : t('validStatus')}
         </p>
         <span className={styles.divider}></span>
-        <FormatSwitcher format={format} onToggleAction={toggleFormat} />
+        <FormatSwitcher format={format} onToggleAction={() => setFormat()} />
       </div>
 
       <div className={styles.toolbarRight}>
@@ -60,10 +68,7 @@ export const ToolBar = memo(function ToolBar() {
           {t('btnImport')}
         </Button>
 
-        <Button
-          color="dark"
-          className={styles.saveSpecBtn}
-          onClick={() => console.log('Save Spec clicked')}>
+        <Button color="dark" className={styles.saveSpecBtn} onClick={onSave} disabled={!isCanSave}>
           {t('btnSave')}
         </Button>
       </div>
