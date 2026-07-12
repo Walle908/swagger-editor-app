@@ -95,7 +95,7 @@ describe('PasswordStrengthIndicator Component', () => {
     expect(ruleTextBefore).toHaveClass(styles.invalidRule as string);
 
     let progressFills = container.querySelectorAll(`.${styles.progressBarFill}`);
-    const lengthFillBefore = progressFills[3] as HTMLElement; // Индекс 3 — минимальная длина
+    const lengthFillBefore = progressFills[3] as HTMLElement;
     expect(lengthFillBefore.style.width).toBe('0%');
 
     rerender(<PasswordStrengthIndicator value="12345678" />);
