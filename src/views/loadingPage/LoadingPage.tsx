@@ -7,7 +7,7 @@ import styles from './LoadingPage.module.scss';
 export default function LoadingPage(): ReactNode {
   return (
     <div className={styles.loadingContainer} role="status" aria-label="Loading">
-      <Loader />;
+      <Loader />
     </div>
   );
 }

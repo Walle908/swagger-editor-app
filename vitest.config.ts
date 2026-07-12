@@ -22,6 +22,7 @@ export default defineConfig({
         'src/types/**',
         'src/test-utils/**',
         'src/**/index.ts',
+        'src/i18n/**',
       ],
       thresholds: {
         global: {
