@@ -69,6 +69,7 @@
     flex-direction: column;
     flex: 1;
     min-height: 0;
+    background-color: transparent !important;
   }
 
   :global(.cm-editor) {
@@ -79,12 +80,25 @@
     flex-direction: column;
     outline: none !important;
     border: none;
+    background-color: transparent !important;
+    color: $color-text-accent-1 !important; 
   }
 
   :global(.cm-scroller) {
     overflow-x: hidden !important;
     overflow-y: auto !important;
     flex: 1;
+  }
+  
+  :global(.cm-gutters) {
+    background-color: transparent !important;
+    color: $color-text-faint !important;
+    border-right: 0.1rem solid $color-border !important;
+  }
+
+  :global(.cm-activeLine), 
+  :global(.cm-activeLineGutter) {
+    background-color: rgba($color-bg-muted, 0.3) !important;
   }
 }
 

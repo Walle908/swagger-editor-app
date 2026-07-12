@@ -5,6 +5,7 @@ import styles from './SwaggerViewer.module.scss';
 import { EndpointCard } from './endpointCard/EndpointCard';
 import { parseAndGroupSchema } from '@/utils/openapi';
 import { useTranslations } from 'next-intl';
+import { Loader } from '@/components/ui';
 
 interface SwaggerViewerProps {
   title?: string;
@@ -12,6 +13,7 @@ interface SwaggerViewerProps {
   oasVersion?: string;
   baseUrl?: string;
   schema?: OpenAPISchema | null;
+  isLoading?: boolean;
 }
 
 export function SwaggerViewer({
@@ -20,8 +22,31 @@ export function SwaggerViewer({
   oasVersion = '3.0.0',
   baseUrl = 'https://swagger.io',
   schema,
+  isLoading = false,
 }: SwaggerViewerProps) {
   const t = useTranslations('MainPage.viewer');
+
+  if (isLoading) {
+    return (
+      <section className={styles.rightSide}>
+        <div className={styles.viewerHeader}>
+          <h3>{title}</h3>
+          <p className={styles.apiUrl}>{baseUrl}</p>
+        </div>
+
+        <div
+          className={styles.viewerContent}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '300px',
+          }}>
+          <Loader />
+        </div>
+      </section>
+    );
+  }
 
   if (!schema || !schema.paths) {
     return (

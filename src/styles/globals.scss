@@ -5,7 +5,7 @@
   --color-bg-subtle: #fafaf9;
   --color-bg-muted: #f5f5f4;
   --color-bg-canvas: #f7f7f6;
-  --color-bg-code: #fafaf9;
+  --color-bg-code: #f5f5f0;
   --color-bg-header-scrolled: #d1dcd6;
 
   //border
@@ -36,7 +36,6 @@
   --color-hover: #15803d;
   --color-focus: #16a34a;
   --color-disabled: #d6d3d1;
-  --color-hover-activeBtn: rgba(22, 163, 74, 0.24);
 
   //тени
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -120,6 +119,10 @@ body {
     color 0.3s;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 a {
   color: var(--color-text-main);
   text-decoration: none;
@@ -134,7 +137,6 @@ a:hover {
 .layoutContainer {
   display: flex;
   flex-direction: column;
-  max-width: $breakpoint-desktop;
   min-height: 100vh;
   margin: 0 auto;
 }

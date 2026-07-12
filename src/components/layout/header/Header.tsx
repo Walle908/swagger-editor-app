@@ -21,6 +21,7 @@ export function Header(): ReactNode {
   const [userName, setUserName] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const unsubscribe = onIdTokenChanged(auth, (user) => {
@@ -50,34 +51,54 @@ export function Header(): ReactNode {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle('no-scroll', isMenuOpen);
+    return () => document.body.classList.remove('no-scroll');
+  }, [isMenuOpen]);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
   const handleSignOut = async (e: React.MouseEvent) => {
     e.preventDefault();
 
     try {
       await signOut(auth);
+      closeMenu();
       router.push('/');
     } catch (error) {
       console.error('Sign out error:', error);
     }
   };
 
-  const headerClassName = clsx(styles.header, isScrolled ? styles.scrolled : '');
+  const headerClassName = clsx(styles.header, isScrolled && styles.scrolled);
+  const menuClassName = clsx(styles.mobileMenu, isMenuOpen && styles.menuActive);
+  const burgerClassName = clsx(styles.burger, isMenuOpen && styles.burgerActive);
+
+  const pageLinks = (
+    <div className={styles.pageLinks}>
+      <LinkComponent href="/" variant="pageLink" isActive={pathname === '/'} onClick={closeMenu}>
+        {t('editor')}
+      </LinkComponent>
+      <LinkComponent
+        href="/about"
+        variant="pageLink"
+        isActive={pathname?.endsWith('/about')}
+        onClick={closeMenu}>
+        {t('about')}
+      </LinkComponent>
+    </div>
+  );
 
   return (
     <header className={headerClassName}>
       <div className={styles.left}>
         <Logo />
-        <div className={styles.pageLinks}>
-          <LinkComponent href="/" variant="pageLink" isActive={pathname === '/'}>
-            {t('editor')}
-          </LinkComponent>
-          <LinkComponent href="/about" variant="pageLink" isActive={pathname?.endsWith('/about')}>
-            {t('about')}
-          </LinkComponent>
-        </div>
+        <div className={styles.desktopOnly}>{pageLinks}</div>
       </div>
 
-      <div className={styles.right}>
+      <div className={menuClassName}>
+        <div className={styles.mobileOnly}>{pageLinks}</div>
+
         <div className={styles.switchers}>
           <LanguageSwitcher />
           <ThemeSwitcher />
@@ -90,8 +111,9 @@ export function Header(): ReactNode {
                 <>
                   <LinkComponent
                     href="/history"
-                    variant="pageLink"
-                    isActive={pathname?.endsWith('/history')}>
+                    variant="buttonLink"
+                    isActive={pathname?.endsWith('/history')}
+                    onClick={closeMenu}>
                     {t('history')}
                   </LinkComponent>
 
@@ -112,14 +134,16 @@ export function Header(): ReactNode {
                   <LinkComponent
                     href="/signin"
                     variant="buttonLink"
-                    isActive={pathname?.endsWith('/signin')}>
+                    isActive={pathname?.endsWith('/signin')}
+                    onClick={closeMenu}>
                     {t('signin')}
                   </LinkComponent>
                   <LinkComponent
                     className="colorfull"
                     href="/signup"
                     variant="buttonLink"
-                    isActive={pathname?.endsWith('/signup')}>
+                    isActive={pathname?.endsWith('/signup')}
+                    onClick={closeMenu}>
                     {t('signup')}
                   </LinkComponent>
                 </>
@@ -128,6 +152,17 @@ export function Header(): ReactNode {
           )}
         </div>
       </div>
+
+      {isMenuOpen && <div className={styles.overlay} onClick={closeMenu} />}
+
+      <button
+        className={burgerClassName}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label="Toggle menu">
+        <span />
+        <span />
+        <span />
+      </button>
     </header>
   );
 }

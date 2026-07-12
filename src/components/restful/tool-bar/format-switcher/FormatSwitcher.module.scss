@@ -13,7 +13,8 @@
   align-items: center;
   width: 10rem;
   height: 2.5rem;
-  border: 0.1rem solid $color-border;
+  border: 0.1rem solid;
+  border-color: $color-border;
   border-radius: 0.7rem;
   overflow: hidden;
   cursor: pointer;
@@ -39,6 +40,10 @@
 .inactiveWhite {
   background-color: $color-bg-main;
   color: $color-text-muted;
+    &:hover {
+    color: $color-hover;
+    border-color: $color-hover;
+  }
 }
 
 .convertIcon {

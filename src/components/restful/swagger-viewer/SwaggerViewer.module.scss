@@ -84,6 +84,10 @@
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
+
+    @media (max-width:$breakpoint-tablet) {
+      padding: 1rem;
+  }
 }
 
 .apiCategoryGroup {
