@@ -24,7 +24,7 @@ export default defineConfig({
         'src/**/index.ts',
         'src/i18n/**',
         'src/proxy.ts',
-        'src/firebase.ts',
+        'src/firebase.js',
       ],
       thresholds: {
         global: {

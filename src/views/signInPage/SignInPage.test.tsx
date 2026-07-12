@@ -144,4 +144,21 @@ describe('SignInPage Component', () => {
       expect(screen.getByText('errorGlobal')).toBeInTheDocument();
     });
   });
+
+  it('should display valid credentials error when Firebase throws auth/wrong-password (line 30)', async () => {
+    const user = userEvent.setup();
+    const error = new FirebaseError('auth/wrong-password', 'Wrong password');
+    vi.mocked(signInWithEmailAndPassword).mockRejectedValueOnce(error);
+
+    const { container } = render(<SignInPage />);
+
+    const submitBtn = screen.getByTestId('mock-submit-btn');
+    await user.click(submitBtn);
+
+    await waitFor(() => {
+      const errorBlock = container.querySelector(`.${styles.firebaseError}`);
+      expect(errorBlock).toBeInTheDocument();
+      expect(screen.getByText('errorInvalidCredentials')).toBeInTheDocument();
+    });
+  });
 });
