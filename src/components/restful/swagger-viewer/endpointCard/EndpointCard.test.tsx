@@ -1,6 +1,9 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
+
 import { EndpointCard } from './EndpointCard';
+
+import { HttpMethodType } from '@/types/openapi';
 
 vi.mock('next-intl', () => ({
   useTranslations: () => (key: string) => key,
@@ -37,7 +40,7 @@ describe('EndpointCard Component', () => {
         path="/posts"
         summary="Create a new article asset"
         description="Detailed specification guidelines for posts creation route"
-        type="post"
+        type={'POST' as HttpMethodType}
         baseUrl="https://example.com"
         responses={[]}
       />
@@ -49,10 +52,8 @@ describe('EndpointCard Component', () => {
 
     expect(screen.queryByTestId('mock-endpoint-info')).toBeNull();
 
-    const clickableCardHeader = screen.getByText('POST').closest('div');
-    if (clickableCardHeader) {
-      fireEvent.click(clickableCardHeader);
-    }
+    const clickableCardHeader = screen.getByText('POST');
+    fireEvent.click(clickableCardHeader);
 
     expect(screen.getByTestId('mock-endpoint-info')).toBeInTheDocument();
     expect(screen.getByTestId('mock-execution-result')).toBeInTheDocument();

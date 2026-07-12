@@ -6,24 +6,24 @@
   align-items: center;
   gap: 1.2rem;
   padding: 2rem 4rem;
-  border-radius: .8rem;
+  border-radius: 0.8rem;
   z-index: 10;
   background: $color-bg-main;
   animation: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   max-width: 35rem;
-  box-shadow:  $shadow-md;
+  box-shadow: $shadow-md;
 }
 
-.success { 
-  border: .1rem solid $color-success;
+.success {
+  border: 0.1rem solid $color-success;
 }
 
 .error {
-  border: .1rem solid $color-error-strong;
+  border: 0.1rem solid $color-error-strong;
 }
 
-.info { 
-  border: .1rem solid $color-warning;
+.info {
+  border: 0.1rem solid $color-warning;
 }
 
 @keyframes slideIn {

@@ -1,0 +1,10 @@
+.errorBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: $space-lg;
+  border: 2px solid $color-error-border;
+  background: $color-error-bg;
+  border-radius: 1.1rem;
+  min-width: 250px;
+}

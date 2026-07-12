@@ -119,6 +119,18 @@
       "reqSize": "Req. size",
       "resSize": "Res. size",
       "timestamp": "Timestamp"
+    },
+    "detail": {
+      "backToHistory": "Back to history",
+      "notFound": "Request not found",
+      "loadError": "Failed to load request details. Please try again.",
+      "status": "Status",
+      "timestamp": "Timestamp",
+      "duration": "Duration",
+      "requestSize": "Request size",
+      "responseSize": "Response size",
+      "endpoint": "Endpoint",
+      "errorDetails": "Error details"
     }
   },
   "DecorPanel": {

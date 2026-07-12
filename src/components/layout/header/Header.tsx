@@ -11,6 +11,7 @@ import ThemeSwitcher from '@/components/themeSwitcher/ThemeSwitcher';
 import clsx from 'clsx';
 import getInitials from '@/utils/getInitials';
 import styles from './Header.module.scss';
+import { setUidCookie, clearUidCookie } from '@/utils/uidCookie';
 
 export function Header(): ReactNode {
   const pathname = usePathname();
@@ -28,9 +29,11 @@ export function Header(): ReactNode {
       if (user) {
         setIsAuth(true);
         setUserName(user.displayName);
+        setUidCookie(user.uid);
       } else {
         setIsAuth(false);
         setUserName(null);
+        clearUidCookie();
       }
       setIsLoading(false);
     });

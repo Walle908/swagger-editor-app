@@ -28,6 +28,41 @@ export interface CleanEndpoint {
   responses: ParsedResponseData[];
 }
 
+function generateMockFromSchema(schema: unknown): unknown {
+  if (!schema || typeof schema !== 'object') return null;
+  const s = schema as Record<string, unknown>;
+
+  if (s.example !== undefined) return s.example;
+  if (s.default !== undefined) return s.default;
+
+  if (s.type === 'object' || ('properties' in s && s.properties)) {
+    const mockObj: Record<string, unknown> = {};
+    const props = (s.properties || {}) as Record<string, unknown>;
+
+    Object.entries(props).forEach(([key, val]) => {
+      mockObj[key] = generateMockFromSchema(val);
+    });
+    return mockObj;
+  }
+
+  if (s.type === 'array' || ('items' in s && s.items)) {
+    const itemsSchema = s.items || {};
+    return [generateMockFromSchema(itemsSchema)];
+  }
+
+  switch (s.type) {
+    case 'integer':
+    case 'number':
+      return 0;
+    case 'boolean':
+      return true;
+    case 'string':
+      return s.enum && Array.isArray(s.enum) ? s.enum[0] : 'string';
+    default:
+      return 'string';
+  }
+}
+
 function getExampleAndSchema(contentNode: unknown): {
   format: LangType;
   text: string;
@@ -56,50 +91,8 @@ function getExampleAndSchema(contentNode: unknown): {
   if (mediaNode.example !== undefined) {
     rawExample = mediaNode.example;
   } else if (mediaNode.schema && typeof mediaNode.schema === 'object') {
-    const schema = mediaNode.schema as Record<string, unknown>;
-    if (schema.example !== undefined) {
-      rawExample = schema.example;
-    } else if (
-      'properties' in schema &&
-      schema.properties &&
-      typeof schema.properties === 'object'
-    ) {
-      const props = schema.properties as Record<string, Record<string, unknown>>;
-      const mockObj: Record<string, unknown> = {};
-      Object.entries(props).forEach(([k, v]) => {
-        if (v && typeof v === 'object') {
-          const innerProp = v as Record<string, unknown>;
-          mockObj[k] =
-            innerProp.example !== undefined ? innerProp.example : `[${innerProp.type || 'string'}]`;
-        }
-      });
-      rawExample = mockObj;
-    } else if (
-      schema.type === 'array' &&
-      'items' in schema &&
-      schema.items &&
-      typeof schema.items === 'object'
-    ) {
-      const itemsObj = schema.items as Record<string, unknown>;
-      if (
-        'properties' in itemsObj &&
-        itemsObj.properties &&
-        typeof itemsObj.properties === 'object'
-      ) {
-        const props = itemsObj.properties as Record<string, Record<string, unknown>>;
-        const mockItem: Record<string, unknown> = {};
-        Object.entries(props).forEach(([k, v]) => {
-          if (v && typeof v === 'object') {
-            const innerProp = v as Record<string, unknown>;
-            mockItem[k] =
-              innerProp.example !== undefined
-                ? innerProp.example
-                : `[${innerProp.type || 'string'}]`;
-          }
-        });
-        rawExample = [mockItem];
-      }
-    }
+    // Вместо старых громоздких условий вызываем нашу универсальную рекурсивную функцию
+    rawExample = generateMockFromSchema(mediaNode.schema);
   }
 
   if (rawExample !== undefined) {
@@ -247,9 +240,9 @@ export function parseAndGroupSchema(
 
     const METHOD_ORDER: Record<string, number> = {
       GET: 1,
-      POST: 3,
-      PUT: 4,
-      PATCH: 9,
+      POST: 2,
+      PUT: 3,
+      PATCH: 4,
       DELETE: 5,
     };
 

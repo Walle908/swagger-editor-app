@@ -43,7 +43,7 @@
   align-self: stretch;
   white-space: pre-wrap !important;
   word-break: break-all !important;
-  overflow-x: hidden !important;  
+  overflow-x: hidden !important;
 }
 
 .swaggerResponsesTable {
@@ -122,12 +122,12 @@
 .btnSection {
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
   align-self: stretch;
 }
 
 .btnGenUrl {
- font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 .btnSpacer {
   flex: 1;

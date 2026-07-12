@@ -10,6 +10,7 @@ interface ExecutionResultProps {
   responseBody: string;
   responseHeaders: string;
   responseStatus: number | null;
+  responseType: 'json' | 'html' | 'text';
 }
 
 export function ExecutionResult({
@@ -17,8 +18,15 @@ export function ExecutionResult({
   responseBody,
   responseHeaders,
   responseStatus,
+  responseType,
 }: ExecutionResultProps) {
   const t = useTranslations('MainPage.viewer');
+  const trimmedBody = responseBody?.trim() || '';
+  const isJson =
+    responseType === 'json' || trimmedBody.startsWith('{') || trimmedBody.startsWith('[');
+  const isHtml = responseType === 'html' || trimmedBody.startsWith('<');
+
+  const formatLabel = isJson ? 'application/json' : isHtml ? 'text/html' : 'text/plain';
 
   const isSuccess = responseStatus ? String(responseStatus).startsWith('2') : true;
 
@@ -50,15 +58,21 @@ export function ExecutionResult({
           </h4>
 
           {responseHeaders && (
-            <>
-              <details style={{ cursor: 'pointer' }}>
-                <summary className={styles.swaggerMediaTypeLabel}>{t('viewHeadersLabel')}</summary>
-                <pre className={styles.codeBlock}>{responseHeaders}</pre>
-              </details>
-            </>
+            <details style={{ cursor: 'pointer' }}>
+              <summary className={styles.swaggerMediaTypeLabel}>{t('viewHeadersLabel')}</summary>
+              <pre className={styles.codeBlock}>{responseHeaders}</pre>
+            </details>
           )}
-          <div className={styles.swaggerMediaTypeLabel}>Response Body (application/json):</div>
-          <pre className={styles.codeBlock}>{responseBody}</pre>
+          <div className={styles.swaggerMediaTypeLabel}>Response Body ({formatLabel}):</div>
+          <pre
+            className={styles.codeBlock}
+            style={{ maxHeight: '400px', overflow: 'auto', whiteSpace: 'pre-wrap' }}>
+            <code>
+              {typeof responseBody === 'object'
+                ? JSON.stringify(responseBody, null, 2)
+                : responseBody}
+            </code>
+          </pre>
         </div>
       )}
     </div>

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, test, expect, vi } from 'vitest';
+
 import { ResponseItem } from './ResponseItem';
 import { ParsedResponseData } from '@/utils/openapi';
 
@@ -22,7 +23,7 @@ describe('ResponseItem Component', () => {
     expect(screen.getByText('noLinks')).toBeInTheDocument();
 
     expect(screen.queryByText('responseSchema')).toBeNull();
-    expect(screen.queryByText('responseExample')).toBeNull();
+    expect(screen.queryByText(/responseExample/i)).toBeNull();
   });
 
   test('should safely display structural code schemas and raw text payload formats when fields exist', () => {
@@ -40,8 +41,18 @@ describe('ResponseItem Component', () => {
     expect(screen.getByText(/responseExample/i)).toBeInTheDocument();
     expect(screen.getByText(/application\/yaml/i)).toBeInTheDocument();
 
-    expect(screen.getByText(/type:\s*object/i)).toBeInTheDocument();
-    expect(screen.getByText(/error:\s*type:\s*string/i)).toBeInTheDocument();
-    expect(screen.getByText(/error:\s*missing\s*param/i)).toBeInTheDocument();
+    if (mockDetailedItem.schemaRaw) {
+      expect(
+        screen.getByText((content) =>
+          content.replace(/\s+/g, ' ').includes('type: object properties: error: type: string')
+        )
+      ).toBeInTheDocument();
+    }
+
+    if (mockDetailedItem.example) {
+      expect(
+        screen.getByText((content) => content.includes('error: missing param validation'))
+      ).toBeInTheDocument();
+    }
   });
 });

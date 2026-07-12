@@ -17,9 +17,17 @@ export async function importSchemaFromUrl(url: string): Promise<ImportSchemaResu
   try {
     const proxyUrl = `/api/proxy?url=${encodeURIComponent(trimmedUrl)}`;
     const response = await fetch(proxyUrl);
-
     if (!response.ok) {
-      return { success: false, error: `Server returned status ${response.status}` };
+      let errorMessage = `Server returned status ${response.status}`;
+      try {
+        const errorData = (await response.json()) as Record<string, string>;
+        if (errorData && errorData.error) {
+          errorMessage = errorData.error;
+        }
+      } catch {
+        return { success: false, error: errorMessage };
+      }
+      return { success: false, error: errorMessage };
     }
 
     const textData = await response.text();
@@ -42,8 +50,7 @@ export async function importSchemaFromUrl(url: string): Promise<ImportSchemaResu
       textData,
       detectedFormat,
     };
-  } catch (err) {
-    console.error(err);
+  } catch {
     return { success: false, error: 'Network error or failed to process the schema.' };
   }
 }

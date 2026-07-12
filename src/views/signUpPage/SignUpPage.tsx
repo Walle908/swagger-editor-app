@@ -11,6 +11,7 @@ import DecorPanel from '@/components/authPages/decorPanel/DecorPanel';
 import { Text, LinkComponent } from '@/components/ui';
 import { RegisterFields } from '@/schema/authValidation';
 import styles from './SignUpPage.module.scss';
+import { setUidCookie } from '@/utils/uidCookie';
 
 export default function SignUpPage(): ReactNode {
   const t = useTranslations('SignUpPage');
@@ -31,7 +32,7 @@ export default function SignUpPage(): ReactNode {
       }
 
       await userCredential.user.getIdToken(true);
-
+      setUidCookie(userCredential.user.uid);
       router.push('/');
     } catch (error: unknown) {
       console.error('Register error Firebase:', error);

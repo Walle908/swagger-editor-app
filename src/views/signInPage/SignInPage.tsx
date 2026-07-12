@@ -11,6 +11,7 @@ import { LoginFields } from '@/schema/authValidation';
 import DecorPanel from '@/components/authPages/decorPanel/DecorPanel';
 import { Text, LinkComponent } from '@/components/ui';
 import styles from './SignInPage.module.scss';
+import { setUidCookie } from '@/utils/uidCookie';
 
 export default function SignInPage(): ReactNode {
   const t = useTranslations('SignInPage');
@@ -21,8 +22,8 @@ export default function SignInPage(): ReactNode {
   const handleFormSubmit = async (data: LoginFields) => {
     setFbError(null);
     try {
-      await signInWithEmailAndPassword(auth, data.email, data.password);
-
+      const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
+      setUidCookie(userCredential.user.uid);
       router.push('/');
     } catch (error: unknown) {
       console.error('Login error Firebase:', error);

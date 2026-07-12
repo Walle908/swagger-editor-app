@@ -1,22 +1,33 @@
+'use client';
+
 import { FormatSwitcher } from './format-switcher/FormatSwitcher';
 import styles from './ToolBar.module.scss';
-import { Button } from '@/components/ui';
+import { Button, Toast } from '@/components/ui';
+import { LangType } from '@/types/types';
 import { importSchemaFromUrl } from '@/utils/importSchema';
 import { useTranslations } from 'next-intl';
-import { memo } from 'react';
-import { useSchemaStore } from '../store/useSchemaStore';
+import { memo, useState } from 'react';
 
-export const ToolBar = memo(function ToolBar() {
-  const format = useSchemaStore((state) => state.format);
-  const error = useSchemaStore((state) => state.error);
-  const toggleFormat = useSchemaStore((state) => state.toggleFormatAction);
-  const setCodeAction = useSchemaStore((state) => state.setCodeAction);
-  const parsedSchema = useSchemaStore((state) => state.parsedSchema);
+interface ToolBarProps {
+  format: LangType;
+  setFormat: () => void;
+  error: string | null;
+  onUrlImport: (fetchedContent: string, fallbackError?: string) => void;
+  onSave: () => void;
+  isCanSave: boolean;
+}
 
+export const ToolBar = memo(function ToolBar({
+  format,
+  setFormat,
+  error,
+  onUrlImport,
+  onSave,
+  isCanSave,
+}: ToolBarProps) {
   const t = useTranslations('MainPage.toolbar');
-  const tEditor = useTranslations('MainPage.editor');
 
-  const oasVersion = parsedSchema?.openapi || parsedSchema?.swagger;
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const handleImportClick = async () => {
     const url = prompt(
@@ -26,26 +37,20 @@ export const ToolBar = memo(function ToolBar() {
 
     if (!url || !url.trim()) return;
 
-    try {
-      const result = await importSchemaFromUrl(url);
+    const result = await importSchemaFromUrl(url);
 
-      if (!result.success) {
-        alert(result.error);
-        if (result.textData) {
-          setCodeAction(result.textData, tEditor('fallbackError'));
-        }
-        return;
-      }
-      if (result.detectedFormat && format !== result.detectedFormat) {
-        toggleFormat();
-      }
-      if (result.textData) {
-        setCodeAction(result.textData, tEditor('fallbackError'));
-      }
-    } catch (err) {
-      console.error('Failed to fetch schema:', err);
+    if (!result.success) {
+      const errorMessage = result.error || 'Failed to fetch schema';
+      setToastMessage(`${t('invalidStatus')}: ${errorMessage}`);
+      return;
+    }
 
-      alert('Network Error: Failed to fetch schema. Please check your internet connection.');
+    if (result.detectedFormat && format !== result.detectedFormat) {
+      setFormat();
+    }
+
+    if (result.textData) {
+      onUrlImport(result.textData, '');
     }
   };
 
@@ -53,10 +58,10 @@ export const ToolBar = memo(function ToolBar() {
     <section className={styles.editorToolbar}>
       <div className={styles.toolbarLeft}>
         <p className={`${styles.statusText} ${error ? styles.invalid : styles.valid}`}>
-          {error ? `${t('invalidStatus')}` : t('validStatus')} {oasVersion}
+          {error ? t('invalidStatus') : t('validStatus')}
         </p>
         <span className={styles.divider}></span>
-        <FormatSwitcher format={format} onToggleAction={toggleFormat} />
+        <FormatSwitcher format={format} onToggleAction={() => setFormat()} />
       </div>
 
       <div className={styles.toolbarRight}>
@@ -64,13 +69,13 @@ export const ToolBar = memo(function ToolBar() {
           {t('btnImport')}
         </Button>
 
-        <Button
-          color="dark"
-          className={styles.saveSpecBtn}
-          onClick={() => console.log('Save Spec clicked')}>
+        <Button color="dark" className={styles.saveSpecBtn} onClick={onSave} disabled={!isCanSave}>
           {t('btnSave')}
         </Button>
       </div>
+      {toastMessage && (
+        <Toast message={toastMessage} type="error" onClose={() => setToastMessage(null)} />
+      )}
     </section>
   );
 });

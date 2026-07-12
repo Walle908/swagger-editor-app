@@ -46,9 +46,11 @@ export function EndpointCard({
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [paramValues, setParamValues] = useState<Record<string, string>>({});
 
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
   const [responseStatus, setResponseStatus] = useState<number | null>(null);
   const [responseBody, setResponseBody] = useState<string>('');
   const [responseHeaders, setResponseHeaders] = useState<string>('');
+  const [responseType, setResponseType] = useState<'json' | 'html' | 'text'>('text');
 
   const [displayedCurl, setDisplayedCurl] = useState<string>('');
 
@@ -57,6 +59,27 @@ export function EndpointCard({
 
   const handleParamChange = (name: string, value: string) => {
     setParamValues((prev) => ({ ...prev, [name]: value }));
+    if (validationErrors[name]) {
+      setValidationErrors((prev) => {
+        const updated = { ...prev };
+        return Object.fromEntries(Object.entries(updated).filter(([key]) => key !== name));
+      });
+    }
+  };
+
+  const validateFields = (): boolean => {
+    const errors: Record<string, string> = {};
+
+    parameters?.forEach((param) => {
+      const value = paramValues[param.name]?.trim() || '';
+
+      if (param.required && (!value || value === '' || value === `Enter ${param.name}...`)) {
+        errors[param.name] = 'Required field is not provided';
+      }
+    });
+
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const computeTargetUrl = () => {
@@ -76,7 +99,9 @@ export function EndpointCard({
       });
     }
 
-    let finalUrl = `${baseUrl}${dynamicPath}`;
+    const normalizedBase = baseUrl.replace(/\/+$/, '');
+    const normalizedPath = dynamicPath.startsWith('/') ? dynamicPath : `/${dynamicPath}`;
+    let finalUrl = `${normalizedBase}${normalizedPath}`;
     if (queryParams.length > 0) {
       finalUrl += `?${queryParams.join('&')}`;
     }
@@ -84,6 +109,7 @@ export function EndpointCard({
   };
 
   const handleExecute = async () => {
+    if (!validateFields()) return;
     try {
       setResponseBody('Loading...');
       setResponseHeaders('');
@@ -139,19 +165,20 @@ export function EndpointCard({
 
       setResponseStatus(data.status ?? res.status);
       setResponseHeaders(JSON.stringify(data.headers || {}, null, 2));
+      setResponseType(data.type || 'text');
       setResponseBody(
         typeof data.body === 'object'
           ? JSON.stringify(data.body, null, 2)
           : data.body || 'No response body returned'
       );
-    } catch (err) {
-      console.error(err);
+    } catch {
       setResponseStatus(500);
       setResponseBody('Proxy Fetch Error: Failed to process request');
     }
   };
 
   const handleGenerateCurl = () => {
+    if (!validateFields()) return;
     const curlCommand = generateCurlCommand({
       method,
       path,
@@ -170,8 +197,7 @@ export function EndpointCard({
           setToastType('success');
           setToastMessage(t('curlCopiedSuccess') || 'cURL command copied to clipboard!');
         })
-        .catch((err) => {
-          console.error('Clipboard copy failed: ', err);
+        .catch(() => {
           setToastType('error');
           setToastMessage('Failed to copy to clipboard');
         });
@@ -184,6 +210,7 @@ export function EndpointCard({
       cleared[p.name] = '';
     });
     setParamValues(cleared);
+    setValidationErrors({});
     setResponseBody('');
     setResponseHeaders('');
     setResponseStatus(null);
@@ -223,6 +250,7 @@ export function EndpointCard({
                   parameters={parameters}
                   paramValues={paramValues}
                   onParamChange={handleParamChange}
+                  validationErrors={validationErrors}
                 />
               ) : null
             }
@@ -232,6 +260,7 @@ export function EndpointCard({
             responseBody={responseBody}
             responseHeaders={responseHeaders}
             responseStatus={responseStatus}
+            responseType={responseType}
           />
         </div>
       )}
