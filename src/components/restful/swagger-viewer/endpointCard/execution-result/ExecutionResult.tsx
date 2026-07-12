@@ -50,12 +50,10 @@ export function ExecutionResult({
           </h4>
 
           {responseHeaders && (
-            <>
-              <details style={{ cursor: 'pointer' }}>
-                <summary className={styles.swaggerMediaTypeLabel}>{t('viewHeadersLabel')}</summary>
-                <pre className={styles.codeBlock}>{responseHeaders}</pre>
-              </details>
-            </>
+            <details style={{ cursor: 'pointer' }}>
+              <summary className={styles.swaggerMediaTypeLabel}>{t('viewHeadersLabel')}</summary>
+              <pre className={styles.codeBlock}>{responseHeaders}</pre>
+            </details>
           )}
           <div className={styles.swaggerMediaTypeLabel}>Response Body (application/json):</div>
           <pre className={styles.codeBlock}>{responseBody}</pre>

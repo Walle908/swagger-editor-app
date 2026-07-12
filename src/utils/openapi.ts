@@ -247,9 +247,9 @@ export function parseAndGroupSchema(
 
     const METHOD_ORDER: Record<string, number> = {
       GET: 1,
-      POST: 3,
-      PUT: 4,
-      PATCH: 9,
+      POST: 2,
+      PUT: 3,
+      PATCH: 4,
       DELETE: 5,
     };
 

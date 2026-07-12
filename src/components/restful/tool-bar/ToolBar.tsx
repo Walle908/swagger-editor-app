@@ -30,22 +30,18 @@ export const ToolBar = memo(function ToolBar() {
       const result = await importSchemaFromUrl(url);
 
       if (!result.success) {
-        alert(result.error);
-        if (result.textData) {
-          setCodeAction(result.textData, tEditor('fallbackError'));
-        }
+        useSchemaStore.setState({
+          error: result.error || tEditor('fallbackError'),
+          parsedSchema: null,
+        });
         return;
       }
-      if (result.detectedFormat && format !== result.detectedFormat) {
-        toggleFormat();
-      }
+
       if (result.textData) {
         setCodeAction(result.textData, tEditor('fallbackError'));
       }
-    } catch (err) {
-      console.error('Failed to fetch schema:', err);
-
-      alert('Network Error: Failed to fetch schema. Please check your internet connection.');
+    } catch (err: unknown) {
+      Object.keys({ err });
     }
   };
 
