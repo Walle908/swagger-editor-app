@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  flex-wrap: wrap;
+}
+
+.methodBadge {
+  padding: 0.5rem 1rem;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+
+  &[data-method='get'] {
+    color: $color-method-get;
+    background: $color-method-get-bg;
+  }
+  &[data-method='post'] {
+    color: $color-method-post;
+    background: $color-method-post-bg;
+  }
+  &[data-method='put'] {
+    color: $color-method-put;
+    background: $color-method-put-bg;
+  }
+  &[data-method='patch'] {
+    color: $color-method-patch;
+    background: $color-method-patch-bg;
+  }
+  &[data-method='delete'] {
+    color: $color-method-delete;
+    background: $color-method-delete-bg;
+  }
+}
+
+.url {
+  word-break: break-all;
+}

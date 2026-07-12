@@ -47,13 +47,13 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const rawBody = await request.text();
-    const requestSize = rawBody ? rawBody.length : 0;
     const parsedData = rawBody ? JSON.parse(rawBody) : {};
     const { url, method, headers, body } = parsedData;
 
     if (!url) {
       return NextResponse.json({ error: 'Missing target URL for proxying' }, { status: 400 });
     }
+    const requestSize = typeof body === 'string' ? Buffer.byteLength(body, 'utf-8') : 0;
     const startTime = Date.now();
 
     const response = await fetch(url, {
@@ -65,20 +65,22 @@ export async function POST(request: NextRequest) {
       },
       body: method !== 'GET' && method !== 'HEAD' ? body : undefined,
     });
-    const duration = Date.now() - startTime;
+    const durationMs = Date.now() - startTime;
+    const rawResponseText = await response.text();
+    const responseSize = Buffer.byteLength(rawResponseText, 'utf-8');
 
-    let responseBody: unknown;
-    let responseRawText = '';
     const contentType = response.headers.get('content-type');
+    let responseBody: unknown;
 
     if (contentType && contentType.includes('application/json')) {
-      responseBody = await response.json();
-      responseRawText = JSON.stringify(responseBody);
+      try {
+        responseBody = JSON.parse(rawResponseText);
+      } catch {
+        responseBody = rawResponseText;
+      }
     } else {
-      responseBody = await response.text();
-      responseRawText = String(responseBody);
+      responseBody = rawResponseText;
     }
-    const responseSize = responseRawText ? responseRawText.length : 0;
     const responseHeaders: Record<string, string> = {};
     response.headers.forEach((value, key) => {
       responseHeaders[key] = value;
@@ -101,9 +103,9 @@ export async function POST(request: NextRequest) {
           url: url,
           status: response.status,
           timestamp: new Date().toISOString(),
-          duration: duration,
-          requestSize: requestSize,
-          responseSize: responseSize,
+          durationMs,
+          requestSize,
+          responseSize,
           errorDetails: errorDetails,
         });
       } catch (err: unknown) {
