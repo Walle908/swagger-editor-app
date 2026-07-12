@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Loader } from './Loader';
-import styles from './Loader.module.scss'; // Реальные стили
+import styles from './Loader.module.scss';
 
 describe('Loader Component', () => {
   it('should render successfully in the DOM', () => {
