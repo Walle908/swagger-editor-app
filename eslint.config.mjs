@@ -37,6 +37,13 @@ const eslintConfig = defineConfig([
       '@typescript-eslint/no-non-null-assertion': 'error',
     },
   },
+
+  {
+    files: ['**/*.test.tsx', '**/*.spec.tsx'],
+    rules: {
+      '@next/next/no-img-element': 'off',
+    },
+  },
 ]);
 
 export default eslintConfig;
