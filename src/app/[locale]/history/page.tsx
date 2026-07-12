@@ -1,10 +1,7 @@
-import HistoryPage from '@/views/historyPage/HistoryPage';
-import { AuthGuard } from '@/components/providers/AuthGuard';
+import dynamic from 'next/dynamic';
+
+const HistoryPage = dynamic(() => import('@/views/historyPage/HistoryPage'));
 
 export default function History() {
-  return (
-    <AuthGuard>
-      <HistoryPage />
-    </AuthGuard>
-  );
+  return <HistoryPage />;
 }
