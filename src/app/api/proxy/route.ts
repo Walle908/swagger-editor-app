@@ -46,12 +46,13 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const { url, method, headers, body } = await request.json();
+    const rawBody = await request.text();
+    const parsedData = rawBody ? JSON.parse(rawBody) : {};
+    const { url, method, headers, body } = parsedData;
 
     if (!url) {
       return NextResponse.json({ error: 'Missing target URL for proxying' }, { status: 400 });
     }
-
     const requestSize = typeof body === 'string' ? Buffer.byteLength(body, 'utf-8') : 0;
     const startTime = Date.now();
 
@@ -64,7 +65,6 @@ export async function POST(request: NextRequest) {
       },
       body: method !== 'GET' && method !== 'HEAD' ? body : undefined,
     });
-
     const durationMs = Date.now() - startTime;
     const rawResponseText = await response.text();
     const responseSize = Buffer.byteLength(rawResponseText, 'utf-8');
@@ -81,11 +81,15 @@ export async function POST(request: NextRequest) {
     } else {
       responseBody = rawResponseText;
     }
-
     const responseHeaders: Record<string, string> = {};
     response.headers.forEach((value, key) => {
       responseHeaders[key] = value;
     });
+
+    let errorDetails = '';
+    if (!response.ok) {
+      errorDetails = typeof responseBody === 'string' ? responseBody : JSON.stringify(responseBody);
+    }
 
     const userIdHeader = request.headers.get('x-user-id');
 
@@ -102,12 +106,12 @@ export async function POST(request: NextRequest) {
           durationMs,
           requestSize,
           responseSize,
+          errorDetails: errorDetails,
         });
-      } catch (firebaseErr) {
-        console.error('Error in Firebase:', firebaseErr);
+      } catch (err: unknown) {
+        Object.keys({ err });
       }
     }
-
     return NextResponse.json({
       status: response.status,
       headers: responseHeaders,
@@ -115,7 +119,6 @@ export async function POST(request: NextRequest) {
     });
   } catch (err: unknown) {
     const errorMessage = err instanceof Error ? err.message : 'Unknown error';
-    console.error('Proxy Execution Error:', errorMessage);
     return NextResponse.json(
       { error: `Proxy failed to execute request: ${errorMessage}` },
       { status: 500 }

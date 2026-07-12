@@ -13,7 +13,7 @@ export function Footer(): ReactNode {
   return (
     <footer className={styles.footer}>
       <LinkComponent href="https://rs.school/" target="_blank" rel="noreferrer">
-        <Image src={rsLogo} width={45} alt="RS School" priority />
+        <Image src={rsLogo} width={40} alt="RS School" priority />
       </LinkComponent>
 
       <LinkComponent

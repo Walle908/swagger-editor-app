@@ -9,7 +9,7 @@ interface SchemaState {
   error: string | null;
   parsedSchema: OpenAPISchema | null;
   isLoading: boolean;
-  debounceTimer: NodeJS.Timeout | null;
+  debounceTimer: ReturnType<typeof setTimeout> | null;
 
   setCodeAction: (newValue: string, fallbackErrorMsg: string) => void;
   toggleFormatAction: () => void;
@@ -56,8 +56,7 @@ export const useSchemaStore = create<SchemaState>((set, get) => ({
         } else {
           set({ error: result.error || fallbackErrorMsg, parsedSchema: null });
         }
-      } catch (err) {
-        console.error('Критическая ошибка валидации схемы:', err);
+      } catch {
         set({ error: fallbackErrorMsg, parsedSchema: null });
       } finally {
         set({ isLoading: false });

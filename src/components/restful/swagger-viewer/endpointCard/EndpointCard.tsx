@@ -146,8 +146,7 @@ export function EndpointCard({
           ? JSON.stringify(data.body, null, 2)
           : data.body || 'No response body returned'
       );
-    } catch (err) {
-      console.error(err);
+    } catch {
       setResponseStatus(500);
       setResponseBody('Proxy Fetch Error: Failed to process request');
     }
@@ -172,8 +171,7 @@ export function EndpointCard({
           setToastType('success');
           setToastMessage(t('curlCopiedSuccess') || 'cURL command copied to clipboard!');
         })
-        .catch((err) => {
-          console.error('Clipboard copy failed: ', err);
+        .catch(() => {
           setToastType('error');
           setToastMessage('Failed to copy to clipboard');
         });

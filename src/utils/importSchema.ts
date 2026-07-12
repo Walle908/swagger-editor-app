@@ -42,8 +42,7 @@ export async function importSchemaFromUrl(url: string): Promise<ImportSchemaResu
       textData,
       detectedFormat,
     };
-  } catch (err) {
-    console.error(err);
+  } catch {
     return { success: false, error: 'Network error or failed to process the schema.' };
   }
 }
