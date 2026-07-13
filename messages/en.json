@@ -23,7 +23,9 @@
       "btnImport": "Import URL",
       "btnSave": "Save Spec",
       "autoConvert": "auto-convert",
-      "promptTitle": "Enter URL OpenAPI/Swagger schema:"
+      "promptTitle": "Enter URL OpenAPI/Swagger schema:",
+      "saveError": "Failed to save schema",
+      "saveSuccess": "Schema saved successfully!"
     },
     "editor": {
       "lines": "lines",

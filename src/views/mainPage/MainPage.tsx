@@ -8,18 +8,21 @@ import { auth } from '@/firebase';
 import { onIdTokenChanged } from 'firebase/auth';
 import { getUserSpec, saveUserSpec } from '@/utils/specStorage';
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { Toast } from '@/components/ui';
 
 const MainPage: React.FC = () => {
+  const t = useTranslations('MainPage.toolbar');
   const parsedSchema = useSchemaStore((state) => state.parsedSchema);
   const error = useSchemaStore((state) => state.error);
   const code = useSchemaStore((state) => state.code);
   const format = useSchemaStore((state) => state.format);
   const setCodeAction = useSchemaStore((state) => state.setCodeAction);
   const toggleFormatAction = useSchemaStore((state) => state.toggleFormatAction);
-
   const [userId, setUserId] = useState<string | null>(null);
   const [isRestoring, setIsRestoring] = useState<boolean>(true);
-
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [toastType, setToastType] = useState<'success' | 'error' | 'info'>('success');
   useEffect(() => {
     let isCancelled = false;
     const unSubscribe = onIdTokenChanged(auth, async (user) => {
@@ -49,8 +52,11 @@ const MainPage: React.FC = () => {
     if (!userId || error || !code.trim()) return;
     try {
       await saveUserSpec(userId, code, format);
-    } catch (saveError) {
-      console.error('Failed to save spec:', saveError);
+      setToastType('success');
+      setToastMessage(t('saveSuccess'));
+    } catch {
+      setToastType('error');
+      setToastMessage(t('saveError'));
     }
   }, [userId, code, format, error]);
 
@@ -80,6 +86,9 @@ const MainPage: React.FC = () => {
           schema={parsedSchema}
         />
       </div>
+      {toastMessage && (
+        <Toast message={toastMessage} type={toastType} onClose={() => setToastMessage(null)} />
+      )}
     </div>
   );
 };

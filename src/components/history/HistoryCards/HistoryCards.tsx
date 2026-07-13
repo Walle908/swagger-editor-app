@@ -12,7 +12,7 @@ const HistoryCards = ({ summary }: { summary: HistorySummary }) => {
     <div className={styles.grid}>
       {cards.map((x) => (
         <div key={x.id} className={styles.card}>
-          <Text weight="bold" className={styles.label} font="code" color="black">
+          <Text weight="bold" className={styles.label} font="code">
             {t(x.label)}
           </Text>
           <div className={styles.valueRow}>
@@ -20,7 +20,7 @@ const HistoryCards = ({ summary }: { summary: HistorySummary }) => {
               {x.value}
             </Text>
             {x.unit && (
-              <Text as="span" size="xs" weight="medium" color="muted" font="code">
+              <Text as="span" size="xs" weight="medium" font="code">
                 {x.unit}
               </Text>
             )}
