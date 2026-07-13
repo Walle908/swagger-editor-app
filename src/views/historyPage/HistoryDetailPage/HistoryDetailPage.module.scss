@@ -43,3 +43,21 @@
     background: $color-error-bg;
   }
 }
+
+@media (max-width: $breakpoint-tablet) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .detailContainer {
+    padding: 1.2rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    padding: $space-sm;
+    gap: $space-sm;
+  }
+}

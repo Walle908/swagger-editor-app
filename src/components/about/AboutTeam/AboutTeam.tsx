@@ -7,7 +7,7 @@ export const AboutTeam = () => {
   const t = useTranslations('AboutPage');
   return (
     <div className={styles.aboutTeam}>
-      <Text as="h2" weight="bold" size="xxl">
+      <Text as="h2" weight="bold" size="xxl" className={styles.aboutTeamHeader}>
         {t('teamHeading')}
       </Text>
       <div className={styles.teamContainer}>

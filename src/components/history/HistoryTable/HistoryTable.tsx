@@ -31,15 +31,18 @@ const HistoryTable = ({ logs }: { logs: RequestLog[] }) => {
               {columns.map((col) => (
                 <Fragment key={col.key}>
                   {col.textProps && (
-                    <Text
-                      as={col.textProps.elementType ?? 'p'}
-                      weight={col.textProps.weight}
-                      font={col.textProps.font}
-                      size={col.textProps.size}
-                      className={styles[col.textProps.classNameElement ?? 'cell']}
-                      {...col.textProps.getDataAttributes?.(log)}>
-                      {col.textProps.getValueElement(log)}
-                    </Text>
+                    <div className={styles.cellRow}>
+                      <span className={styles.cellLabel}>{t(col.key)}</span>
+                      <Text
+                        as={col.textProps.elementType ?? 'p'}
+                        weight={col.textProps.weight}
+                        font={col.textProps.font}
+                        size={col.textProps.size}
+                        className={styles[col.textProps.classNameElement ?? 'cell']}
+                        {...col.textProps.getDataAttributes?.(log)}>
+                        {col.textProps.getValueElement(log)}
+                      </Text>
+                    </div>
                   )}
                 </Fragment>
               ))}

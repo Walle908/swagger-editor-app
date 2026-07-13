@@ -47,3 +47,26 @@
   padding: 0.8rem 1.6rem;
   height: 4rem;
 }
+
+@media (max-width: $breakpoint-mobile) {
+  .empty {
+    padding: var(--space-xl);
+    min-height: 18rem;
+  }
+
+  .icon {
+    width: 5rem;
+    height: 5rem;
+    font-size: 2.4rem;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 1.2rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
