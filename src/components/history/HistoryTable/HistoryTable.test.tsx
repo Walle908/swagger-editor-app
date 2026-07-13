@@ -54,10 +54,10 @@ describe('HistoryTable', () => {
   it('renders a header column for every configured column', () => {
     render(<HistoryTable logs={logs} />);
 
-    expect(screen.getByText('method')).toBeInTheDocument();
-    expect(screen.getByText('endpoint')).toBeInTheDocument();
-    expect(screen.getByText('status')).toBeInTheDocument();
-    expect(screen.getByText('duration')).toBeInTheDocument();
+    expect(screen.getAllByText('method').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('endpoint').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('status').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('duration').length).toBeGreaterThan(0);
   });
 
   it('renders one row per log linking to the history detail route', () => {

@@ -47,3 +47,14 @@
   transition: background 0.15s;
   width: 10rem;
 }
+@media (max-width: $breakpoint-mobile) {
+  .card {
+    width: 100%;
+    padding: 2.4rem 1.6rem;
+  }
+
+  .avatar {
+    width: 8rem;
+    height: 8rem;
+  }
+}

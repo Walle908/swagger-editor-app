@@ -27,3 +27,16 @@
   overflow: hidden;
   align-items: center;
 }
+@media (max-width: $breakpoint-mobile) {
+  .historyContainer {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    gap: 2rem;
+    padding: 1.2rem;
+  }
+
+  .content {
+    overflow: visible;
+  }
+}

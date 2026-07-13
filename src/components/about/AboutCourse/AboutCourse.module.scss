@@ -39,3 +39,15 @@
   margin-left: 1rem;
   text-decoration: underline;
 }
+@media (max-width: $breakpoint-mobile) {
+  .container {
+    padding: 2.4rem 0;
+  }
+
+  .courseContent,
+  .skillItem,
+  .durationText,
+  .buttonLink {
+    margin-left: 0;
+  }
+}
