@@ -23,6 +23,7 @@ const MainPage: React.FC = () => {
   const [isRestoring, setIsRestoring] = useState<boolean>(true);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [toastType, setToastType] = useState<'success' | 'error' | 'info'>('success');
+  const isLoading = useSchemaStore((state) => state.isLoading);
   useEffect(() => {
     let isCancelled = false;
     const unSubscribe = onIdTokenChanged(auth, async (user) => {
@@ -36,8 +37,8 @@ const MainPage: React.FC = () => {
         if (!isCancelled && saved) {
           setCodeAction(saved.content, '');
         }
-      } catch (e) {
-        console.error(e);
+      } catch {
+        return;
       } finally {
         if (!isCancelled) setIsRestoring(false);
       }
@@ -63,7 +64,7 @@ const MainPage: React.FC = () => {
   const viewerTitle = parsedSchema?.info?.title;
   const viewerVersion = parsedSchema?.info?.version;
   const viewerOasVersion = parsedSchema?.openapi || parsedSchema?.swagger;
-  const viewerBaseUrl = parsedSchema?.servers?.[0]?.url;
+  const viewerBaseUrl = parsedSchema?.servers?.[0]?.url ?? undefined;
 
   return (
     <div className={styles.mainPageLayout}>
@@ -84,6 +85,7 @@ const MainPage: React.FC = () => {
           oasVersion={viewerOasVersion}
           baseUrl={viewerBaseUrl}
           schema={parsedSchema}
+          isLoading={isLoading}
         />
       </div>
       {toastMessage && (

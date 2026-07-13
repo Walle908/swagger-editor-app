@@ -8,6 +8,11 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: './vitest.setup.ts',
+    server: {
+      deps: {
+        inline: ['next-intl', 'next'],
+      },
+    },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
@@ -21,7 +26,8 @@ export default defineConfig({
         'src/constants/**',
         'src/types/**',
         'src/test-utils/**',
-        'src/**/index.ts',
+        '**/index.ts',
+        'src/firebase.ts',
       ],
       thresholds: {
         global: {
@@ -36,6 +42,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      public: path.resolve(__dirname, './public'),
     },
   },
 });

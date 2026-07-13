@@ -8,10 +8,16 @@ import { useTranslations } from 'next-intl';
 interface ParametersTableProps {
   parameters: OpenAPIParameterData[];
   paramValues: Record<string, string>;
+  validationErrors?: Record<string, string>;
   onParamChange: (name: string, value: string) => void;
 }
 
-export function ParametersTable({ parameters, paramValues, onParamChange }: ParametersTableProps) {
+export function ParametersTable({
+  parameters,
+  paramValues,
+  validationErrors = {},
+  onParamChange,
+}: ParametersTableProps) {
   const t = useTranslations('MainPage.viewer');
 
   if (!parameters || parameters.length === 0) return null;
@@ -28,6 +34,7 @@ export function ParametersTable({ parameters, paramValues, onParamChange }: Para
         {parameters.map((param) => {
           const hasEnum = param.enum && param.enum.length > 0;
           const currentValue = paramValues[param.name] || '';
+          const isInvalid = !!validationErrors[param.name];
 
           return (
             <div key={param.name} className={styles.tableRowData}>
@@ -46,7 +53,7 @@ export function ParametersTable({ parameters, paramValues, onParamChange }: Para
                 <div className={styles.inputWrapper}>
                   {hasEnum ? (
                     <select
-                      className={styles.paramSelect}
+                      className={clsx(styles.paramSelect, isInvalid && styles.inputError)}
                       value={currentValue}
                       onChange={(e) => onParamChange(param.name, e.target.value)}>
                       {param.enum?.map((option) => (
@@ -58,7 +65,7 @@ export function ParametersTable({ parameters, paramValues, onParamChange }: Para
                   ) : (
                     <input
                       type="text"
-                      className={styles.paramInput}
+                      className={clsx(styles.paramInput, isInvalid && styles.inputError)}
                       placeholder={t('placeholderEnter', { name: param.name })}
                       value={currentValue}
                       onChange={(e) => onParamChange(param.name, e.target.value)}
@@ -66,6 +73,17 @@ export function ParametersTable({ parameters, paramValues, onParamChange }: Para
                   )}
                   {hasEnum && <span className={styles.selectArrow}>▾</span>}
                 </div>
+                {isInvalid && (
+                  <div
+                    style={{
+                      color: '#ff4d4f',
+                      fontSize: '11px',
+                      marginTop: '4px',
+                      fontFamily: 'sans-serif',
+                    }}>
+                    {validationErrors[param.name]}
+                  </div>
+                )}
               </div>
             </div>
           );
