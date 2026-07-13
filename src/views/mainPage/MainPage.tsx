@@ -59,7 +59,7 @@ const MainPage: React.FC = () => {
       setToastType('error');
       setToastMessage(t('saveError'));
     }
-  }, [userId, code, format, error]);
+  }, [userId, code, format, error, t]);
 
   const viewerTitle = parsedSchema?.info?.title;
   const viewerVersion = parsedSchema?.info?.version;
