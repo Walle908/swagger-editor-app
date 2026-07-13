@@ -247,7 +247,27 @@ export function parseAndGroupSchema(
 
     groups[category].sort((a, b) => {
       if (a.path !== b.path) {
-        return a.path.localeCompare(b.path);
+        const partsA = a.path.split('/');
+        const partsB = b.path.split('/');
+        const maxLength = Math.max(partsA.length, partsB.length);
+
+        for (let i = 0; i < maxLength; i++) {
+          const partA = partsA[i];
+          const partB = partsB[i];
+
+          if (partA === undefined) return -1;
+          if (partB === undefined) return 1;
+
+          if (partA !== partB) {
+            const isParamA = partA.startsWith('{');
+            const isParamB = partB.startsWith('{');
+
+            if (isParamA && !isParamB) return 1;
+            if (!isParamA && isParamB) return -1;
+
+            return partA.localeCompare(partB);
+          }
+        }
       }
 
       const weightA = METHOD_ORDER[a.method] || 99;
