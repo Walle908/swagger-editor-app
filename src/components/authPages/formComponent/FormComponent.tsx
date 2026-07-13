@@ -2,8 +2,6 @@ import { type InputHTMLAttributes, type ReactNode, forwardRef, useState, useId }
 import { Text } from '@/components/ui';
 import Image from 'next/image';
 import { Button } from '@/components/ui';
-import showIcon from 'public/show.svg';
-import hideIcon from 'public/hide.svg';
 import clsx from 'clsx';
 import styles from './FormComponent.module.scss';
 
@@ -50,9 +48,9 @@ const FormComponent = forwardRef<HTMLInputElement, FormComponentProps>(
               onClick={() => setShowPassword((prev) => !prev)}
               aria-label={showPassword ? 'Show password' : 'Hide password'}>
               {showPassword ? (
-                <Image alt="Show password" src={showIcon} width={16} height={16} />
+                <Image alt="Show password" src="/show.svg" width={16} height={16} />
               ) : (
-                <Image alt="Hide password" src={hideIcon} width={16} height={16} />
+                <Image alt="Hide password" src="/hide.svg" width={16} height={16} />
               )}
             </Button>
           </div>
