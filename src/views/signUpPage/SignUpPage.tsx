@@ -35,8 +35,6 @@ export default function SignUpPage(): ReactNode {
       setUidCookie(userCredential.user.uid);
       router.push('/');
     } catch (error: unknown) {
-      console.error('Register error Firebase:', error);
-
       if (error instanceof FirebaseError && error.code === 'auth/email-already-in-use') {
         setFbError(t('errorEmailInUse'));
       } else {

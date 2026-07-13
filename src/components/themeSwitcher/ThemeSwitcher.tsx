@@ -1,7 +1,6 @@
 import { ReactNode, useEffect } from 'react';
 import Image from 'next/image';
-import moon from 'public/moon.svg';
-import sunny from 'public/sunny.svg';
+
 import styles from './ThemeSwitcher.module.scss';
 import { useThemeStore } from '@/store/themeStore';
 
@@ -16,9 +15,9 @@ export default function ThemeSwitcher(): ReactNode {
   return (
     <button className={styles.themeBtn} onClick={toggleTheme} aria-label="Toggle theme">
       {isDark ? (
-        <Image src={sunny} alt="Dark theme" priority />
+        <Image src="/sunny.svg" alt="Dark theme" width={16} height={16} priority />
       ) : (
-        <Image src={moon} alt="Light theme" priority />
+        <Image src="/moon.svg" alt="Light theme" width={16} height={16} priority />
       )}
     </button>
   );

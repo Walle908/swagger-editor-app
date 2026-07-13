@@ -23,8 +23,7 @@ export default async function HistoryPage() {
 
   try {
     logs = await getRequestLogsForUser(uid);
-  } catch (error) {
-    console.error('Failed to load request history:', error);
+  } catch {
     loadError = t('loadError');
   }
 
