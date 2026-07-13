@@ -69,18 +69,23 @@ export async function POST(request: NextRequest) {
     const rawResponseText = await response.text();
     const responseSize = Buffer.byteLength(rawResponseText, 'utf-8');
 
-    const contentType = response.headers.get('content-type');
-    let responseBody: unknown;
+    const contentType = response.headers.get('content-type') || '';
 
-    if (contentType && contentType.includes('application/json')) {
+    let responseBodyType: 'json' | 'html' | 'text' = 'text';
+    let responseBody: unknown = rawResponseText;
+
+    if (contentType.includes('application/json')) {
       try {
         responseBody = JSON.parse(rawResponseText);
+        responseBodyType = 'json';
       } catch {
         responseBody = rawResponseText;
+        responseBodyType = 'text';
       }
-    } else {
-      responseBody = rawResponseText;
+    } else if (contentType.includes('text/html')) {
+      responseBodyType = 'html';
     }
+
     const responseHeaders: Record<string, string> = {};
     response.headers.forEach((value, key) => {
       responseHeaders[key] = value;
@@ -112,11 +117,17 @@ export async function POST(request: NextRequest) {
         Object.keys({ err });
       }
     }
-    return NextResponse.json({
-      status: response.status,
-      headers: responseHeaders,
-      body: responseBody,
-    });
+    return NextResponse.json(
+      {
+        status: response.status,
+        headers: responseHeaders,
+        type: responseBodyType,
+        body: responseBody,
+      },
+      {
+        status: 200,
+      }
+    );
   } catch (err: unknown) {
     const errorMessage = err instanceof Error ? err.message : 'Unknown error';
     return NextResponse.json(

@@ -19,6 +19,11 @@
   flex-shrink: 0;
   align-self: stretch;
   border-bottom: 0.1rem solid $color-border;
+  @media (max-width: $breakpoint-mobile-small ){
+    padding: .8rem 1.5rem;
+    gap: 0.5rem;
+  }
+
 }
 
 .viewerContentEmpty {
@@ -37,6 +42,14 @@
     font-size: 1.8rem;
     line-height: 2.3rem;
     letter-spacing: -0.036rem;
+  }
+  @media (max-width: $breakpoint-mobile-small ){
+    h2 {
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      letter-spacing: -0.036rem;
+    }
   }
 }
 
