@@ -48,7 +48,6 @@ describe('LocaleLayout (Server Component)', () => {
 
     expect(notFound).toHaveBeenCalledTimes(1);
   });
-
   it('should render main structures properly when locale parameter is valid', async () => {
     const mockParams = Promise.resolve({ locale: 'ru' });
 
