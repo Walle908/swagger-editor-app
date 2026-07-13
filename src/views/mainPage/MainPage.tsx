@@ -16,6 +16,7 @@ const MainPage: React.FC = () => {
   const format = useSchemaStore((state) => state.format);
   const setCodeAction = useSchemaStore((state) => state.setCodeAction);
   const toggleFormatAction = useSchemaStore((state) => state.toggleFormatAction);
+  const isLoading = useSchemaStore((state) => state.isLoading);
 
   const [userId, setUserId] = useState<string | null>(null);
   const [isRestoring, setIsRestoring] = useState<boolean>(true);
@@ -33,8 +34,8 @@ const MainPage: React.FC = () => {
         if (!isCancelled && saved) {
           setCodeAction(saved.content, '');
         }
-      } catch (e) {
-        console.error(e);
+      } catch {
+        return;
       } finally {
         if (!isCancelled) setIsRestoring(false);
       }
@@ -49,15 +50,15 @@ const MainPage: React.FC = () => {
     if (!userId || error || !code.trim()) return;
     try {
       await saveUserSpec(userId, code, format);
-    } catch (saveError) {
-      console.error('Failed to save spec:', saveError);
+    } catch {
+      return;
     }
   }, [userId, code, format, error]);
 
   const viewerTitle = parsedSchema?.info?.title;
   const viewerVersion = parsedSchema?.info?.version;
   const viewerOasVersion = parsedSchema?.openapi || parsedSchema?.swagger;
-  const viewerBaseUrl = parsedSchema?.servers?.[0]?.url;
+  const viewerBaseUrl = parsedSchema?.servers?.[0]?.url ?? undefined;
 
   return (
     <div className={styles.mainPageLayout}>
@@ -78,6 +79,7 @@ const MainPage: React.FC = () => {
           oasVersion={viewerOasVersion}
           baseUrl={viewerBaseUrl}
           schema={parsedSchema}
+          isLoading={isLoading}
         />
       </div>
     </div>

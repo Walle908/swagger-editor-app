@@ -30,7 +30,7 @@ export const ResponseItem = memo(function ResponseItem({ item }: ResponseItemPro
           {item.schemaRaw && (
             <>
               <div className={styles.swaggerMediaTypeLabel}>{t('responseSchema')}</div>
-              <p className={styles.codeBlock}>{item.schemaRaw}</p>
+              <pre className={styles.codeBlock}>{item.schemaRaw}</pre>
             </>
           )}
 
@@ -40,7 +40,7 @@ export const ResponseItem = memo(function ResponseItem({ item }: ResponseItemPro
                 {t('responseExample')} (
                 {item.format === 'yaml' ? 'application/yaml' : 'application/json'}):
               </div>
-              <p className={styles.codeBlock}>{item.example}</p>
+              <pre className={styles.codeBlock}>{item.example}</pre>
             </>
           )}
         </div>

@@ -36,7 +36,7 @@ export function RequestBody({
             {t('examplePayload')} (
             {requestBodyFormat === 'yaml' ? 'application/yaml' : 'application/json'}):
           </div>
-          <p className={styles.codeBlock}>{requestBodyExample}</p>
+          <pre className={styles.codeBlock}>{requestBodyExample}</pre>
         </div>
       )}
     </div>
