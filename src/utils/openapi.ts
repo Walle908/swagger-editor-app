@@ -247,10 +247,33 @@ export function parseAndGroupSchema(
     };
 
     groups[category].sort((a, b) => {
+      // 1. Умная сегментная сортировка путей
       if (a.path !== b.path) {
-        return a.path.localeCompare(b.path);
+        const partsA = a.path.split('/');
+        const partsB = b.path.split('/');
+        const maxLength = Math.max(partsA.length, partsB.length);
+
+        for (let i = 0; i < maxLength; i++) {
+          const partA = partsA[i];
+          const partB = partsB[i];
+
+          if (partA === undefined) return -1;
+          if (partB === undefined) return 1;
+
+          if (partA !== partB) {
+            const isParamA = partA.startsWith('{');
+            const isParamB = partB.startsWith('{');
+
+            // Заставляем параметры в фигурных скобках всегда уходить вниз списка
+            if (isParamA && !isParamB) return 1;
+            if (!isParamA && isParamB) return -1;
+
+            return partA.localeCompare(partB);
+          }
+        }
       }
 
+      // 2. Сортировка по весу методов при одинаковых путях
       const weightA = METHOD_ORDER[a.method] || 99;
       const weightB = METHOD_ORDER[b.method] || 99;
 
