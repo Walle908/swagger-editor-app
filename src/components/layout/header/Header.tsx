@@ -63,14 +63,9 @@ export function Header(): ReactNode {
 
   const handleSignOut = async (e: React.MouseEvent) => {
     e.preventDefault();
-
-    try {
-      await signOut(auth);
-      closeMenu();
-      router.push('/');
-    } catch (error) {
-      console.error('Sign out error:', error);
-    }
+    await signOut(auth);
+    closeMenu();
+    router.push('/');
   };
 
   const headerClassName = clsx(styles.header, isScrolled && styles.scrolled);

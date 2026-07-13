@@ -1,6 +1,6 @@
 import { describe, test, expect, vi, beforeEach } from 'vitest';
 import { NextRequest } from 'next/server';
-import { GET, POST } from './route'; // Убедись, что путь к файлу роута верный
+import { GET, POST } from './route';
 import { addDoc } from 'firebase/firestore';
 
 vi.mock('@/firebase', () => ({

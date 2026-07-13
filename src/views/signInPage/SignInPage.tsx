@@ -26,8 +26,6 @@ export default function SignInPage(): ReactNode {
       setUidCookie(userCredential.user.uid);
       router.push('/');
     } catch (error: unknown) {
-      console.error('Login error Firebase:', error);
-
       if (
         error instanceof FirebaseError &&
         (error.code === 'auth/invalid-credential' ||

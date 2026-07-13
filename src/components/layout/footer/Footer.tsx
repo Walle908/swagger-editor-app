@@ -4,7 +4,6 @@ import { type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { LinkComponent } from '@/components/ui';
-import rsLogo from 'public/rss-logo.svg';
 import styles from './Footer.module.scss';
 
 export function Footer(): ReactNode {
@@ -13,7 +12,7 @@ export function Footer(): ReactNode {
   return (
     <footer className={styles.footer}>
       <LinkComponent href="https://rs.school/" target="_blank" rel="noreferrer">
-        <Image src={rsLogo} width={40} alt="RS School" priority />
+        <Image src="/rss-logo.svg" width={40} height={40} alt="RS School" priority />
       </LinkComponent>
 
       <LinkComponent
