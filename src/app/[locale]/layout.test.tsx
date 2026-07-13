@@ -1,6 +1,5 @@
 import { type ReactNode } from 'react';
 import { describe, expect, it, vi, beforeEach } from 'vitest';
-import { render, screen } from '@testing-library/react';
 import { notFound } from 'next/navigation';
 import LocaleLayout, { generateStaticParams } from './layout';
 
@@ -72,24 +71,38 @@ describe('LocaleLayout (Server Component)', () => {
   it('should render main structures properly when locale parameter is valid', async () => {
     const mockParams = Promise.resolve({ locale: 'ru' });
 
-    const ResultingHtml = await LocaleLayout({
+    const result = await LocaleLayout({
       children: <div data-testid="page-content">Main Page Code</div>,
       params: mockParams,
     });
 
-    render(ResultingHtml);
+    expect(result.type).toBe('html');
+    expect(result.props.lang).toBe('ru');
+    expect(result.props.className).toContain('mock-libre-franklin');
+    expect(result.props.className).toContain('mock-jetbrains-mono');
 
-    expect(document.documentElement).toHaveAttribute('lang', 'ru');
-    expect(document.documentElement.className).toContain('mock-libre-franklin');
-    expect(document.documentElement.className).toContain('mock-jetbrains-mono');
+    const headElement = result.props.children[0];
+    expect(headElement.type).toBe('head');
 
-    expect(screen.getByTestId('mock-header')).toBeInTheDocument();
-    expect(screen.getByTestId('mock-footer')).toBeInTheDocument();
-    expect(screen.getByTestId('page-content')).toBeInTheDocument();
+    const scriptTag = headElement.props.children;
+    expect(scriptTag.props.id).toBe('theme-init');
+    expect(scriptTag.props.dangerouslySetInnerHTML.__html).toContain(
+      "localStorage.getItem('theme-storage')"
+    );
 
-    const scriptTag = document.getElementById('theme-init') as HTMLScriptElement | null;
-    expect(scriptTag).toBeInTheDocument();
-    expect(scriptTag).not.toBeNull();
-    expect(scriptTag?.innerHTML).toContain("localStorage.getItem('theme-storage')");
+    const bodyElement = result.props.children[1];
+    expect(bodyElement.type).toBe('body');
+    expect(bodyElement.props.className).toBe('layoutContainer');
+
+    const providerElement = bodyElement.props.children;
+
+    const [header, main, footer] = providerElement.props.children;
+
+    expect(header.type).not.toBeNull();
+    expect(footer.type).not.toBeNull();
+
+    expect(main.type).toBe('main');
+    expect(main.props.className).toBe('mainContent');
+    expect(main.props.children.props['data-testid']).toBe('page-content');
   });
 });
