@@ -246,7 +246,6 @@ export function parseAndGroupSchema(
     };
 
     groups[category].sort((a, b) => {
-      // 1. Умная сегментная сортировка путей
       if (a.path !== b.path) {
         const partsA = a.path.split('/');
         const partsB = b.path.split('/');
@@ -263,7 +262,6 @@ export function parseAndGroupSchema(
             const isParamA = partA.startsWith('{');
             const isParamB = partB.startsWith('{');
 
-            // Заставляем параметры в фигурных скобках всегда уходить вниз списка
             if (isParamA && !isParamB) return 1;
             if (!isParamA && isParamB) return -1;
 
@@ -272,7 +270,6 @@ export function parseAndGroupSchema(
         }
       }
 
-      // 2. Сортировка по весу методов при одинаковых путях
       const weightA = METHOD_ORDER[a.method] || 99;
       const weightB = METHOD_ORDER[b.method] || 99;
 
