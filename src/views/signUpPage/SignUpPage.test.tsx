@@ -166,10 +166,7 @@ describe('SignUpPage Component', () => {
   it('should handle missing user in userCredential successfully (line 28)', async () => {
     const user = userEvent.setup();
 
-    // Эмулируем успешный ответ Firebase, но БЕЗ объекта user внутри (user: undefined)
-    vi.mocked(createUserWithEmailAndPassword).mockResolvedValueOnce({
-      // Оставляем пустым, чтобы сработал фоллбек и ветка else на строке 28
-    } as UserCredential);
+    vi.mocked(createUserWithEmailAndPassword).mockResolvedValueOnce({} as UserCredential);
 
     render(<SignUpPage />);
 
@@ -177,9 +174,8 @@ describe('SignUpPage Component', () => {
     await user.click(submitBtn);
 
     await waitFor(() => {
-      // Проверяем, что метод updateProfile НЕ вызвался, так как пользователя не было
       expect(updateProfile).not.toHaveBeenCalled();
-      // И на главную страницу нас тоже не пустило, так как код упал дальше на токене
+
       expect(mockPush).not.toHaveBeenCalled();
     });
   });

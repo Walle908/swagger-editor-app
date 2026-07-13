@@ -91,7 +91,6 @@ function getExampleAndSchema(contentNode: unknown): {
   if (mediaNode.example !== undefined) {
     rawExample = mediaNode.example;
   } else if (mediaNode.schema && typeof mediaNode.schema === 'object') {
-    // Вместо старых громоздких условий вызываем нашу универсальную рекурсивную функцию
     rawExample = generateMockFromSchema(mediaNode.schema);
   }
 
@@ -143,7 +142,7 @@ export function parseAndGroupSchema(
 
         return {
           name: typeof p.name === 'string' ? p.name : '',
-          in: (p.in as ParameterInLocation) || 'query', // Тут пройдут и 'header', и 'cookie'
+          in: (p.in as ParameterInLocation) || 'query',
           required: typeof p.required === 'boolean' ? p.required : false,
           type: pSchema && typeof pSchema.type === 'string' ? pSchema.type : 'string',
           default: pSchema && pSchema.default !== undefined ? String(pSchema.default) : '',

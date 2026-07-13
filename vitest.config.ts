@@ -30,14 +30,6 @@ export default defineConfig({
         'src/i18n/**',
         'src/proxy.ts',
         'src/firebase.ts',
-        'src/app/not-found.tsx',
-        'src/app/layout.tsx',
-        'src/app/[locale]/[...rest]/page.tsx',
-        'src/app/[locale]/not-found.tsx',
-        'src/app/[locale]/loading.tsx',
-        'src/app/[locale]/error.tsx',
-        'src/app/[locale]/signin/page.tsx',
-        'src/app/[locale]/signup/page.tsx',
       ],
       thresholds: {
         global: {
