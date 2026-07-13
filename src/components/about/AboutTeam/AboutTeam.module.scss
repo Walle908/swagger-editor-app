@@ -10,3 +10,14 @@
   justify-content: center;
   gap: 2rem;
 }
+
+@media (max-width: $breakpoint-desktop-small) {
+  .teamContainer {
+    display: flex;
+    flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  }
+}

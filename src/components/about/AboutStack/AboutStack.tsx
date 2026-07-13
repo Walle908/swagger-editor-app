@@ -1,4 +1,4 @@
-import { Text } from '@/components/ui';
+import { LinkComponent, Text } from '@/components/ui';
 import styles from './AboutStack.module.scss';
 import { techStack } from '@/constants/aboutInfo';
 import { useTranslations } from 'next-intl';
@@ -12,7 +12,9 @@ export const AboutStack = () => {
       <ul className={styles.tags}>
         {techStack.map((tech, index) => (
           <li key={index} className={styles.tag}>
-            {tech}
+            <LinkComponent href={tech.stackUrl} target="_blank" rel="noopener noreferrer">
+              {tech.stackName}
+            </LinkComponent>
           </li>
         ))}
       </ul>

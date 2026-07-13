@@ -17,8 +17,8 @@ export default async function HistoryDetailPage({ id }: { id: string }) {
   if (!uid) redirect('/');
   try {
     log = await getRequestLogById(id, uid);
-  } catch (error) {
-    console.error('Failed to load request details:', error);
+  } catch {
+    log = null;
   }
   if (!log) notFound();
   return (

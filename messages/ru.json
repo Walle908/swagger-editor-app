@@ -23,7 +23,9 @@
       "btnImport": "Импорт URL",
       "btnSave": "Сохранить",
       "autoConvert": "авто-конвертация",
-      "promptTitle": "Введите URL схемы OpenAPI/Swagger:"
+      "promptTitle": "Введите URL схемы OpenAPI/Swagger:",
+      "saveError": "Не удалось сохранить схему",
+      "saveSuccess": "Схема успешно сохранена!"
     },
     "editor": {
       "lines": "строк",
