@@ -183,5 +183,10 @@
     "signin": "Sign in",
     "errorEmailInUse": "This email is already registered. Try signing in",
     "errorGlobal": "Registration failed. Please try again"
+  },
+  "Unauthorized": {
+    "title": "Error 401",
+    "error": "Unauthorized",
+    "message": "You will be redirected to the main page in a few sec..."
   }
 }
