@@ -77,12 +77,12 @@ describe('HistoryDetailPage', () => {
     });
   });
 
-  it('redirects to the main page when there is no uid cookie', async () => {
+  it('triggers notFound when there is no uid cookie', async () => {
     cookiesMock.mockResolvedValue({ get: () => undefined });
 
-    await expect(HistoryDetailPage({ id: 'log-1' })).rejects.toThrow('NEXT_REDIRECT');
-
-    expect(redirectMock).toHaveBeenCalledWith('/');
+    await expect(HistoryDetailPage({ id: 'log-1' })).rejects.toThrow('NEXT_NOT_FOUND');
+    expect(notFoundMock).toHaveBeenCalled();
+    expect(getRequestLogByIdMock).not.toHaveBeenCalled();
   });
 
   it('triggers notFound when the log does not exist', async () => {

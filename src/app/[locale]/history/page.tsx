@@ -1,5 +1,4 @@
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import { AuthGuard } from '@/components/providers/AuthGuard';
 
@@ -11,13 +10,5 @@ export default async function History() {
   const cookieStore = await cookies();
   const uid = cookieStore.get('uid')?.value;
 
-  if (!uid) {
-    redirect('/');
-  }
-
-  return (
-    <AuthGuard>
-      <HistoryPage uid={uid} />
-    </AuthGuard>
-  );
+  return <AuthGuard serverUid={uid}>{uid ? <HistoryPage uid={uid} /> : null}</AuthGuard>;
 }

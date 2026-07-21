@@ -1,37 +1,39 @@
 import { type ReactNode } from 'react';
 import { describe, expect, it, vi, beforeEach } from 'vitest';
-import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 import History from './page';
-
-vi.mock('next/navigation', () => ({
-  redirect: vi.fn(),
-}));
 
 vi.mock('next/headers', () => ({
   cookies: vi.fn(),
 }));
 
-interface AuthGuardProps {
+interface MockAuthGuardProps {
   children: ReactNode;
+  serverUid?: string;
 }
 
-vi.mock('@/components/providers/AuthGuard', () => ({
-  AuthGuard: ({ children }: AuthGuardProps) => <div data-testid="mock-auth-guard">{children}</div>,
-}));
-
-interface HistoryPageProps {
+interface MockHistoryPageProps {
   uid: string;
 }
 
+vi.mock('@/components/providers/AuthGuard', () => ({
+  AuthGuard: ({ children, serverUid }: MockAuthGuardProps) => (
+    <div data-testid="mock-auth-guard" data-server-uid={serverUid}>
+      {children}
+    </div>
+  ),
+}));
+
 vi.mock('@/views/historyPage/HistoryPage', () => ({
-  default: ({ uid }: HistoryPageProps) => <div data-testid="mock-history-page" data-uid={uid} />,
+  default: ({ uid }: MockHistoryPageProps) => (
+    <div data-testid="mock-history-page" data-uid={uid} />
+  ),
 }));
 
 interface MockJsxElement {
-  type: unknown;
   props: {
-    children: MockJsxElement;
+    serverUid?: string;
+    children: MockJsxElement | null;
     uid?: string;
   };
 }
@@ -41,7 +43,7 @@ describe('History Server Route (page.tsx)', () => {
     vi.clearAllMocks();
   });
 
-  it('should immediately redirect to home page if uid cookie is missing', async () => {
+  it('should render AuthGuard without HistoryPage if uid cookie is missing', async () => {
     const mockGet = vi.fn().mockReturnValue(undefined);
     const mockCookieStore = {
       get: mockGet,
@@ -49,13 +51,16 @@ describe('History Server Route (page.tsx)', () => {
 
     vi.mocked(cookies).mockResolvedValue(mockCookieStore);
 
-    await History();
+    const result = (await History()) as unknown as MockJsxElement;
 
     expect(mockGet).toHaveBeenCalledWith('uid');
-    expect(redirect).toHaveBeenCalledWith('/');
+
+    expect(result.props.serverUid).toBeUndefined();
+
+    expect(result.props.children).toBeNull();
   });
 
-  it('should render AuthGuard and HistoryPage when authenticated via uid cookie', async () => {
+  it('should render AuthGuard and pass uid to HistoryPage when authenticated via cookie', async () => {
     const mockGet = vi.fn().mockReturnValue({ value: 'user_secure_999' });
     const mockCookieStore = {
       get: mockGet,
@@ -65,12 +70,12 @@ describe('History Server Route (page.tsx)', () => {
 
     const result = (await History()) as unknown as MockJsxElement;
 
-    expect(redirect).not.toHaveBeenCalled();
+    expect(mockGet).toHaveBeenCalledWith('uid');
 
-    expect(result.type).not.toBeNull();
+    expect(result.props.serverUid).toBe('user_secure_999');
 
     const historyPageChild = result.props.children;
-
-    expect(historyPageChild.props.uid).toBe('user_secure_999');
+    expect(historyPageChild).not.toBeNull();
+    expect(historyPageChild?.props.uid).toBe('user_secure_999');
   });
 });

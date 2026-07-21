@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { Text, LinkComponent } from '@/components/ui';
 import { getRequestLogById } from '@/utils/historyUtils';
@@ -14,11 +14,12 @@ export default async function HistoryDetailPage({ id }: { id: string }) {
   const t = await getTranslations('HistoryPage.detail');
   const tTable = await getTranslations('HistoryPage.table');
   let log = null;
-  if (!uid) redirect('/');
-  try {
-    log = await getRequestLogById(id, uid);
-  } catch {
-    log = null;
+  if (uid) {
+    try {
+      log = await getRequestLogById(id, uid);
+    } catch {
+      log = null;
+    }
   }
   if (!log) notFound();
   return (

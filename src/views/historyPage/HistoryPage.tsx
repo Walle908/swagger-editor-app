@@ -15,14 +15,14 @@ interface HistoryPageProps {
 
 export default async function HistoryPage({ uid }: HistoryPageProps) {
   const t = await getTranslations('HistoryPage');
-
+  const tt = await getTranslations('HistoryPage.detail');
   let logs: RequestLog[] = [];
   let loadError: string | null = null;
 
   try {
     logs = await getRequestLogsForUser(uid);
   } catch {
-    loadError = t('loadError');
+    loadError = tt('loadError');
   }
 
   const summary = buildSummaryElements(logs);

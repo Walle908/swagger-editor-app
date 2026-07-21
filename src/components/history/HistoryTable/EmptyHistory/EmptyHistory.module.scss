@@ -4,28 +4,28 @@
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  padding: var(--space-3xl);
-  gap: var(--space-lg);
+  padding: $space-3xl;
+  gap: $space-lg;
   min-height: 22rem;
 }
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
+  gap: $space-md;
 }
 .icon {
   width: 6.4rem;
   height: 6.4rem;
   border-radius: 1.6rem;
-  border: 2px dashed var(--color-dark-border);
+  border: 2px dashed $color-border;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-code);
+  font-family: $font-code;
   font-size: 3.2rem;
   font-weight: 700;
-  margin-bottom: var(--space-xl);
+  margin-bottom: $space-xl;
 }
 
 .title {
@@ -35,7 +35,7 @@
 .text {
   line-height: 1.55;
   max-width: 42rem;
-  margin: 0 0 var(--space-xl);
+  margin: 0 0 $space-xl;
 }
 
 .actions {
@@ -50,7 +50,7 @@
 
 @media (max-width: $breakpoint-mobile) {
   .empty {
-    padding: var(--space-xl);
+    padding: $space-xl;
     min-height: 18rem;
   }
 
