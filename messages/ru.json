@@ -1,0 +1,192 @@
+{
+  "Navigation": {
+    "editor": "Редактор",
+    "about": "О нас",
+    "history": "История",
+    "signin": "Войти",
+    "signup": "Регистрация",
+    "signout": "Выйти"
+  },
+  "NotFound": {
+    "title": "Ошибка 404",
+    "message": "Страница не найдена",
+    "link": "Вернуться на главную страницу"
+  },
+  "ErrorPage": {
+    "message": "Что-то пошло не так...",
+    "retry": "Повторить попытку"
+  },
+  "MainPage": {
+    "toolbar": {
+      "validStatus": "Валидно · openapi",
+      "invalidStatus": "Невалидно",
+      "btnImport": "Импорт URL",
+      "btnSave": "Сохранить",
+      "autoConvert": "авто-конвертация",
+      "promptTitle": "Введите URL схемы OpenAPI/Swagger:",
+      "saveError": "Не удалось сохранить схему",
+      "saveSuccess": "Схема успешно сохранена!"
+    },
+    "editor": {
+      "lines": "строк",
+      "fallbackError": "Ошибка валидации схемы"
+    },
+    "viewer": {
+      "placeholderTitle": "Swagger Petstore",
+      "emptyMessage": "Пожалуйста, импортируйте или вставьте валидную схему.",
+      "defaultCategoryDesc": "Общие операции",
+      "customCategoryDesc": "Операции, связанные с {category}",
+      "descriptionLabel": "ОПИСАНИЕ:",
+      "parametersLabel": "ПАРАМЕТРЫ:",
+      "noParameters": "Нет параметров",
+      "requestBodyLabel": "ТЕЛО ЗАПРОСА:",
+      "requestSchema": "Схема запроса:",
+      "examplePayload": "Пример полезной нагрузки",
+      "responsesLabel": "ОТВЕТЫ:",
+      "thCode": "Код",
+      "thDesc": "Описание",
+      "thLinks": "Ссылки",
+      "noLinks": "Нет ссылок",
+      "responseSchema": "Схема ответа:",
+      "responseExample": "Пример ответа:",
+      "btnExecute": "Выполнить",
+      "btnGenerate": "Сгенерировать URL",
+      "btnClear": "Очистить",
+      "thName": "ИМЯ",
+      "thIn": "ГДЕ",
+      "thValue": "ЗНАЧЕНИЕ",
+      "placeholderEnter": "Введите {name}...",
+      "executeStub": "Кнопка Execute работает! Логика запроса будет добавлена завтра.",
+      "curlStub": "Кнопка Generate cURL работает! Команда появится позже.",
+      "noSummary": "Нет краткого описания",
+      "noDescription": "Нет описания",
+      "curlCopiedSuccess": "Команда cURL успешно скопирована в буфер обмена!",
+      "copyError": "Не удалось скопировать команду в буфер обмена.",
+      "viewHeadersLabel": "Показать заголовки ответа",
+      "generatedCurlLabel": "Сгенерированная команда cURL:"
+    }
+  },
+  "AboutPage": {
+    "eyebrow": "RS School | Курс React | Финальное задание",
+    "title": "OpenAPI Studio - это редактор спецификаций API с функциональностью REST-клиента",
+    "description": "Приложение позволяет вставить любую спецификацию OpenAPI/Swagger, просматривать доступные эндпоинты и выполнять реальные запросы через SSR-прокси - без проблем с CORS. Проект создан с использованием Next.js, TypeScript и Next-Intl и имеет полное покрытие тестами",
+    "teamHeading": "Команда",
+    "builtWithHeading": "Технологии",
+    "members": {
+      "member1": "Юлия",
+      "member2": "Елена",
+      "member3": "Карина"
+    },
+    "roles": {
+      "role1": "Frontend разработчик",
+      "role2": "Тимлид. Frontend разработчик",
+      "role3": "Frontend разработчик"
+    },
+    "course": {
+      "heading": "О нашем курсе",
+      "intro": "Курс рассчитан на студентов RS School, прошедших Stage #2, а также на новых студентов, имеющих опыт работы с:",
+      "requirements": [
+        "JavaScript",
+        "TypeScript",
+        "Git, GitHub (clone, add, commit, push, pull, merge, rebase, pull request flow)",
+        "NPM, Webpack",
+        "CSS3 / HTML5",
+        "Chrome DevTools, Figma",
+        "Понимание того, как взаимодействовать с API (общее понимание REST и GraphQL)"
+      ],
+      "ctaQuestion": "Готовы начать?",
+      "ctaLink": "Присоединиться к курсу"
+    }
+  },
+  "HistoryPage": {
+    "title": "История и аналитика",
+    "subtitle": "Каждый выполненный запрос логируется на сервере и агрегируется здесь.",
+    "empty": {
+      "title": "Запросов пока нет",
+      "text": "Вы не выполнили ни одного запроса. Попробуйте использовать эндпоинт, чтобы увидеть здесь аналитику",
+      "openEditor": "Открыть редактор",
+      "browseViewer": "Перейти во вьюер"
+    },
+    "cards": {
+      "total": "Всего запросов",
+      "avgDuration": "Ср. длительность",
+      "successRate": "Успешные",
+      "errors": "Ошибки"
+    },
+    "table": {
+      "method": "Метод",
+      "endpoint": "Эндпоинт",
+      "status": "Статус",
+      "duration": "Длительность",
+      "reqSize": "Запр.размер",
+      "resSize": "Отв.размер",
+      "timestamp": "Время"
+    },
+    "detail": {
+      "backToHistory": "Назад к истории",
+      "notFound": "Запрос не найден",
+      "loadError": "Не удалось загрузить детали запроса. Попробуйте еще раз.",
+      "status": "Статус",
+      "timestamp": "Время",
+      "duration": "Длительность",
+      "requestSize": "Размер запроса",
+      "responseSize": "Размер ответа",
+      "endpoint": "Эндпоинт",
+      "errorDetails": "Детали ошибки"
+    }
+  },
+  "DecorPanel": {
+    "title": "Редактируйте, просматривайте и тестируйте любые спецификации OpenAPI.",
+    "subtitle": "Войдите в систему, чтобы сохранить характеристики и историю запросов."
+  },
+  "PasswordIndicator": {
+    "letter": "Буква",
+    "digit": "Цифра",
+    "specChar": "Спецсимвол",
+    "minLength": "8+ символов"
+  },
+  "Form": {
+    "name": "Имя",
+    "email": "Email",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "createAccount": "Зарегистрироваться",
+    "signIn": "Войти",
+    "placeholderName": "Введите имя...",
+    "placeholderEmail": "Введите email...",
+    "placeholderPassword": "Введите пароль...",
+    "placeholderConfPassword": "Подтвердите пароль..."
+  },
+  "AuthErrors": {
+    "name": "Имя обязательно для заполнения",
+    "tooShort": "Минимальная длина имени — 2 символа",
+    "invalidEmail": "Пожалуйста, введите корректный email (например, name@domain.io)",
+    "passwordRequired": "Пароль обязателен для заполнения",
+    "passwordNoLetter": "Пароль должен содержать хотя бы одну букву",
+    "passwordNoDigit": "Пароль должен содержать хотя бы одну цифру",
+    "passwordNoSpecial": "Пароль должен содержать хотя бы один спецсимвол",
+    "passwordTooShort": "Минимальная длина пароля — 8 символов",
+    "confirmPasswordRequired": "Подтверждение пароля обязательно",
+    "passwordsDontMatch": "Пароли должны совпадать"
+  },
+  "SignInPage": {
+    "welcomeBack": "Добро пожаловать",
+    "signIn": "Войдите в аккаунт",
+    "noAcc": "Нет аккаунта?",
+    "signup": "Создать аккаунт",
+    "errorInvalidCredentials": "Неправильная почта или пароль",
+    "errorGlobal": "Не удалось войти в аккаунт. Пожалуйста, попробуйте еще раз"
+  },
+  "SignUpPage": {
+    "createAccount": "Создать аккаунт",
+    "alreadyHave": "Уже есть аккаунт?",
+    "signin": "Войти",
+    "errorEmailInUse": "Этот адрес электронной почты уже зарегистрирован. Попробуйте войти",
+    "errorGlobal": "Не удалось зарегистрироваться. Пожалуйста, попробуйте еще раз"
+  },
+  "Unauthorized": {
+    "title": "Ошибка 401",
+    "error": "Доступ ограничен",
+    "message": "Вы будете перенаправлены на главную стр через несколько секунд..."
+  }
+}

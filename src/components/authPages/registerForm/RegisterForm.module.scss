@@ -1,0 +1,13 @@
+.formContainer {
+  width: 100%;
+  max-width: 50rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .formContainer {
+    gap: 1.5rem;
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Demonstration API for Task Criteria Verification",
+    "description": "This schema contains multiple tags (categories), all HTTP request methods, raw schemas, and payload examples to verify the evaluation criteria.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/pets/{petId}": {
+      "delete": {
+        "tags": ["pet"],
+        "summary": "Delete a pet by ID",
+        "description": "Path parameter test. Verifies the deletion of a specific record.",
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Pet successfully deleted" },
+          "404": { "description": "Pet not found" }
+        }
+      },
+      "get": {
+        "tags": ["pet"],
+        "summary": "Get pet information",
+        "description": "Returns the complete data schema and payload for a single pet.",
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "default": "pet-777" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with data schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": { "type": "string" },
+                    "name": { "type": "string" },
+                    "status": { "type": "string" }
+                  }
+                },
+                "example": {
+                  "id": "pet-777",
+                  "name": "Max",
+                  "status": "available"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/store/inventory": {
+      "get": {
+        "tags": ["store"],
+        "summary": "Get store inventory status",
+        "description": "Utilizes Header and Cookie parameters to demonstrate all OpenAPI location types.",
+        "parameters": [
+          {
+            "name": "X-Client-Version",
+            "in": "header",
+            "required": true,
+            "schema": { "type": "string", "default": "v1.2.0" }
+          },
+          {
+            "name": "Cart-Session",
+            "in": "cookie",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Inventory status data retrieved successfully" }
+        }
+      }
+    },
+    "/api/v1/pets": {
+      "get": {
+        "tags": ["pet"],
+        "summary": "Find pets by status",
+        "description": "Query parameter test with a dropdown selection (enum fields).",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "available",
+              "enum": ["available", "pending", "sold"]
+            }
+          }
+        ],
+        "responses": {
+          "200": { "description": "List of matching pets" }
+        }
+      },
+      "post": {
+        "tags": ["pet"],
+        "summary": "Add a new pet to the store",
+        "description": "Demonstrates the rendering of request body schema along with object payload examples.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                  "name": { "type": "string", "example": "Rocky" },
+                  "age": { "type": "integer", "example": 3 }
+                }
+              },
+              "example": {
+                "name": "Rocky",
+                "age": 3
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Pet successfully created" }
+        }
+      }
+    }
+  }
+}

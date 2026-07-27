@@ -1,0 +1,98 @@
+.editorToolbar {
+  grid-row: 1;
+  width: 100%;
+  padding: 0.8rem 2rem;
+  background-color: $color-bg-subtle;
+  color: $color-text-muted;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  @media (max-width: $breakpoint-mobile-small) {
+    padding: .9rem;
+    gap: .3rem;
+  }
+}
+
+.toolbarLeft {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.divider {
+  width: 0.1rem;
+  height: 1.8rem;
+  background-color: $color-border;
+}
+
+.statusText {
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: $font-code;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+
+  &::before {
+    content: '';
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  &.valid {
+    color: $color-success;
+    &::before {
+      background-color: $color-success;
+    }
+  }
+
+  &.invalid {
+    color: $color-error-strong;
+    &::before {
+      background-color: $color-error-strong;
+    }
+  }
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 1.5rem;
+}
+
+.importUrlBtn {
+  padding: 0.7rem 1.2rem;
+  width: 9rem;
+  height: 3rem;
+  font-size: 1.1rem;
+  color: $color-text-muted;
+  border: 0.1rem solid $color-border-strong;
+  outline: none;
+
+  &:hover {
+    background-color: $color-bg-muted;
+  }
+}
+
+.saveSpecBtn {
+  padding: 0.7rem 1.4rem;
+  width: 9rem;
+  height: 3rem;
+  font-size: 1.1rem;
+  outline: none;
+
+  &:hover {
+    opacity: 0.7;
+    background-color: $color-bg-additional;
+  }
+}

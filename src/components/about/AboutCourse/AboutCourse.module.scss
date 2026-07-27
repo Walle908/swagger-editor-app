@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 4rem 0;
+}
+.aboutCourse {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.courseContent {
+  margin-left: 2rem;
+}
+.courseList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  list-style: none;
+}
+.skillItem {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: $space-sm;
+  margin-left: 1rem;
+}
+.durationText {
+  margin-left: 1rem;
+}
+.ctaWrapper {
+  display: flex;
+  justify-content: center;
+}
+.buttonLink {
+  font-family: $font-main;
+  font-weight: 600;
+  margin-left: 1rem;
+  text-decoration: underline;
+}
+@media (max-width: $breakpoint-mobile) {
+  .container {
+    padding: 2.4rem 0;
+  }
+
+  .courseContent,
+  .skillItem,
+  .durationText,
+  .buttonLink {
+    margin-left: 0;
+  }
+}

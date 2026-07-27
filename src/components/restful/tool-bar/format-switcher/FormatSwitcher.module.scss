@@ -1,0 +1,51 @@
+.switcherWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  p {
+    font-size: 1.2rem;
+    color: $color-text-muted;
+  }
+}
+
+.segmentedControl {
+  display: flex;
+  align-items: center;
+  width: 10rem;
+  height: 2.5rem;
+  border: 0.1rem solid;
+  border-color: $color-border;
+  border-radius: 0.7rem;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.segmentInput {
+  flex: 1;
+  height: 100%;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.activeGreen {
+  background-color: $color-primary;
+  color: $color-text-additional;
+}
+
+.inactiveWhite {
+  background-color: $color-bg-main;
+  color: $color-text-muted;
+  &:hover {
+    color: $color-hover;
+    border-color: $color-hover;
+  }
+}
+
+.convertIcon {
+  stroke: $color-text-muted;
+}

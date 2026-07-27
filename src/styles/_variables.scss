@@ -1,0 +1,81 @@
+// Цвета
+$color-bg-main: var(--color-bg-main);
+$color-bg-additional: var(--color-bg-additional);
+$color-bg-subtle: var(--color-bg-subtle);
+$color-bg-muted: var(--color-bg-muted);
+$color-bg-canvas: var(--color-bg-canvas);
+$color-bg-code: var(--color-bg-code);
+$color-bg-header-scrolled: var(--color-bg-header-scrolled);
+
+$color-border: var(--color-border);
+$color-border-strong: var(--color-border-strong);
+$color-line-soft: var(--color-line-soft);
+
+//текст
+$color-text-main: var(--color-text-main);
+$color-text-additional: var(--color-text-additional);
+$color-text-secondary: var(--color-text-secondary);
+$color-text-black: var(--color-text-black);
+$color-text-muted: var(--color-text-muted);
+$color-text-faint: var(--color-text-faint);
+$color-text-accent: var(--color-text-accent);
+$color-text-accent-1: var(--color-text-accent-1);
+$color-text-accent-2: var(--color-text-accent-2);
+
+$color-primary: var(--color-primary);
+
+//валидация
+$color-error-strong: var(--color-error-strong);
+$color-error-bg: var(--color-error-bg);
+$color-error-border: var(--color-error-border);
+$color-success: var(--color-success);
+$color-success-bg: var(--color-success-bg);
+$color-warning: var(--color-warning);
+$color-warning-bg: var(--color-warning-bg);
+
+$color-hover: var(--color-hover);
+$color-focus: var(--color-focus);
+$color-disabled: var(--color-disabled);
+$color-hover-activeBtn: var(--color-hover-activeBtn);
+
+//shadow
+$shadow-sm: var(--shadow-sm);
+$shadow-md: var(--shadow-md);
+$shadow-lg: var(--shadow-lg);
+
+// HTTP-методы
+$color-method-get: var(--color-method-get);
+$color-method-post: var(--color-method-post);
+$color-method-put: var(--color-method-put);
+$color-method-patch: var(--color-method-patch);
+$color-method-delete: var(--color-method-delete);
+
+//фоны плашек методов
+$color-method-get-bg: var(--color-method-get-bg);
+$color-method-post-bg: var(--color-method-post-bg);
+$color-method-put-bg: var(--color-method-put-bg);
+$color-method-patch-bg: var(--color-method-patch-bg);
+$color-method-delete-bg: var(--color-method-delete-bg);
+
+// Сетка и брейкпоинты
+$breakpoint-mobile-small: 480px;
+$breakpoint-mobile: 576px;
+$breakpoint-mobile-landscape: 670px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop-small: 900px;
+$breakpoint-desktop: 1440px;
+
+// Шрифты и размеры
+$font-main: var(--font-libre-franklin), sans-serif;
+$font-code: var(--font-jetbrains-mono), monospace;
+$space-xxxs: 1rem;
+$space-xxs: 1.2rem;
+$space-xs: 1.4rem;
+$space-sm: 1.6rem;
+$space-md: 1.8rem;
+$space-lg: 2rem;
+$space-xl: 2.2rem;
+$space-2xl: 3rem;
+$space-3xl: 4.2rem;
+
+$radius-sm: var(--radius-sm);

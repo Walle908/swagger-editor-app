@@ -1,0 +1,61 @@
+.default {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.2rem;
+  padding: $space-xxs $space-xl;
+  white-space: nowrap;
+  border-radius: 0.8rem;
+  border: none;
+  font-size: $space-xs;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:disabled {
+    background-color: $color-disabled;
+    color: $color-text-muted;
+    opacity: 0.8;
+    cursor: none;
+    pointer-events: none;
+  }
+}
+
+.default:hover {
+  background-color: $color-hover;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-size: $space-md;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.icon:hover {
+  color: $color-hover;
+}
+
+.none {
+  background: none;
+  color: $color-text-main;
+}
+
+.primary {
+  background-color: $color-primary;
+  color: $color-text-additional;
+}
+
+.dark {
+  background-color: $color-bg-additional;
+  color: $color-text-additional;
+}
+
+.light {
+  background-color: $color-bg-main;
+  color: $color-text-main;
+  border: 1px solid $color-border-strong;
+}
